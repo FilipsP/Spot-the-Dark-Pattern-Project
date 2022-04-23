@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import StartPage from './pages/startPage';
+import LoginRegister from './pages/login-register';
+import Settings from './components/settings';
+import {useState} from 'react';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [openSettings, setSettings] = useState(false);
+
+
+    return (
+        <div className="App">
+            <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
+            {openSettings && <Settings closeSettings={setSettings} />}
+            <Routes>
+                <Route path="/" element={<StartPage />} />
+                <Route path="login-register" element={<LoginRegister/>} />
+            </Routes>
+            
+        </div>
+    );
 }
 
 export default App;

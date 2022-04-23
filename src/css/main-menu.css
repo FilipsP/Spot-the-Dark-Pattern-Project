@@ -1,0 +1,19 @@
+.icon-grid{
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    text-align: center;
+    grid-gap: 5rem;
+}
+
+
+.icon{
+    width: auto;
+    height: 150px;
+    transition: transform .1s ease-in-out;
+}
+
+.icon:hover{
+    transform: scale(1.05);
+}

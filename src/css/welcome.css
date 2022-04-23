@@ -1,0 +1,37 @@
+
+
+.file-name {
+    margin: 0 1rem 0;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+    border: 1px solid rgb(124, 124, 124);
+}
+
+.welcome-text {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.welcome-text p{
+    font-size: 1.2rem;
+}
+
+.begin-button {
+    padding: 1rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    float: right;
+    margin: 1rem;
+    cursor: pointer;
+}
+.begin-button:hover{
+background-color: aliceblue;
+}
+

@@ -1,0 +1,23 @@
+.game-description{
+    font-size: 1.5rem;
+}
+
+.game-description-container{
+    max-width: 70%;
+}
+
+.start-game-btn{
+    font-size: 2.5rem;
+    margin: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    float: right;
+}
+
+.start-game-btn:hover{
+    cursor: pointer;
+    background-color: rgb(231, 231, 231);
+}
+

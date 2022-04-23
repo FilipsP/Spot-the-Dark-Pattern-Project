@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;0,700;1,600&display=swap');
+
+:root {
+    --main-bg-color: #40BD76;
+    --text-color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body{
+    font-family: 'Open Sans', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html[data-theme='light']{
+    --main-bg-color: #40BD76;
+    --text-color: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html[data-theme='dark']{
+    --main-bg-color: #616562;
+    --text-color: rgb(245, 245, 245);
 }
 
-.App-link {
-  color: #61dafb;
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.container{
+    width: 95%;
+    margin: 0 auto;
+
+}
+
+.main-heading{
+    font-size: 3.5rem;
+}
+
+.settings-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.settings-btn:hover{
+    transform: scale(1.1);
+    transition: .2s ease-in-out;
+}
+
+a{
+    color: var(--text-color);
+}
+
+
+.modal-background{ 
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+
+.exit-btn{
+    float: right;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.exit-btn:hover{
+    color: red;
+}
+
+.modal-heading{
+    margin: 0;
+    padding-bottom: 2rem;
 }

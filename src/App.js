@@ -3,6 +3,9 @@ import './App.css';
 import StartPage from './pages/startPage';
 import LoginRegister from './pages/login-register';
 import Settings from './components/settings';
+import WelcomePage from './pages/welcome';
+import MainMenu from './pages/main-menu';
+import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
 
 
@@ -18,6 +21,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<StartPage />} />
                 <Route path="login-register" element={<LoginRegister/>} />
+                <Route path="welcome" element={<WelcomePage/>} />
+                <Route path="main-menu" element={<MainMenu/>} />
+                <Route path="amazon" element={<Amazon/>} />
             </Routes>
             
         </div>

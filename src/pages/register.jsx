@@ -1,7 +1,10 @@
 import "../css/login-register.css";
-
+import {useState} from 'react';
+import ProgressNote from './progressNote';
 
 function Register({closeRegister}) {
+
+    const [openProgressNote, setProgressNote] = useState(false);
 
     return(
         <div>
@@ -26,6 +29,16 @@ function Register({closeRegister}) {
                         <input className="input-field" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password"></input>
                     </div>
                     <button className="submit" type="submit" id="register-submit">Finished <i className="bi bi-check-circle-fill"></i></button>
+
+
+                    <div className="modal-skip-btn" onClick={()=>{setProgressNote(true); }}>
+                        <i className="bi bi-arrow-right-square-fill"></i>
+                        <p>Skip</p>
+                    </div>
+                {openProgressNote && <ProgressNote closeProgressNote={setProgressNote} />}
+
+
+
                 </div>
             </div>
         </div>

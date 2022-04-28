@@ -1,15 +1,18 @@
 import "../css/login-register-menu.css"
-import { Link } from 'react-router-dom';
 import {useState} from 'react';
 import Register from './register';
 import Login from './login';
+import ProgressNote from './progressNote';
+
 
 
 function LoginRegister() {
 
     const [openRegister, setRegister] = useState(false);
     const [openLogin, setLogin] = useState(false);
-    
+    const [openProgressNote, setProgressNote] = useState(false);
+
+
     return(<div>
         
         <div className="container">
@@ -30,14 +33,13 @@ function LoginRegister() {
                     {openLogin && <Login closeLogin={setLogin} />}
                 </div>
             </div>
-            <Link to="">
-            <div className="skip-btn">
+            
+            <div className="skip-btn" onClick={()=>setProgressNote(true)}>
                     <i className="bi bi-arrow-right-square-fill"></i>
                     <p>Skip</p>
                 </div>
-            </Link>
+                {openProgressNote && <ProgressNote closeProgressNote={setProgressNote} />}
 
-            
 
         </div>
     </div>)

@@ -1,6 +1,11 @@
 import "../css/login-register.css";
+import {useState} from 'react';
+import ProgressNote from './progressNote';
 
 function Login({closeLogin}){
+
+    const [openProgressNote, setProgressNote] = useState(false);
+
     return(
         <div>
             <div className="modal-background">
@@ -18,6 +23,14 @@ function Login({closeLogin}){
                         <input className="input-field" type="password" id="login-password" name="password" placeholder="Password"></input>
                     </div>
                     <button className="submit" type="submit" id="login-submit">Finished <i className="bi bi-check-circle-fill"></i></button>
+
+
+                    <div className="modal-skip-btn" onClick={()=>setProgressNote(true)}>
+                        <i className="bi bi-arrow-right-square-fill"></i>
+                        <p>Skip</p>
+                    </div>
+                {openProgressNote && <ProgressNote closeProgressNote={setProgressNote} />}
+
                 </div>
             </div>
         </div>

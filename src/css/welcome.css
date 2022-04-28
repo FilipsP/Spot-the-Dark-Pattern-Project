@@ -25,13 +25,16 @@ hr {
 .begin-button {
     padding: 1rem;
     font-size: 1.5rem;
-    border: none;
+    border: 1px solid;
     border-radius: 10px;
     float: right;
     margin: 1rem;
-    cursor: pointer;
+    background-color: transparent;
 }
+
+
 .begin-button:hover{
-background-color: aliceblue;
+    cursor: pointer;
+    background-color: lightgray;
 }
 

@@ -10,16 +10,16 @@
 }
 
 /* The screen content */
-.desktop .content {
+.desktop .pc-content {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-color: rgb(145, 208, 229);
+    background-color: rgb(220, 220, 220);
 
 }
 
 /* The base block */
-.desktop .content:before {
+.desktop .pc-content:before {
     content: '';
     display: block;
     width: 20%;
@@ -33,7 +33,7 @@
 }
 
 /* The base */
-.desktop .content:after {
+.desktop .pc-content:after {
     content: '';
     display: block;
     width: 60%;

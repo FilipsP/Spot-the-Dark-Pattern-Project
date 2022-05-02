@@ -18,3 +18,15 @@
     transform: scale(1.05);
     cursor: pointer;
 }
+
+
+.right-aligned{
+    float: right;
+    width: 70%;
+}
+
+.left-aligned{
+    float: left;
+    width: 15%;
+}
+

@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "profile_picture")
 public class ProfilePicture {
     @Id
     @GeneratedValue

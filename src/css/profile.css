@@ -1,0 +1,22 @@
+
+.profile-container{
+    background-color: rgb(220, 220, 220);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.profile-picture{
+    max-width: 10rem;
+    border-radius: 10px;
+}
+
+.stats-container{
+    display: block;
+    width: 100%;
+    float: left;
+}
+

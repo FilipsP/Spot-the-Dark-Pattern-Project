@@ -7,6 +7,10 @@ import WelcomePage from './pages/welcome';
 import MainMenu from './pages/main-menu';
 import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
+import Testing from './components/Testing';
+import NotFound from "./components/NotFound";
+
+
 
 
 function App() {
@@ -19,15 +23,20 @@ function App() {
             <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
             {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>
-                <Route path="/" element={<StartPage />} />
-                <Route path="login-register" element={<LoginRegister/>} />
+                <Route exact path = "" element = {<StartPage />} />
+                <Route exact path ="/login-register" element = {<LoginRegister />} />
+                <Route exact path = "/test" element = {<Testing />}/>
+                <Route path="*" element={<NotFound />}/>
                 <Route path="welcome" element={<WelcomePage/>} />
                 <Route path="main-menu" element={<MainMenu/>} />
                 <Route path="amazon" element={<Amazon/>} />
             </Routes>
-            
+
+
         </div>
     );
 }
+
+
 
 export default App;

@@ -1,0 +1,19 @@
+/*It is free to change*/
+
+.Not-Found-Page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } 
+
+
+  .Test-Buttons {
+      margin: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+  }

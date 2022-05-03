@@ -8,23 +8,23 @@ import reddit_logo from '../img/reddit_logo.png';
 import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
 import { Link } from 'react-router-dom';
-import profile_picture from '../img/profile_pic.png';
+import {Character} from '../components/Character.jsx';
+//import {useEffect, useState} from 'react';
 
+// <div className='profile-container left-aligned'>M
+//     <img className='profile-picture' src={}></img>
+//     <h1>Nickname</h1>
+//     <div className='stats-contaier'>
+//         <h2>Points - 2</h2>
+//     </div>
+// </div>
 
 
 function MainMenu(){
     return (
     <div>
         <div className='container'>
-            <div className='profile-container left-aligned'>
-                <img className='profile-picture' src={profile_picture}></img>
-                <h1>Nickname</h1>
-                <div className='stats-container'>
-                    <h2>Points - 4</h2>
-                    <h2>Lives - 2</h2>
-                </div>
-                
-            </div>
+            <Character />
             <div className='desktop right-aligned'>
                 <div className='pc-content'>
                     <div className='icon-grid'>

@@ -24,8 +24,8 @@ public class ProfileController {
         return profileRepository.findById(index).get();
     }
 
-/*
-    @DeleteMapping("profile/{index}") // localhost:8080/profile/1 DELETE
+
+    @DeleteMapping("profiles/{index}") // localhost:8080/profile/1 DELETE
     public void deleteProfile(@PathVariable Long index) {
         profileRepository.deleteById(index);
     }
@@ -34,7 +34,7 @@ public class ProfileController {
         profileRepository.deleteAll();
         return "All PROFILES WERE DELETED";
     }
-*/
+
 
     @PostMapping("profiles") // localhost:8080/profiles  POST
     public void addProfile(@RequestBody Profile profile) {

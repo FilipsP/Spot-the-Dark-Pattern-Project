@@ -2,11 +2,12 @@ import "./apps.css";
 import "./browser.css";
 import amazonBackground from "../../img/amazon_bg_2.png";
 import {useState} from 'react';
-import GameEvent from '../../components/event';
+import GameEvent from '../../components/GameEvent';
 
-function Amazon(){
+function Amazon(props){
 
     const [openEvent, setEvent] = useState(false);
+
 
     return(
         <div>
@@ -34,7 +35,10 @@ function Amazon(){
                     <hr></hr>
                         <img className='background-image' src={amazonBackground} alt="amazon background"  onClick={() => {setEvent(true)}}></img>
                     </div>
-                    {openEvent && <GameEvent closeEvent={setEvent} />}
+                    {openEvent &&
+                        <GameEvent closeEvent={setEvent}
+
+                    />}
                 </div>
             </div>
         </div>

@@ -1,8 +1,9 @@
-import {Link, useLocation, useNavigation} from "react-router-dom";
+import {Link} from "react-router-dom";
 import ButtonControl from './ButtonControl';
 import "../css/test.css"
 import React, {useEffect, useState} from "react";
-import Form from "./Forms"
+import '../img/profile_pic.png'
+//import Form from "./Forms"
 
 
 // eslint-disable-next-line
@@ -117,6 +118,77 @@ function HandleBrowserButtons(){
 
 }*/
 
+function Avatar(props) {
+    return(
+        <div>
+            <img width= "240" height = "290"
+                 src={props.profilePictures[props.currentProfilePicture].name}
+                 alt={props.profilePictures[props.currentProfilePicture].description}
+            /><br/>
+            <button onClick = {() => props.solvePictureChange(-1)}>prev</button>
+            <button onClick = {() => props.solvePictureChange(1)}>next</button>
+        </div>
+    )
+}
+
+function CallPictures() {
+
+    const [profilePictures, setProfilePictures] = useState([]);
+    const [currentProfilePicture, setCurrentPicture] = useState(0);
+    const [render, setRender] = useState(true);
+
+
+
+    useEffect(() => {
+        fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
+            .then(response => response.json())
+            .then(body => setProfilePictures(body));
+
+
+    }, []);
+
+
+    function solvePictureChange(number) {
+        if (currentProfilePicture + number < profilePictures.length && currentProfilePicture + number > -1 ) {
+            setCurrentPicture(currentProfilePicture + number)
+        }
+        if (currentProfilePicture + number < 0) {
+            setCurrentPicture(profilePictures.length-1)
+        }
+        if (currentProfilePicture + number > profilePictures.length-1) {
+            setCurrentPicture(0)
+        }
+    }
+
+
+    return (
+        <div>
+            <div>
+                {render? <button onClick={ () => {setRender(false)}}>Choose Avatar</button> :
+                    <Avatar
+                        solvePictureChange = {solvePictureChange}
+                        profilePictures = {profilePictures}
+                        currentProfilePicture = {currentProfilePicture}
+                    />}
+                <p>{currentProfilePicture}</p>
+                <p>{profilePictures.length}</p>
+            </div>
+            <>------------------------------------</>
+            <div style = {{borderStyle: "solid"}}>
+                {profilePictures.map( element =>
+                <div key = {element.id}>
+                    <img
+                        src= {element.name}
+                        alt={element.description}
+                    />
+                    <p>{element.description}</p>
+                </div>)}
+            </div>
+        </div>
+    )
+}
+
+
 function Testing() {
     return(
         <div className="Not-Found-Page">
@@ -129,7 +201,6 @@ function Testing() {
                 </Link>
             </div>
             <div>
-                <Form />
                 <ButtonControl
                     eventID = {question.eventID}
                     eventType = {question.eventType}
@@ -141,6 +212,7 @@ function Testing() {
                     pointsGiven = {question.pointsGiven}
                 /> {/*info from "DB"(↓const question↓) goes to the button menu(ButtonControl)↑
                     There it goes to the question description and buttons */}
+                <CallPictures />
             </div>
         </div>
 

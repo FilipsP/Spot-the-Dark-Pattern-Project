@@ -46,7 +46,7 @@ public class ProfilePictureController {
         profilePictureRepository.save(profilePicture);
     }
 
-    @PostMapping("add-all-profile-pictures") // localhost:8080/profile-pictures  POST
+    @PostMapping("add-all-profile-pictures") // localhost:8080/add-all-profile-pictures  POST
     public void addProfile(@RequestBody List<ProfilePicture> profilePictures) {
         profilePictureRepository.saveAll(profilePictures);
     }

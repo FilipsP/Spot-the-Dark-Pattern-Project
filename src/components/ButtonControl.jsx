@@ -16,7 +16,7 @@ function Buttons(props) {
 function BackButton(props) {
     return(
         <div>
-            <button className="Test-Buttons" onClick={props.onClick}>Back</button> 
+            <button onClick={props.onClick}>Back</button>
         </div>
     );
 }
@@ -67,7 +67,8 @@ class ButtonControl extends React.Component {
             points: state.points + this.pointsGiven 
           }));
     }
-    
+
+    com
 
 
     render() {

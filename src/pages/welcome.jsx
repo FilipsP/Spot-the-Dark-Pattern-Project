@@ -9,7 +9,7 @@ function WelcomePage(){
             <div className='container'>
                 <div className='desktop'>
                     <div className='pc-content'>
-                        <p class="file-name">welcome.txt</p>
+                        <p className="file-name">welcome.txt</p>
                         <hr></hr>
                         <div className='welcome-text'>
                             <p>Hello Friend!</p>
@@ -19,12 +19,10 @@ function WelcomePage(){
                         <p>Good luck!</p>
                         <p>Kr,</p>
                         <p>Development team.</p>
-                        </div>
                         <Link to="/main-menu">
-                        <button class="begin-button">Begin game</button>
+                            <button className="begin-button">Begin game</button>
                         </Link>
-                            
-                        
+                        </div>
                     </div>
                 </div>
             </div>

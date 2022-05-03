@@ -1,17 +1,15 @@
 import "../css/login-register.css";
-import {useState} from 'react';
-import ProgressNote from './progressNote';
+import Skip from "../components/Skip";
 
-function Register({closeRegister}) {
+function Register(props) {
 
-    const [openProgressNote, setProgressNote] = useState(false);
 
     return(
         <div>
             <div className="modal-background">
                 <div className="form-container">
                 
-                    <div onClick={() => closeRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
+                    <div onClick={() => props.closeRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Register</h1> 
                     
                     <div className="input-element">
@@ -31,11 +29,7 @@ function Register({closeRegister}) {
                     <button className="submit" type="submit" id="register-submit">Finished <i className="bi bi-check-circle-fill"></i></button>
 
 
-                    <div className="modal-skip-btn" onClick={()=>{setProgressNote(true); }}>
-                        <i className="bi bi-arrow-right-square-fill"></i>
-                        <p>Skip</p>
-                    </div>
-                {openProgressNote && <ProgressNote closeProgressNote={setProgressNote} />}
+                    <Skip setProgressNote = {props.setProgressNote}/>
 
 
 

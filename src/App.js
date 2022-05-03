@@ -9,6 +9,7 @@ import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
 import Testing from './components/Testing';
 import NotFound from "./components/NotFound";
+import Index from "./pages";
 
 
 
@@ -30,6 +31,7 @@ function App() {
                 <Route path="welcome" element={<WelcomePage/>} />
                 <Route path="main-menu" element={<MainMenu/>} />
                 <Route path="amazon" element={<Amazon/>} />
+                <Route path="index" element={<Index />} />
             </Routes>
 
 

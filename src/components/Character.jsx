@@ -1,6 +1,29 @@
 import React, {useState, useEffect} from "react";
+import profile_pic from '../img/profile_pic.png';
+import meta_logo from '../img/meta_logo.png';
+
+const defaultCharacters = [{
+    username : "Anonymous",
+    name  : profile_pic,
+    description : "Its me"
+    },
+    {username: "Spider-Man",
+    name : meta_logo,
+    description: "Spider-Meta"
+    }]
+
 
 function Avatar(props) {
+
+    const myStyle = {
+        color: "#696969",
+        backgroundColor: "#e8e8e8",
+        padding: "10px",
+        marginLeft : "15px",
+        marginRight : "10px",
+        fontFamily: "Arial",
+        textAlign : "center"
+    }
     return(
         <div>
             <img
@@ -8,21 +31,24 @@ function Avatar(props) {
                 src={props.profilePictures[props.currentProfilePicture].name}
                 alt={props.profilePictures[props.currentProfilePicture].description}
             /><br/>
-            <button onClick = {() => props.solvePictureChange(-1)}>prev</button>
-            <button onClick = {() => props.solvePictureChange(1)}>next</button>
+            <div >
+                <button  style = {myStyle} onClick = {() => props.solvePictureChange(-1)}>prev</button>
+                <button style = {myStyle} onClick = {() => props.solvePictureChange(1)}>next</button>
+            </div>
             <h1>{props.profileName}</h1>
             <div className='stats-container'>
                 <h2>Points - 4</h2>
                 <h2>Lives - 2</h2>
+                <button onClick={ () => {props.setRender(true)}}>Hide Profile</button>
             </div>
-            <button onClick={ () => {props.setRender(true)}}>Back</button>
         </div>
 
     )
 }
 
-export function Character() {
+export function Character(props) {
 
+    const [onlinePictures, setOnlinePictures] = useState(false);
     const [profile, setProfile] = useState(null);
     const [profilePictures, setProfilePictures] = useState([]);
     const [currentProfilePicture, setCurrentPicture] = useState(0);
@@ -31,16 +57,26 @@ export function Character() {
 
 
     useEffect(() => {
+        if (onlinePictures){
         fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
             .then(response => response.json())
             .then(body => setProfilePictures(body));
+        }else {
+            setProfilePictures(defaultCharacters)
+        }
     }, []);
 
-    useEffect(() => {
-        fetch("http://localhost:8080/profiles/17", {method: 'GET'})
-            .then(response => response.json())
-            .then(body => setProfile(body));
-    }, []);
+
+        useEffect(() => {
+            if (props.isLoggedIn) {
+                fetch("http://localhost:8080/profiles/17", {method: 'GET'})
+                    .then(response => response.json())
+                    .then(body => setProfile(body));
+            }else {
+                setProfile(defaultCharacters[0])
+            }
+        }, []);
+
 
 
     function solvePictureChange(number) {
@@ -65,8 +101,6 @@ export function Character() {
                 profileName = {profile.username}
                 setRender = {setRender}
             />}
-
-
         </div>
 
         )

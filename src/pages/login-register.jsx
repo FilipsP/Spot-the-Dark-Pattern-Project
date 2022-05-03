@@ -2,16 +2,17 @@ import "../css/login-register-menu.css"
 import {useState} from 'react';
 import Register from './register';
 import Login from './login';
-import ProgressNote from './progressNote';
+import Skip from '../components/Skip.jsx';
+import ProgressNote from "./progressNote";
 
 
 
-function LoginRegister() {
+
+function LoginRegister(props) {
 
     const [openRegister, setRegister] = useState(false);
     const [openLogin, setLogin] = useState(false);
     const [openProgressNote, setProgressNote] = useState(false);
-
 
     return(<div>
         
@@ -23,22 +24,19 @@ function LoginRegister() {
                         <i className="bi bi-person-plus-fill big-icon"></i>
                         <p className="register-text">Register</p>
                     </div>
-                    {openRegister && <Register closeRegister={setRegister} />}
+                    {openRegister && <Register setProgressNote = {setProgressNote}  closeRegister={setRegister} />}
                 </div>
                 <div className="item-container">
                     <div onClick={()=>{setLogin(true)}}>
                         <i className="bi bi-person-fill big-icon"></i>
                         <p className="register-text">Login</p>
                     </div>
-                    {openLogin && <Login closeLogin={setLogin} />}
+                    {openLogin && <Login setProgressNote = {setProgressNote} LoggedIn = {props.logIn} closeLogin={setLogin} />}
                 </div>
             </div>
             
-            <div className="skip-btn" onClick={()=>setProgressNote(true)}>
-                    <i className="bi bi-arrow-right-square-fill"></i>
-                    <p>Skip</p>
-                </div>
-                {openProgressNote && <ProgressNote closeProgressNote={setProgressNote} />}
+            <Skip openProgressNote = {openProgressNote} setProgressNote = {setProgressNote}/>
+            {openProgressNote && <ProgressNote showMenu = {props.showMenu} />}
 
 
         </div>

@@ -20,11 +20,11 @@ import {Character} from '../components/Character.jsx';
 // </div>
 
 
-function MainMenu(){
+function MainMenu(props){
     return (
     <div>
         <div className='container'>
-            <Character />
+            <Character isLoggedIn = {props.isLoggedIn} />
             <div className='desktop right-aligned'>
                 <div className='pc-content'>
                     <div className='icon-grid'>

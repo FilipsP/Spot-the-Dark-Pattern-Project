@@ -4,7 +4,7 @@ import amazonBackground from "../../img/amazon_bg_2.png";
 import {useState} from 'react';
 import GameEvent from '../../components/GameEvent';
 
-function Amazon(props){
+function Amazon(){
 
     const [openEvent, setEvent] = useState(false);
 

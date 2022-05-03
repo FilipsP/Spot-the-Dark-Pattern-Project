@@ -9,6 +9,8 @@ import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
 import { Link } from 'react-router-dom';
 import {Character} from '../components/Character.jsx';
+import {useState} from "react";
+import Amazon from "./apps/amazon";
 //import {useEffect, useState} from 'react';
 
 // <div className='profile-container left-aligned'>M
@@ -19,28 +21,59 @@ import {Character} from '../components/Character.jsx';
 //     </div>
 // </div>
 
-
-function MainMenu(props){
-    return (
-    <div>
-        <div className='container'>
-            <Character isLoggedIn = {props.isLoggedIn} />
-            <div className='desktop right-aligned'>
-                <div className='pc-content'>
-                    <div className='icon-grid'>
-                    <Link to="/amazon">
-                        <img className='icon' src={amazon_logo} alt='Amazon logo'></img>
-                    </Link>
-                        <div><img className='icon' src={meta_logo} alt='Meta logo'></img></div>
-                        <div><img className='icon' src={gmail_logo} alt='Gmail logo'></img></div>
-                        <div><img className='icon' src={reddit_logo} alt='Reddit logo'></img></div>
-                        <div><img className='icon' src={instagram_logo} alt='Instagram logo'></img></div>
-                        <div><img className='icon' src={cnn_logo} alt='CNN logo'></img></div>
+function IconsMenu(props) {
+    return(
+        <div>
+            <div className='container'>
+                <Character
+                    isLoggedIn = {props.isLoggedIn}
+                    lives = {props.lives}
+                    points = {props.points}
+                />
+                <div className='desktop right-aligned'>
+                    <div className='pc-content'>
+                        <div className='icon-grid'>
+                            <div><img className='icon' src={amazon_logo} alt='Amazon logo' onClick={() => {props.appNumber(1)}}></img></div>
+                            <div><img className='icon' src={meta_logo} alt='Meta logo' onClick={() => {props.appNumber(2)}}></img></div>
+                            <div><img className='icon' src={gmail_logo} alt='Gmail logo' onClick={() => {props.appNumber(3)}}></img></div>
+                            <div><img className='icon' src={reddit_logo} alt='Reddit logo' onClick={() => {props.appNumber(4)}}></img></div>
+                            <div><img className='icon' src={instagram_logo} alt='Instagram logo' onClick={() => {props.appNumber(5)}}></img></div>
+                            <div><img className='icon' src={cnn_logo} alt='CNN logo' onClick={() => {props.appNumber(6)}}></img></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    )
+}
+
+function MainMenu(props){
+
+
+    const [appChoice, setAppChoice] = useState(true);
+    const [chosenApp, setApp] = useState(null);
+
+    function chooseApp(number) {
+        setAppChoice(false)
+        setApp(null)
+        if (number === 1) {
+            console.log("Amazon should be here")
+            setApp(<div><Amazon /></div>)
+        }else
+            setAppChoice(true)
+            setApp(<h2>"Your choice is <strong>not</strong> Included in Prototype"</h2>)
+    }
+
+    return (
+        <div>
+            {chosenApp}
+            {appChoice ? <IconsMenu
+                isLoggedIn = {props.isLoggedIn}
+                lives = {props.lives}
+                points = {props.points}
+                appNumber = {chooseApp}
+            />: chosenApp}
+        </div>
     )
 }
 

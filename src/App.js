@@ -4,8 +4,8 @@ import StartPage from './pages/startPage';
 import LoginRegister from './pages/login-register';
 import Settings from './components/settings';
 import WelcomePage from './pages/welcome';
-import MainMenu from './pages/main-menu';
-import Amazon from './pages/apps/amazon';
+// import MainMenu from './pages/main-menu';
+// import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
 import Testing from './components/Testing';
 import NotFound from "./components/NotFound";
@@ -29,8 +29,6 @@ function App() {
                 <Route exact path = "/test" element = {<Testing />}/>
                 <Route path="*" element={<NotFound />}/>
                 <Route path="welcome" element={<WelcomePage/>} />
-                <Route path="main-menu" element={<MainMenu/>} />
-                <Route path="amazon" element={<Amazon/>} />
                 <Route path="index" element={<Index />} />
             </Routes>
 

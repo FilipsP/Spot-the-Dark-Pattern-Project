@@ -37,8 +37,8 @@ function Avatar(props) {
             </div>
             <h1>{props.profileName}</h1>
             <div className='stats-container'>
-                <h2>Points - 4</h2>
-                <h2>Lives - 2</h2>
+                <h2>Points - {props.points}</h2>
+                <h2>Lives - {props.lives}</h2>
                 <button onClick={ () => {props.setRender(true)}}>Hide Profile</button>
             </div>
         </div>
@@ -100,6 +100,8 @@ export function Character(props) {
                 currentProfilePicture = {currentProfilePicture}
                 profileName = {profile.username}
                 setRender = {setRender}
+                lives = {props.lives}
+                points = {props.points}
             />}
         </div>
 

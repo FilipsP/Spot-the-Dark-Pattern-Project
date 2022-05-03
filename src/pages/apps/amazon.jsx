@@ -1,14 +1,14 @@
 import "./apps.css";
 import "./browser.css";
 import amazonBackground from "../../img/amazon_bg_2.png";
-import {useState} from 'react';
+import {useId, useState} from 'react';
 import GameEvent from '../../components/GameEvent';
 
 function Amazon(){
-
+    const id = useId();
     const [openEvent, setEvent] = useState(false);
 
-
+    console.log(id)
     return(
         <div>
             <div className='container'>

@@ -1,10 +1,12 @@
 import "../css/login-register.css";
 import Skip from '../components/Skip.jsx';
+import {useId} from "react";
 
 
 function Login(props){
 
-
+    const id = useId();
+    console.log(id)
     return(
         <div>
             <div className="modal-background">

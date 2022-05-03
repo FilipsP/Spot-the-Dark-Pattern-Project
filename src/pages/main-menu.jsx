@@ -33,12 +33,12 @@ function IconsMenu(props) {
                 <div className='desktop right-aligned'>
                     <div className='pc-content'>
                         <div className='icon-grid'>
-                            <div><img className='icon' src={amazon_logo} alt='Amazon logo' onClick={() => {props.appNumber(1)}}></img></div>
-                            <div><img className='icon' src={meta_logo} alt='Meta logo' onClick={() => {props.appNumber(2)}}></img></div>
-                            <div><img className='icon' src={gmail_logo} alt='Gmail logo' onClick={() => {props.appNumber(3)}}></img></div>
-                            <div><img className='icon' src={reddit_logo} alt='Reddit logo' onClick={() => {props.appNumber(4)}}></img></div>
-                            <div><img className='icon' src={instagram_logo} alt='Instagram logo' onClick={() => {props.appNumber(5)}}></img></div>
-                            <div><img className='icon' src={cnn_logo} alt='CNN logo' onClick={() => {props.appNumber(6)}}></img></div>
+                            <div><img className='icon' src={amazon_logo} alt='Amazon logo' onClick={() => {props.appNumber("Amazon")}}></img></div>
+                            <div><img className='icon' src={meta_logo} alt='Meta logo' onClick={() => {props.appNumber("Meta")}}></img></div>
+                            <div><img className='icon' src={gmail_logo} alt='Gmail logo' onClick={() => {props.appNumber("Gmail")}}></img></div>
+                            <div><img className='icon' src={reddit_logo} alt='Reddit logo' onClick={() => {props.appNumber("Reddit")}}></img></div>
+                            <div><img className='icon' src={instagram_logo} alt='Instagram logo' onClick={() => {props.appNumber("Instagram")}}></img></div>
+                            <div><img className='icon' src={cnn_logo} alt='CNN logo' onClick={() => {props.appNumber("CNN news")}}></img></div>
                         </div>
                     </div>
                 </div>
@@ -53,26 +53,26 @@ function MainMenu(props){
     const [appChoice, setAppChoice] = useState(true);
     const [chosenApp, setApp] = useState(null);
 
-    function chooseApp(number) {
+    function chooseApp(app) {
         setAppChoice(false)
         setApp(null)
-        if (number === 1) {
-            console.log("Amazon should be here")
-            setApp(<div><Amazon /></div>)
-        }else
+        if (app === "Amazon") {
+            setApp(<Amazon/>)
+        } else {
             setAppChoice(true)
-            setApp(<h2>"Your choice is <strong>not</strong> Included in Prototype"</h2>)
+            setApp(<h2>"Your choice "{app}" is <strong>not</strong> Included in Prototype"</h2>)
+        }
     }
 
     return (
         <div>
             {chosenApp}
-            {appChoice ? <IconsMenu
+            {appChoice && <IconsMenu
                 isLoggedIn = {props.isLoggedIn}
                 lives = {props.lives}
                 points = {props.points}
                 appNumber = {chooseApp}
-            />: chosenApp}
+            />}
         </div>
     )
 }

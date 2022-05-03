@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 import ButtonControl from './ButtonControl';
 import "../css/test.css"
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState, useNavigate} from "react";
 import '../img/profile_pic.png'
-//import Form from "./Forms"
+
 
 
 // eslint-disable-next-line
@@ -64,7 +64,7 @@ import '../img/profile_pic.png'
 }*/
 
 // eslint-disable-next-line
-/*function Rediraction() {
+/*function Redirection() {
   const location = useLocation();
   console.log(location.pathname);
   const [pathInList, changePathInList] = useState(true);
@@ -88,11 +88,25 @@ function checkIfPathInList(val,list) {
 }
 
 
+*/
 
+function TextInputWithFocusButton() {
+    const inputEl = useRef(null);
+    const onButtonClick = () => {
+        // `current` points to the mounted text input element
+        inputEl.current.focus();
+    };
+    return (
+        <div>
+            <input ref={inputEl} type="text" />
+            <button onClick={onButtonClick}>Focus the input</button>
+        </div>
+    );
+}
 
 function HandleBrowserButtons(){
     const [ locationKeys, setLocationKeys ] = useState([])
-    const history = useHistory()
+    const history = useNavigate()
 
     useEffect(() => {
         return history.listen(location => {
@@ -116,7 +130,7 @@ function HandleBrowserButtons(){
         })
     }, [ locationKeys, ])
 
-}*/
+}
 
 function Avatar(props) {
     return(
@@ -172,6 +186,7 @@ function CallPictures() {
                     />}
                 <p>{currentProfilePicture}</p>
                 <p>{profilePictures.length}</p>
+                <TextInputWithFocusButton />
             </div>
             <>------------------------------------</>
             <div style = {{borderStyle: "solid"}}>

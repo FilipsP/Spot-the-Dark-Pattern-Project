@@ -69,6 +69,7 @@ export function Character(props) {
             fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
                 .then(response => response.json())
                 .then(body => {
+                    setIsError(false);
                     setIsLoading(false);
                     setProfilePictures(body)
                 })
@@ -79,6 +80,7 @@ export function Character(props) {
                 console.log(error);
             });
         }else {
+            setIsError(false);
             setProfilePictures(defaultCharacters)
         }
     }, [ isOnline]);
@@ -89,6 +91,7 @@ export function Character(props) {
                 fetch("http://localhost:8080/profiles/17", {method: 'GET'})
                     .then(response => response.json())
                     .then(body => {
+                        setIsError(false);
                         setIsLoading(false);
                         setProfile(body)
                     })
@@ -99,7 +102,9 @@ export function Character(props) {
                     console.log(error);
                 });
             }else {
+                setIsError(false);
                 setProfile(defaultCharacters[0])
+
             }
         }, [isOnline]);
 

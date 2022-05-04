@@ -86,6 +86,7 @@ export function Character(props) {
     }, [ isOnline]);
 
 
+
         useEffect(() => {
             if (isOnline) {
                 fetch("http://localhost:8080/profiles/17", {method: 'GET'})

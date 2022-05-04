@@ -1,5 +1,4 @@
 
-import { Link } from 'react-router-dom';
 import "../css/progress-note.css";
 
 function ProgressNote(props){

@@ -1,6 +1,6 @@
 import "../css/start-page.css"
 import { Link } from 'react-router-dom';
-import {useEffect, useState} from "react";
+import { useState} from "react";
 
 function MoreInfo() {
     return(
@@ -54,7 +54,6 @@ function MoreInfo() {
         </div>
     )
 }
-
 
 function StartPage() {
 

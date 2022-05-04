@@ -7,10 +7,10 @@ import gmail_logo from '../img/gmail_logo.png';
 import reddit_logo from '../img/reddit_logo.png';
 import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
-import { Link } from 'react-router-dom';
 import {Character} from '../components/Character.jsx';
 import {useState} from "react";
 import Amazon from "./apps/amazon";
+
 //import {useEffect, useState} from 'react';
 
 // <div className='profile-container left-aligned'>M
@@ -73,6 +73,7 @@ function MainMenu(props){
                 points = {props.points}
                 appNumber = {chooseApp}
             />}
+
         </div>
     )
 }

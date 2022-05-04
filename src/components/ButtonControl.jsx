@@ -68,7 +68,6 @@ class ButtonControl extends React.Component {
           }));
     }
 
-    com
 
 
     render() {
@@ -101,7 +100,6 @@ class ButtonControl extends React.Component {
                             />
                         }
                         {answerIsGiven ? <Timer /> : <span></span>}
-
                     </div>
                 </div>
             </div>

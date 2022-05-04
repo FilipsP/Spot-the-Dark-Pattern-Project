@@ -24,6 +24,7 @@ function Avatar(props) {
         fontFamily: "Arial",
         textAlign : "center"
     }
+
     return(
         <div>
             <img
@@ -48,34 +49,58 @@ function Avatar(props) {
 
 export function Character(props) {
 
-    const [onlinePictures, setOnlinePictures] = useState(false);
+    const [isOnline, setIsOnline] = useState(false);
     const [profile, setProfile] = useState(null);
     const [profilePictures, setProfilePictures] = useState([]);
     const [currentProfilePicture, setCurrentPicture] = useState(0);
     const [render, setRender] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
+    const styleGoOnline = {
+        marginBottom : "10px",
+        textAlign: "center"
+    }
 
 
     useEffect(() => {
-        if (onlinePictures){
-        fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
-            .then(response => response.json())
-            .then(body => setProfilePictures(body));
+        setCurrentPicture(0)
+        if (isOnline){
+            fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
+                .then(response => response.json())
+                .then(body => {
+                    setIsLoading(false);
+                    setProfilePictures(body)
+                })
+                .catch((error) => {
+                setIsLoading(false);
+                setIsError(true);
+                console.log(error);
+            });
+
         }else {
             setProfilePictures(defaultCharacters)
         }
-    }, []);
+    }, [ isOnline]);
 
 
         useEffect(() => {
-            if (props.isLoggedIn) {
+            if (isOnline) {
                 fetch("http://localhost:8080/profiles/17", {method: 'GET'})
                     .then(response => response.json())
-                    .then(body => setProfile(body));
+                    .then(body => {
+                        setIsLoading(false);
+                        setProfile(body)
+                    })
+                    .catch((error) => {
+                    setIsLoading(false);
+                    setIsError(true);
+                    console.log(error);
+                });
             }else {
                 setProfile(defaultCharacters[0])
             }
-        }, []);
+        }, [isOnline]);
 
 
 
@@ -90,9 +115,18 @@ export function Character(props) {
             setCurrentPicture(0)
         }
     }
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return(
         <div className='profile-container left-aligned'>
+            <button style={styleGoOnline} onClick={() => {setIsOnline(true)}}>Go online</button>
+            <p>{isOnline
+                ? "You are online"
+                : "You are offline"
+            }</p>
+            <button style={styleGoOnline} onClick={() => {setIsOnline(false)}}>Go offline</button>
             {render? <button onClick={ () => {setRender(false)}}>Check Profile</button> :
             <Avatar
                 solvePictureChange = {solvePictureChange}
@@ -103,6 +137,11 @@ export function Character(props) {
                 lives = {props.lives}
                 points = {props.points}
             />}
+            {isError && <div>Error fetching data.</div>}
+            <div>
+
+            </div>
+
         </div>
 
         )

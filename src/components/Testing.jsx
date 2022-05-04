@@ -1,8 +1,10 @@
-import {Link} from "react-router-dom";
+
 import ButtonControl from './ButtonControl';
 import "../css/test.css"
-import React, {useEffect, useRef, useState, useNavigate} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../img/profile_pic.png'
+import Form from "./Forms";
+import {Link} from "react-router-dom";
 
 
 
@@ -15,122 +17,13 @@ import '../img/profile_pic.png'
 // if location in list => this.setState(prevState => ({pathInList: !prevState.pathInList })); =>
 // if pathInList ? lastRightLocation = setLastRightLocation :  <Redirect to="/" />
 // const setLastRightLocation = () => {return location.pathname}
-/*class PathChecker extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {pathInList : false, lastRightLocation : "/"};
-        this.checkIfPathInList = this.checkIfPathInList.bind(this)
-        this.setLastRightPathLocation = this.setLastRightPathLocation.bind(this)
-        this.handleCheck = this.handleCheck.bind(this)
-        
-    }
-
-    checkIfPathInList() {
-        this.setState(() => ({
-            pathInList: this.handleCheck(useCurrentPathLocation,listOfPaths)
-          }));
-    }
-        
-    handleCheck(val,list) {
-        return list.some(item => val.name === item.name);
-    }
-        
-
-    setLastRightPathLocation() {
-        this.setState(() => ({
-            lastRightLocation : useCurrentPathLocation 
-          }));
-    }
-
-    componentDidMount() {
-        return (this.checkIfPathInList());
-    }
-    
-    render() {
-        return(
-            <div>
-                <div>
-                    god save me
-                </div>
-                <div>
-                    Dunno what to do
-                </div>
-                <div>
-                    .............
-                </div>
-            </div>
-        )
-    }
-}*/
-
-// eslint-disable-next-line
-/*function Redirection() {
-  const location = useLocation();
-  console.log(location.pathname);
-  const [pathInList, changePathInList] = useState(true);
-  useEffect(
-      () => {
-          changePathInList(() => ({pathInList : checkIfPathInList(location.pathname,listOfPaths)}))
-      },
-      [location]
-  );
-  return (
-      <div>
-          {pathInList ? <p>"I am happy"</p> : <useNavigate to = "/"/>}
-      </div>
-        )
-    }
-const listOfPaths = ["/","/test","/login-register"];
 
 
-function checkIfPathInList(val,list) {
-    return list.some(item => val === item);
-}
 
 
-*/
 
-function TextInputWithFocusButton() {
-    const inputEl = useRef(null);
-    const onButtonClick = () => {
-        // `current` points to the mounted text input element
-        inputEl.current.focus();
-    };
-    return (
-        <div>
-            <input ref={inputEl} type="text" />
-            <button onClick={onButtonClick}>Focus the input</button>
-        </div>
-    );
-}
 
-function HandleBrowserButtons(){
-    const [ locationKeys, setLocationKeys ] = useState([])
-    const history = useNavigate()
 
-    useEffect(() => {
-        return history.listen(location => {
-            if (history.action === 'PUSH') {
-                setLocationKeys([ location.key ])
-            }
-
-            if (history.action === 'POP') {
-                if (locationKeys[1] === location.key) {
-                    setLocationKeys(([ _, ...keys ]) => keys)
-
-                    // Handle forward event
-
-                } else {
-                    setLocationKeys((keys) => [ location.key, ...keys ])
-                    alert("You`re about to lose all of your progress")
-                    // Handle back event
-
-                }
-            }
-        })
-    }, [ locationKeys, ])
-
-}
 
 function Avatar(props) {
     return(
@@ -147,9 +40,12 @@ function Avatar(props) {
 
 function CallPictures() {
 
+
     const [profilePictures, setProfilePictures] = useState([]);
     const [currentProfilePicture, setCurrentPicture] = useState(0);
     const [render, setRender] = useState(true);
+
+
 
 
 
@@ -174,6 +70,14 @@ function CallPictures() {
         }
     }
 
+    const inputEl = useRef(null);
+
+    function onButtonClick()  {
+        // `current` points to the mounted text input element
+        inputEl.current.focus();
+    }
+
+
 
     return (
         <div>
@@ -186,18 +90,11 @@ function CallPictures() {
                     />}
                 <p>{currentProfilePicture}</p>
                 <p>{profilePictures.length}</p>
-                <TextInputWithFocusButton />
-            </div>
-            <>------------------------------------</>
-            <div style = {{borderStyle: "solid"}}>
-                {profilePictures.map( element =>
-                <div key = {element.id}>
-                    <img
-                        src= {element.name}
-                        alt={element.description}
-                    />
-                    <p>{element.description}</p>
-                </div>)}
+                <Form
+                    profilePictures = {profilePictures}
+                    buttonClick = {onButtonClick}
+                    inputEl = {inputEl}
+                />
             </div>
         </div>
     )

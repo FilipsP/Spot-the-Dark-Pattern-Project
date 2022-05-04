@@ -78,7 +78,6 @@ export function Character(props) {
                 setIsError(true);
                 console.log(error);
             });
-
         }else {
             setProfilePictures(defaultCharacters)
         }

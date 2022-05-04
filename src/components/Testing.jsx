@@ -139,10 +139,10 @@ const user = {
 
 const question = { 
     eventID : 1 ,
-    eventType : "Meta",
+    eventType : "Test",
     pointsGiven: "1",
-    author : "Tellie",
-    description : "Choose good or bad",
+    author : "Mr.Random",
+    description : "Good or Bad?",
     buttons : {
         1 : "Good answer",
         2 : "Bad answer"

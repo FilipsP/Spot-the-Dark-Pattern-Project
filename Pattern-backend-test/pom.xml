@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>mares</groupId>
-    <artifactId>webshop</artifactId>
+    <artifactId>darkProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>webshop</name>
-    <description>webshop</description>
+    <name>darkProject</name>
+    <description>darkProject</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -75,7 +75,7 @@
                 <configuration>
                     <excludes>
                         <exclude>
-                            <groupId>org.projectlombok</groupId>
+                            <groupId>org.project-lombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>

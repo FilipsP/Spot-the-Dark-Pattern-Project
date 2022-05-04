@@ -32,7 +32,6 @@ function Comments(props) {
 
 
 
-
 class Form extends React.Component {
     constructor(props) {
         super(props);
@@ -41,6 +40,7 @@ class Form extends React.Component {
         this.buttonClick = props.buttonClick;
         this.inputEl = props.inputEl;
 
+        this.getIndex = this.getIndex.bind(this);
         this.handleAddComments = this.handleAddComments.bind(this);
         this.handleCommentChange = this.handleCommentChange.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
@@ -75,49 +75,20 @@ class Form extends React.Component {
         return result;
     }
 
-
     render() {
-        let star = "*";
-        for (let i = 1; i < this.state.pass.length; i++) {
-            star += "*";
-        }
-
-
 
         let printPass;
-        let helloMessage = <span>
+        let helloMessage;
+        if (this.state.userName.length > 0) {
+            helloMessage = "Hello " + this.state.userName + "! ;)";
+        }else {
+            helloMessage = <span>
                                 Hello,<br/>
-                                dear player<br/>
+                                Dear player<br/>
                                 please enter<br/>
                                 your name here:
                             </span>
-        if (this.state.userName.length > 0) {
-            helloMessage = "Hello " + this.state.userName + "! ;)";
         }
-        if (this.state.pass.length > 0) {
-            printPass = "Pass is decrypted:" + this.state.pass;
-        }
-        if (this.state.pass.length > 2) {
-            printPass = "Decrypting pass:" + this.state.pass[0] + star[1] + this.state.pass[2];
-        }
-        if (this.state.pass.length > 3) {
-            printPass = "Decrypting pass:" + this.state.pass[0] + star[1] + this.state.pass[2] + star[3];
-        }
-        if (this.state.pass.length > 4) {
-            printPass = "Decrypting pass:" + star[0] + star[1] + this.state.pass[2] + star[3] + this.state.pass[4];
-        }
-
-        if (this.state.pass.length > 5) {
-            printPass = "Decrypting pass:" + this.state.pass[0] + star[1]+star[2]+star[3] + this.state.pass[4] + this.state.pass[5];
-        }
-        if (this.state.pass.length > 6) {
-            printPass = "Decrypting pass:" + this.state.pass[0] + star[1]+star[2]+star[3] + this.state.pass[4] + this.state.pass[5]+ star[6];
-        }
-        if (this.state.pass.length > 7) {
-            printPass = "Not possible...:"  + star;
-        }
-
-
 
         return (
             <div>

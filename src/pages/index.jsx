@@ -11,7 +11,7 @@ function Index() {
 
     return(
         <div>
-            <h1>This is an "index" page</h1>
+            <h1>This is an "index.jsx" </h1>
 
             <div>
                 {inMenu ?

@@ -74,6 +74,7 @@ export function Character(props) {
                 })
                 .catch((error) => {
                 setIsLoading(false);
+                setIsOnline(false);
                 setIsError(true);
                 console.log(error);
             });
@@ -94,6 +95,7 @@ export function Character(props) {
                     })
                     .catch((error) => {
                     setIsLoading(false);
+                    setIsOnline(false);
                     setIsError(true);
                     console.log(error);
                 });

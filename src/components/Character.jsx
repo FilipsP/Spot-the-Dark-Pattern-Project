@@ -121,12 +121,14 @@ export function Character(props) {
 
     return(
         <div className='profile-container left-aligned'>
-            <button style={styleGoOnline} onClick={() => {setIsOnline(true)}}>Go online</button>
+            {isOnline
+                ?<button style={styleGoOnline} onClick={() => {setIsOnline(false)}}>Go offline</button>
+                :<button style={styleGoOnline} onClick={() => {setIsOnline(true)}}>Go online</button>
+            }
             <p>{isOnline
                 ? "You are online"
                 : "You are offline"
             }</p>
-            <button style={styleGoOnline} onClick={() => {setIsOnline(false)}}>Go offline</button>
             {render? <button onClick={ () => {setRender(false)}}>Check Profile</button> :
             <Avatar
                 solvePictureChange = {solvePictureChange}

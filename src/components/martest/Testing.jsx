@@ -1,8 +1,8 @@
 
 import ButtonControl from './ButtonControl';
-import "../css/test.css"
+import "../../css/test.css"
 import React, {useEffect, useRef, useState} from "react";
-import '../img/profile_pic.png'
+import '../../img/profile_pic.png'
 import Form from "./Forms";
 import {Link} from "react-router-dom";
 

@@ -4,9 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+//@Table(name = "event")
+
 @Data
 @Entity
-@Table(name = "event")
 public class Event {
     @Id
     @GeneratedValue

@@ -7,7 +7,7 @@ import WelcomePage from './pages/welcome';
 // import MainMenu from './pages/main-menu';
 // import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
-import Testing from './components/Testing';
+import Testing from './components/martest/Testing';
 import NotFound from "./components/NotFound";
 import Index from "./pages";
 

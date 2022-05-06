@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "../css/test.css";
+import "../../css/test.css";
 import Timer from "./Timer";
 
 function Buttons(props) {

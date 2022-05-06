@@ -11,6 +11,6 @@ public class EventType {
     @Id
     @GeneratedValue
     private Long id;
-    String eventName;
-    String eventDescription;
+    String name;
+    String description;
 }

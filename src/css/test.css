@@ -9,11 +9,7 @@
   } 
 
 
-  .Test-Buttons {
-      margin: 15px;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-
-  }
+.Test-Buttons {
+    margin: 15px;
+    padding: 5px 10px;
+}

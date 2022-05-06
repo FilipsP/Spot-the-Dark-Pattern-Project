@@ -8,8 +8,37 @@ import reddit_logo from '../img/reddit_logo.png';
 import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
 import {Character} from '../components/Character.jsx';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Amazon from "./apps/amazon";
+import profile_pic from '../img/profile_pic.png';
+import casual from "../img/avatars/casual.png";
+import cool from "../img/avatars/cool.jpg";
+import guy from "../img/avatars/guy.jpg";
+import wtf from "../img/avatars/wtf.png";
+
+
+const defaultCharacters = [{
+    username : "Anonymous",
+    name  : profile_pic,
+    description : "Its me"
+},
+    {username: "Casual",
+        name : casual,
+        description: "casual gamer"
+    },
+    {username: "MinTTr3Sss",
+        name : cool,
+        description: "cool logo"
+    },
+    {username: "ILoveAnime",
+        name : wtf,
+        description: "wtf"
+    },
+    {username: "Mares",
+        name : guy,
+        description: "Young Mares"
+    }]
+
 
 //import {useEffect, useState} from 'react';
 
@@ -29,6 +58,17 @@ function IconsMenu(props) {
                     isLoggedIn = {props.isLoggedIn}
                     lives = {props.lives}
                     points = {props.points}
+                    setLoggedIn = {props.setLoggedIn}
+                    save = {props.save}
+                    render = {props.render}
+                    setRender = {props.setRender}
+                    currentProfilePicture = {props.currentProfilePicture}
+                    setCurrentPicture = {props.setCurrentPicture}
+                    profilePictures = {props.profilePictures}
+                    setProfilePictures = {props.setProfilePictures}
+                    isLoading = {props.isLoading}
+                    isError= {props.isError}
+                    defaultCharacters ={defaultCharacters}
                 />
                 <div className='desktop right-aligned'>
                     <div className='pc-content'>
@@ -49,15 +89,52 @@ function IconsMenu(props) {
 
 function MainMenu(props){
 
-
+    const [render, setRender] = useState(true);
     const [appChoice, setAppChoice] = useState(true);
     const [chosenApp, setApp] = useState(null);
+    const [currentProfilePicture, setCurrentPicture] = useState(0);
+    const [profilePictures, setProfilePictures] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+
+    const isLoggedIn = props.isLoggedIn
+
+    useEffect(() => {
+        setCurrentPicture(0)
+        if (isLoggedIn){
+            fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
+                .then(response => response.json())
+                .then(body => {
+                    setIsError(false);
+                    setIsLoading(false);
+                    setProfilePictures(body)
+                })
+                .catch((error) => {
+                    setIsLoading(false);
+                    props.isLoggedIn(false);
+                    setIsError(true);
+                    console.log(error);
+                });
+        }else {
+            setProfilePictures(defaultCharacters)
+        }
+    }, [isLoggedIn, props]);
+
+
+
+
 
     function chooseApp(app) {
         setAppChoice(false)
         setApp(null)
         if (app === "Amazon") {
-            setApp(<Amazon/>)
+            setApp(<Amazon
+                showApps = {setAppChoice}
+                hidePage = {setApp}
+                setSave = {props.setSave}
+                save = {props.save}
+            />)
         } else {
             setAppChoice(true)
             setApp(<h2>"Your choice "{app}" is <strong>not</strong> Included in Prototype"</h2>)
@@ -69,9 +146,17 @@ function MainMenu(props){
             {chosenApp}
             {appChoice && <IconsMenu
                 isLoggedIn = {props.isLoggedIn}
-                lives = {props.lives}
-                points = {props.points}
+                setLoggedIn = {props.setLoggedIn}
                 appNumber = {chooseApp}
+                save = {props.save}
+                render = {render}
+                setRender = {setRender}
+                currentProfilePicture = {currentProfilePicture}
+                setCurrentPicture = {setCurrentPicture}
+                profilePictures = {profilePictures}
+                setProfilePictures = {setProfilePictures}
+                isLoading = {isLoading}
+                isError= {isError}
             />}
 
         </div>

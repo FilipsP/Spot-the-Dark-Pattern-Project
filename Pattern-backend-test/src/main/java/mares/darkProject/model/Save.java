@@ -4,9 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+//
 @Data
 @Entity
-@Table(name = "save")
 public class Save {
     @Id
     @GeneratedValue
@@ -15,5 +15,7 @@ public class Save {
     Integer spam_mail_id;
     Integer lives_owned;
     Integer points_owned;
+    String character_name;
+    Integer profile_picture_id;
 
 }

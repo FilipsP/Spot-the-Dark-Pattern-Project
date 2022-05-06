@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class SpamMail {
     @Id
     @GeneratedValue
+    @Column(nullable = false)
     Long id;
     String name;
     String content;

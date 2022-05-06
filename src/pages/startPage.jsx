@@ -63,7 +63,8 @@ function StartPage() {
         fontSize : "25px",
         border: "none",
         background: "none",
-        textDecoration : "underline"
+        textDecoration : "underline",
+        cursor: "help"
     }
 
     const linkToInfo = () => {

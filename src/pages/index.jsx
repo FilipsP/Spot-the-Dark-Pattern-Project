@@ -10,12 +10,17 @@ function Index() {
         lives:3,
         points:0,
         spamMail:1,
-        name:" Anonymous"
+        name:"Admin"
     });
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [inMenu, setInMenu] = useState(false);
     const [isError, setIsError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [currentProfilePicture, setCurrentPicture] = useState(0);
+    const [profilePictures, setProfilePictures] = useState([]);
+    const [money, setMoney] = useState(999);
+    const [disabledApps, setDisabledApps] = useState(["Meta","Gmail","Reddit","Instagram","CNN news"]);
+
 
     const connectUser = (username, password) => {
         fetch("http://localhost:8080/profiles/", {method: 'GET'})
@@ -47,6 +52,14 @@ function Index() {
                     isLoggedIn = {isLoggedIn}
                     save = {save}
                     setSave = {setSave}
+                    currentProfilePicture = {currentProfilePicture}
+                    setCurrentPicture = {setCurrentPicture}
+                    profilePictures = {profilePictures}
+                    setProfilePictures = {setProfilePictures}
+                    money = {money}
+                    setMoney = {setMoney}
+                    disabledApps={disabledApps}
+                    setDisabledApps={setDisabledApps}
                     />
                     : <div>
                     {isLoggedIn ?

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "../../css/test.css";
 import Timer from "./Timer";
 
-function Buttons(props) {
+function TestButtons(props) {
     return(
         <div onClick={props.onClick}>
             <button className="Test-Buttons" onClick={props.goodClick}>{props.buttons[1]}</button>
@@ -109,7 +109,7 @@ class ButtonControl extends React.Component {
                         <p></p>
                         {answerIsGiven ?
                             <BackButton onClick={this.handleAnswerIsGiven}/> :
-                            <Buttons
+                            <TestButtons
                                 onClick={this.handleAnswerIsGiven}
                                 badClick={this.killLive}
                                 goodClick={this.givePoints}

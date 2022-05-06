@@ -1,5 +1,5 @@
 import "../css/login-register.css";
-import Skip from '../components/Skip.jsx';
+import Skip from '../components/buttons/Skip.jsx';
 
 
 

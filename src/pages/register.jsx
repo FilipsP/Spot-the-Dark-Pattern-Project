@@ -1,5 +1,5 @@
 import "../css/login-register.css";
-import Skip from "../components/Skip";
+import Skip from "../components/buttons/Skip";
 
 function Register(props) {
 

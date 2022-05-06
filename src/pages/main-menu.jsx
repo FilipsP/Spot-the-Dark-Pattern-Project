@@ -7,7 +7,7 @@ import gmail_logo from '../img/gmail_logo.png';
 import reddit_logo from '../img/reddit_logo.png';
 import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
-import {Character} from '../components/Character.jsx';
+import Character from '../components/Character.jsx';
 import {useState, useEffect} from "react";
 import Amazon from "./apps/amazon";
 import profile_pic from '../img/profile_pic.png';
@@ -15,6 +15,9 @@ import casual from "../img/avatars/casual.png";
 import cool from "../img/avatars/cool.jpg";
 import guy from "../img/avatars/guy.jpg";
 import wtf from "../img/avatars/wtf.png";
+//import {Character, Avatar} from ... if export function...
+//import Character from ... if export default...
+
 
 
 const defaultCharacters = [{
@@ -39,6 +42,13 @@ const defaultCharacters = [{
         description: "Young Mares"
     }]
 
+const notAllowed = {
+    cursor: "not-allowed"
+}
+
+const allowed = {
+    cursor: "pointer"
+}
 
 //import {useEffect, useState} from 'react';
 
@@ -50,7 +60,10 @@ const defaultCharacters = [{
 //     </div>
 // </div>
 
+
 function IconsMenu(props) {
+
+
     return(
         <div>
             <div className='container'>
@@ -69,16 +82,52 @@ function IconsMenu(props) {
                     isLoading = {props.isLoading}
                     isError= {props.isError}
                     defaultCharacters ={defaultCharacters}
+                    money = {props.money}
                 />
                 <div className='desktop right-aligned'>
                     <div className='pc-content'>
                         <div className='icon-grid'>
-                            <div><img className='icon' src={amazon_logo} alt='Amazon logo' onClick={() => {props.appNumber("Amazon")}}></img></div>
-                            <div><img className='icon' src={meta_logo} alt='Meta logo' onClick={() => {props.appNumber("Meta")}}></img></div>
-                            <div><img className='icon' src={gmail_logo} alt='Gmail logo' onClick={() => {props.appNumber("Gmail")}}></img></div>
-                            <div><img className='icon' src={reddit_logo} alt='Reddit logo' onClick={() => {props.appNumber("Reddit")}}></img></div>
-                            <div><img className='icon' src={instagram_logo} alt='Instagram logo' onClick={() => {props.appNumber("Instagram")}}></img></div>
-                            <div><img className='icon' src={cnn_logo} alt='CNN logo' onClick={() => {props.appNumber("CNN news")}}></img></div>
+                            <div><img
+                                className='icon'
+                                src={amazon_logo}
+                                alt='Amazon logo'
+                                style={props.disabledApps.includes("Amazon") ?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("Amazon")}}>
+                            </img></div>
+                            <div><img
+                                className='icon'
+                                src={meta_logo}
+                                alt='Meta logo'
+                                style= {props.disabledApps.includes("Meta")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("Meta")}}>
+                            </img></div>
+                            <div><img
+                                className='icon'
+                                src={gmail_logo}
+                                alt='Gmail logo'
+                                style= {props.disabledApps.includes("Gmail")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("Gmail")}}></img></div>
+                            <div><img
+                                className='icon'
+                                src={reddit_logo}
+                                alt='Reddit logo'
+                                style= {props.disabledApps.includes("Reddit")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("Reddit")}}>
+                            </img></div>
+                            <div><img
+                                className='icon'
+                                src={instagram_logo}
+                                alt='Instagram logo'
+                                style= {props.disabledApps.includes("Instagram")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("Instagram")}}>
+                            </img></div>
+                            <div><img
+                                className='icon'
+                                src={cnn_logo}
+                                alt='CNN logo'
+                                style= {props.disabledApps.includes("CNN news")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("CNN news")}}>
+                            </img></div>
                         </div>
                     </div>
                 </div>
@@ -92,13 +141,13 @@ function MainMenu(props){
     const [render, setRender] = useState(true);
     const [appChoice, setAppChoice] = useState(true);
     const [chosenApp, setApp] = useState(null);
-    const [currentProfilePicture, setCurrentPicture] = useState(0);
-    const [profilePictures, setProfilePictures] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
-
+    const setProfilePictures = props.setProfilePictures
+    const setLoggedIn = props.setLoggedIn
     const isLoggedIn = props.isLoggedIn
+    const setCurrentPicture = props.setCurrentPicture
 
     useEffect(() => {
         setCurrentPicture(0)
@@ -112,32 +161,41 @@ function MainMenu(props){
                 })
                 .catch((error) => {
                     setIsLoading(false);
-                    props.isLoggedIn(false);
+                    setLoggedIn(false);
                     setIsError(true);
                     console.log(error);
                 });
         }else {
             setProfilePictures(defaultCharacters)
         }
-    }, [isLoggedIn, props]);
-
-
+    }, [isLoggedIn, setCurrentPicture, setLoggedIn, setProfilePictures]);
 
 
 
     function chooseApp(app) {
-        setAppChoice(false)
         setApp(null)
-        if (app === "Amazon") {
-            setApp(<Amazon
-                showApps = {setAppChoice}
-                hidePage = {setApp}
-                setSave = {props.setSave}
-                save = {props.save}
-            />)
-        } else {
-            setAppChoice(true)
-            setApp(<h2>"Your choice "{app}" is <strong>not</strong> Included in Prototype"</h2>)
+        const appIsDisabled = props.disabledApps.includes(app)
+        console.log(appIsDisabled)
+        if (appIsDisabled) {
+            setApp(<h2>"{app}" was temporally disabled. Donate to unlock it.</h2>)
+        }else {
+            if (app === "Amazon") {
+                console.log("Amazon is chosen and not disabled")
+                setApp(<Amazon
+                    showApps = {setAppChoice}
+                    hidePage = {setApp}
+                    setSave = {props.setSave}
+                    save = {props.save}
+                    money = {props.money}
+                    setMoney = {props.setMoney}
+                    disabledApps={props.disabledApps}
+                    setDisabledApps={props.setDisabledApps}
+                />)
+                setAppChoice(false)
+            }else {
+                setAppChoice(true)
+                setApp(<h2>Your choice "{app}" is <strong>not</strong> Included in Prototype</h2>)
+            }
         }
     }
 
@@ -147,16 +205,18 @@ function MainMenu(props){
             {appChoice && <IconsMenu
                 isLoggedIn = {props.isLoggedIn}
                 setLoggedIn = {props.setLoggedIn}
-                appNumber = {chooseApp}
+                chooseApp = {chooseApp}
                 save = {props.save}
                 render = {render}
                 setRender = {setRender}
-                currentProfilePicture = {currentProfilePicture}
-                setCurrentPicture = {setCurrentPicture}
-                profilePictures = {profilePictures}
-                setProfilePictures = {setProfilePictures}
+                currentProfilePicture = {props.currentProfilePicture}
+                setCurrentPicture = {props.setCurrentPicture}
+                profilePictures = {props.profilePictures}
+                setProfilePictures = {props.setProfilePictures}
                 isLoading = {isLoading}
                 isError= {isError}
+                money = {props.money}
+                disabledApps = {props.disabledApps}
             />}
 
         </div>

@@ -2,7 +2,7 @@ import "../css/login-register-menu.css"
 import {useState} from 'react';
 import Register from './register';
 import Login from './login';
-import Skip from '../components/Skip.jsx';
+import Skip from '../components/buttons/Skip.jsx';
 import ProgressNote from "./progressNote";
 
 
@@ -13,6 +13,7 @@ function LoginRegister(props) {
     const [openRegister, setRegister] = useState(false);
     const [openLogin, setLogin] = useState(false);
     const [openProgressNote, setProgressNote] = useState(false);
+
 
     return(<div>
         

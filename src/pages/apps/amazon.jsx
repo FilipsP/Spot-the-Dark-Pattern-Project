@@ -4,8 +4,31 @@ import amazonBackground from "../../img/amazon_bg_2.png";
 import { useState} from 'react';
 import GameEvent from '../../components/GameEvent';
 
+
+
 function Amazon(props){
     const [openEvent, setEvent] = useState(false);
+    const [eventNumber, setEventNumber] = useState(0);
+    const [event, changeEvent] = useState([{
+        id:1,
+        name:"Interesting proposition",
+        description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
+        positive:"Ei liitu.",
+        negative:"Liitun listiga ja saan allahindlust.",
+        points: 2,
+        lives: 0,
+    },{
+        id:2,
+        name:"Fishing rod",
+        description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
+        positive:"Lahkun meililistist.",
+        negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
+        points: 1,
+        lives: 1
+    }]);
+
+    //<img src= "../../img/avatars/casual.png" alt= "avatar"/>
+
     return(
         <div>
             <div className='container'>
@@ -39,6 +62,13 @@ function Amazon(props){
                             hidePage = {props.hidePage}
                             setSave = {props.setSave}
                             save = {props.save}
+                            event = {event}
+                            eventNumber = {eventNumber}
+                            setEventNumber={setEventNumber}
+                            money = {props.money}
+                            setMoney = {props.setMoney}
+                            disabledApps={props.disabledApps}
+                            setDisabledApps={props.setDisabledApps}
                     />}
                 </div>
             </div>

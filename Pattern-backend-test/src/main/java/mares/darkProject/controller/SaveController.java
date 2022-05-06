@@ -32,7 +32,7 @@ public class SaveController {
     @DeleteMapping("saves")  // localhost:8080/saves  DELETE
     public String deleteAllSaves() {
         saveRepository.deleteAll();
-        return "All PROFILES WERE DELETED";
+        return "All SAVES WERE DELETED";
     }
 
 

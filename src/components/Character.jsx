@@ -7,25 +7,20 @@ function Avatar(props) {
         color: "#696969",
         backgroundColor: "#e8e8e8",
         padding: "10px",
-        marginLeft : "53px",
-        marginRight : "25px",
-        fontFamily: "Arial",
-        textAlign : "center",
-        justifyContent: "center",
-        alignItems: "center"
+        marginLeft : "20px",
+        fontFamily: "Arial"
 
     }
     const nameStyle = {
-        textAlign: "center",
-        width: "300px"
+        width: "200px",
 
     }
 
 
     return(
-        <div >
-            <img width= "240" height = "240"
-                className="profile-container"
+        <div>
+            <img
+                className="profile-picture"
                 src={props.profilePictures[props.currentProfilePicture].name}
                 alt={props.profilePictures[props.currentProfilePicture].description}
             /><br/>
@@ -39,6 +34,7 @@ function Avatar(props) {
                 </h1>
             </div>
             <div className='stats-container'>
+                <h2>Money - {props.money}€</h2>
                 <h2>Points - {props.points}</h2>
                 <h2>Lives - {props.lives}</h2>
                 <button onClick={ () => {props.setRender(true)}}>Hide Profile</button>
@@ -48,16 +44,7 @@ function Avatar(props) {
     )
 }
 
-export function Character(props) {
-
-
-
-    const styleGoOnline = {
-        marginBottom : "10px",
-        textAlign: "center"
-    }
-
-
+function Character(props) {
 
 
     function solvePictureChange(number) {
@@ -75,14 +62,18 @@ export function Character(props) {
 
     return(
         <div className='profile-container left-aligned'>
+            <div >
+                {props.isLoggedIn
+                    ?<button  onClick={() => {props.setLoggedIn(false)}}>Go offline</button>
+                    :<button  onClick={() => {props.setLoggedIn(true)}}>Go online</button>
+                }
+            </div>
             {props.isLoggedIn
-                ?<button style={styleGoOnline} onClick={() => {props.setLoggedIn(false)}}>Go offline</button>
-                :<button style={styleGoOnline} onClick={() => {props.setLoggedIn(true)}}>Go online</button>
+                ? <p>You are online</p>
+                : <p>"You are offline"<br/>
+                    Go online to save progress</p>
             }
-            <p>{props.isLoggedIn
-                ? "You are online"
-                : "You are offline"
-            }</p>
+            <div>
             {props.render? <button onClick={ () => {props.setRender(false)}}>Check Profile</button> :
             <Avatar
                 solvePictureChange = {solvePictureChange}
@@ -94,10 +85,14 @@ export function Character(props) {
                 points = {props.save.points}
                 online = {props.isLoggedIn}
                 defaultCharacters = {props.defaultCharacters}
+                money = {props.money}
 
             />}
+            </div>
             {props.isError && <p>No connection to server :(</p>}
         </div>
 
         )
 }
+
+export default Character

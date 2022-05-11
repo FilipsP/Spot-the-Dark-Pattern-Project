@@ -1,6 +1,6 @@
 import "./apps.css";
 import "./browser.css";
-import amazonBackground from "../../img/amazon_bg_2.png";
+import amazonBackground from "../../img/apps-background/amazon_bg_2.png";
 import { useState} from 'react';
 import GameEvent from '../../components/GameEvent';
 

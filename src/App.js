@@ -11,6 +11,11 @@ import Testing from './components/martest/Testing';
 import NotFound from "./components/NotFound";
 import Index from "./pages";
 
+//  ! Route for testing purposes 
+import Meta from "./pages/apps/meta";
+import Reddit from "./pages/apps/reddit";
+import Gmail from "./pages/apps/gmail";
+import CNN from "./pages/apps/cnn";
 
 
 
@@ -21,6 +26,12 @@ function App() {
 
     return (
         <div className="App">
+        {/* "back" button */}
+            <div className='back-btn-container'>
+                <i className="bi bi-arrow-left-circle back-btn"></i>
+                <p className='back-btn-text'>Back</p>
+            </div>
+        {/* "back" button */}
             <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
             {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>
@@ -30,6 +41,11 @@ function App() {
                 <Route path="*" element={<NotFound />}/>
                 <Route path="welcome" element={<WelcomePage/>} />
                 <Route path="index" element={<Index />} />
+                {/* Route for testing purposes  */}
+                <Route path="meta" element={<Meta />} />
+                <Route path="reddit" element={<Reddit />} />
+                <Route path="gmail" element={<Gmail />} />
+                <Route path="cnn" element={<CNN />} />
             </Routes>
 
 

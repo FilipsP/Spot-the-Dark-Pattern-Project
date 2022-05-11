@@ -55,10 +55,19 @@
 }
 
 
+.modal-skip-btn i{
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .modal-skip-btn p{
     font-size: 2rem;
+    margin: 0;
 }
 
 .modal-skip-btn:hover{
     color: rgb(109, 108, 108);
+    cursor: pointer;
 }

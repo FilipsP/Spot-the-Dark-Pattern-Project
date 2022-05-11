@@ -70,7 +70,7 @@ function Character(props) {
             </div>
             {props.isLoggedIn
                 ? <p>You are online</p>
-                : <p>"You are offline"<br/>
+                : <p>You are offline<br/>
                     Go online to save progress</p>
             }
             <div>

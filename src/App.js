@@ -1,5 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import StartPage from './pages/startPage';
 import LoginRegister from './pages/login-register';
 import Settings from './components/settings';

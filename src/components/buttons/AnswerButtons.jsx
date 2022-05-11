@@ -41,6 +41,10 @@ const AnswerButtons = (props) => {
             name: props.save.name
         }
         props.setSave(newSave)
+        const newDisabledApps = props.disabledApps
+        newDisabledApps.push("Amazon")
+        console.log(newDisabledApps)
+        props.setDisabledApps(newDisabledApps)
         closeApp()
 
     }

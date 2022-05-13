@@ -3,12 +3,14 @@ import AnswerButtons from "./buttons/AnswerButtons";
 
 
 function GameEvent(props){
+    console.log(props.app)
     return(
         <div>
             <div className='modal-background'>
                 <div className="form-container event-container">
                     <p className='event-text'>{props.event[props.eventNumber].description}</p>
                     <AnswerButtons
+                        app = {props.app}
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}
                         closeEvent = {props.closeEvent}

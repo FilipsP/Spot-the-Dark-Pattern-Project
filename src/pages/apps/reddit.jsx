@@ -9,20 +9,12 @@ function Reddit(props) {
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
       id:1,
-      name:"Interesting proposition",
-      description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
-      positive:"Ei liitu.",
-      negative:"Liitun listiga ja saan allahindlust.",
+      name:"Fake as fuck",
+      description:"You see a picture of a hated politician in an embarrassing situation. The picture looks fake, but it does not look like a meme. What do you do?",
+      positive:"I click on the picture and go read the comments to figure out what exactly is going on. ",
+      negative:"I upvote the post and scroll to the next post",
       points: 2,
       lives: 0,
-   },{
-      id:2,
-      name:"Fishing rod",
-      description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
-      positive:"Lahkun meililistist.",
-      negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
-      points: 1,
-      lives: 1
    }]);
 
    return(
@@ -36,7 +28,7 @@ function Reddit(props) {
                         <span className='dot green-dot'></span>
                      </div>
                      <div className='column middle'>
-                        <input className='browser-input' type="text" readOnly value="https://www.amazon.com/"></input>
+                        <input className='browser-input' type="text" readOnly value="https://www.reddit.com/"></input>
                      </div>
                      <div className="column right">
                         <div style={{float:"right"}}>
@@ -52,6 +44,7 @@ function Reddit(props) {
                   </div>
                   {openEvent &&
                      <GameEvent
+                         app = "Reddit"
                         closeEvent={setEvent}
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}

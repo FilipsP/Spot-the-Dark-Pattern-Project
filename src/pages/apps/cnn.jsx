@@ -9,20 +9,12 @@ function CNN(props) {
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
       id:1,
-      name:"Interesting proposition",
-      description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
-      positive:"Ei liitu.",
-      negative:"Liitun listiga ja saan allahindlust.",
+      name:"Provocation",
+      description:"An online news site you don't subscribe to shows a provocative headline, but you can't read the full article. What do you do?",
+      positive:"I buy the one-time-right to read the article or subscribe to the newspaper and read the article in full.",
+      negative:"I do not mind that I can’t read the full article, I go to the comments section to read what others think and comment my opinion as well.",
       points: 2,
       lives: 0,
-   },{
-      id:2,
-      name:"Fishing rod",
-      description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
-      positive:"Lahkun meililistist.",
-      negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
-      points: 1,
-      lives: 1
    }]);
 
    return(
@@ -36,7 +28,7 @@ function CNN(props) {
                         <span className='dot green-dot'></span>
                      </div>
                      <div className='column middle'>
-                        <input className='browser-input' type="text" readOnly value="https://www.amazon.com/"></input>
+                        <input className='browser-input' type="text" readOnly value="https://www.cnn-news.com/"></input>
                      </div>
                      <div className="column right">
                         <div style={{float:"right"}}>
@@ -48,22 +40,23 @@ function CNN(props) {
                   </div>
                   <div className='content'>
                   <hr></hr>
-                     <img className='background-image' src={cnnBackground} alt="amazon background"  onClick={() => {setEvent(true)}}></img>
+                     <img className='background-image' src={cnnBackground} alt="cnn background"  onClick={() => {setEvent(true)}}></img>
                   </div>
                   {openEvent &&
                      <GameEvent
-                        closeEvent={setEvent}
-                        showApps = {props.showApps}
-                        hidePage = {props.hidePage}
-                        setSave = {props.setSave}
-                        save = {props.save}
-                        event = {event}
-                        eventNumber = {eventNumber}
-                        setEventNumber={setEventNumber}
-                        money = {props.money}
-                        setMoney = {props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
+                         app = "CNN"
+                         closeEvent={setEvent}
+                         showApps = {props.showApps}
+                         hidePage = {props.hidePage}
+                         setSave = {props.setSave}
+                         save = {props.save}
+                         event = {event}
+                         eventNumber = {eventNumber}
+                         setEventNumber={setEventNumber}
+                         money = {props.money}
+                         setMoney = {props.setMoney}
+                         disabledApps={props.disabledApps}
+                         setDisabledApps={props.setDisabledApps}
                   />}
             </div>
          </div>

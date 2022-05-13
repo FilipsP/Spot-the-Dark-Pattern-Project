@@ -24,7 +24,7 @@ const AnswerButtons = (props) => {
         }else {
             props.setMoney(props.money-99)
             const newDisabledApps = props.disabledApps
-            newDisabledApps.push("Amazon")
+            newDisabledApps.push(props.app)
             console.log(newDisabledApps)
             props.setDisabledApps(newDisabledApps)
             closeApp()
@@ -42,7 +42,7 @@ const AnswerButtons = (props) => {
         }
         props.setSave(newSave)
         const newDisabledApps = props.disabledApps
-        newDisabledApps.push("Amazon")
+        newDisabledApps.push(props.app)
         console.log(newDisabledApps)
         props.setDisabledApps(newDisabledApps)
         closeApp()

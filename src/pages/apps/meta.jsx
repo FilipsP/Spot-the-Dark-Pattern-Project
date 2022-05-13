@@ -9,18 +9,18 @@ function Meta(props) {
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
       id:1,
-      name:"Interesting proposition",
-      description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
-      positive:"Ei liitu.",
-      negative:"Liitun listiga ja saan allahindlust.",
+      name:"Game invite",
+      description:"You see a game invitation in your inbox on social media. How do you react?",
+      positive:"I ignore the invite and do not play the game.",
+      negative:"Find out what game it is.",
       points: 2,
       lives: 0,
    },{
       id:2,
-      name:"Fishing rod",
-      description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
-      positive:"Lahkun meililistist.",
-      negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
+      name:"Extra shit",
+      description:"The game asks for your credit card details and a subscription to let you play.",
+      positive:"I do not enter any data and exit the game.",
+      negative:"I enter my credit card details and play the game.",
       points: 1,
       lives: 1
    }]);
@@ -36,7 +36,7 @@ function Meta(props) {
                         <span className='dot green-dot'></span>
                      </div>
                      <div className='column middle'>
-                        <input className='browser-input' type="text" readOnly value="https://www.amazon.com/"></input>
+                        <input className='browser-input' type="text" readOnly value="https://www.meta.com/"></input>
                      </div>
                      <div className="column right">
                         <div style={{float:"right"}}>
@@ -52,6 +52,7 @@ function Meta(props) {
                   </div>
                   {openEvent &&
                      <GameEvent
+                         app = "Meta"
                         closeEvent={setEvent}
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}

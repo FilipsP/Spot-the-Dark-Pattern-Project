@@ -8,21 +8,13 @@ function Gmail(props) {
    const [openEvent, setEvent] = useState(false);
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
-      id:1,
-      name:"Interesting proposition",
-      description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
-      positive:"Ei liitu.",
-      negative:"Liitun listiga ja saan allahindlust.",
-      points: 2,
-      lives: 0,
-   },{
-      id:2,
-      name:"Fishing rod",
-      description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
-      positive:"Lahkun meililistist.",
-      negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
-      points: 1,
-      lives: 1
+       id:1,
+       name:"Spam",
+       description:"You receive a promotional email in your inbox. Do you mark spam emails as junk?",
+       positive:"Yes, always!",
+       negative:"No, never...",
+       points: 2,
+       lives: 0,
    }]);
 
    return(
@@ -36,7 +28,7 @@ function Gmail(props) {
                         <span className='dot green-dot'></span>
                      </div>
                      <div className='column middle'>
-                        <input className='browser-input' type="text" readOnly value="https://www.amazon.com/"></input>
+                        <input className='browser-input' type="text" readOnly value="https://www.gmail.com/"></input>
                      </div>
                      <div className="column right">
                         <div style={{float:"right"}}>
@@ -48,10 +40,11 @@ function Gmail(props) {
                   </div>
                   <div className='content'>
                   <hr></hr>
-                     <img className='background-image' src={gmailBackground} alt="amazon background"  onClick={() => {setEvent(true)}}></img>
+                     <img className='background-image' src={gmailBackground} alt="gmail background"  onClick={() => {setEvent(true)}}></img>
                   </div>
                   {openEvent &&
                      <GameEvent
+                         app = "Gmail"
                         closeEvent={setEvent}
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}

@@ -57,6 +57,7 @@ function Amazon(props){
                     </div>
                     {openEvent &&
                         <GameEvent
+                            app = "Amazon"
                             closeEvent={setEvent}
                             showApps = {props.showApps}
                             hidePage = {props.hidePage}

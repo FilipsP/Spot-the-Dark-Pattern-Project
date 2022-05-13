@@ -19,7 +19,7 @@ function Index() {
     const [currentProfilePicture, setCurrentPicture] = useState(0);
     const [profilePictures, setProfilePictures] = useState([]);
     const [money, setMoney] = useState(999);
-    const [disabledApps, setDisabledApps] = useState(["Meta","Gmail","Reddit","Instagram","CNN news"]);
+    const [disabledApps, setDisabledApps] = useState([]);
 
 
     const connectUser = (username, password) => {

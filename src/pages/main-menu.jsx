@@ -15,6 +15,10 @@ import casual from "../img/avatars/casual.png";
 import cool from "../img/avatars/cool.jpg";
 import guy from "../img/avatars/guy.jpg";
 import wtf from "../img/avatars/wtf.png";
+import Gmail from "./apps/gmail";
+import Meta from "./apps/meta";
+import CNN from "./apps/cnn";
+import Reddit from "./apps/reddit";
 //import {Character, Avatar} from ... if export function...
 //import Character from ... if export default...
 
@@ -125,8 +129,8 @@ function IconsMenu(props) {
                                 className='icon'
                                 src={cnn_logo}
                                 alt='CNN logo'
-                                style= {props.disabledApps.includes("CNN news")?notAllowed:allowed}
-                                onClick={() => {props.chooseApp("CNN news")}}>
+                                style= {props.disabledApps.includes("CNN")?notAllowed:allowed}
+                                onClick={() => {props.chooseApp("CNN")}}>
                             </img></div>
                         </div>
                     </div>
@@ -179,22 +183,80 @@ function MainMenu(props){
         if (appIsDisabled) {
             setApp(<h2>"{app}" was temporally disabled. Donate to unlock it.</h2>)
         }else {
-            if (app === "Amazon") {
-                console.log("Amazon is chosen and not disabled")
-                setApp(<Amazon
-                    showApps = {setAppChoice}
-                    hidePage = {setApp}
-                    setSave = {props.setSave}
-                    save = {props.save}
-                    money = {props.money}
-                    setMoney = {props.setMoney}
-                    disabledApps={props.disabledApps}
-                    setDisabledApps={props.setDisabledApps}
-                />)
-                setAppChoice(false)
-            }else {
-                setAppChoice(true)
-                setApp(<h2>Your choice "{app}" is <strong>not</strong> Included in Prototype</h2>)
+            switch (app) {
+                case "Amazon":
+                    console.log("Amazon is chosen and not disabled")
+                    setApp(<Amazon
+                        showApps = {setAppChoice}
+                        hidePage = {setApp}
+                        setSave = {props.setSave}
+                        save = {props.save}
+                        money = {props.money}
+                        setMoney = {props.setMoney}
+                        disabledApps={props.disabledApps}
+                        setDisabledApps={props.setDisabledApps}
+                    />)
+                    setAppChoice(false)
+                    break;
+                case "Gmail":
+                    console.log("Gmail is chosen and not disabled")
+                    setApp(<Gmail
+                        showApps = {setAppChoice}
+                        hidePage = {setApp}
+                        setSave = {props.setSave}
+                        save = {props.save}
+                        money = {props.money}
+                        setMoney = {props.setMoney}
+                        disabledApps={props.disabledApps}
+                        setDisabledApps={props.setDisabledApps}
+                    />)
+                    setAppChoice(false)
+                    break;
+                case "Meta":
+                    console.log("Meta is chosen and not disabled")
+                    setApp(<Meta
+                        showApps = {setAppChoice}
+                        hidePage = {setApp}
+                        setSave = {props.setSave}
+                        save = {props.save}
+                        money = {props.money}
+                        setMoney = {props.setMoney}
+                        disabledApps={props.disabledApps}
+                        setDisabledApps={props.setDisabledApps}
+                    />)
+                    setAppChoice(false)
+                    break;
+                case "CNN":
+                    console.log("CNN is chosen and not disabled")
+                    setApp(<CNN
+                        showApps={setAppChoice}
+                        hidePage={setApp}
+                        setSave={props.setSave}
+                        save={props.save}
+                        money={props.money}
+                        setMoney={props.setMoney}
+                        disabledApps={props.disabledApps}
+                        setDisabledApps={props.setDisabledApps}
+                    />)
+                    setAppChoice(false)
+                    break;
+                case "Reddit":
+                    console.log("Reddit is chosen and not disabled")
+                    setApp(<Reddit
+                        showApps={setAppChoice}
+                        hidePage={setApp}
+                        setSave={props.setSave}
+                        save={props.save}
+                        money={props.money}
+                        setMoney={props.setMoney}
+                        disabledApps={props.disabledApps}
+                        setDisabledApps={props.setDisabledApps}
+                    />)
+                    setAppChoice(false)
+                    break;
+                default :
+                    setAppChoice(true)
+                    setApp(<h2>Your choice "{app}" is <strong>not</strong> Included in Prototype</h2>)
             }
         }
     }

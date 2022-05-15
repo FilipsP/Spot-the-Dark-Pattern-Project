@@ -1,35 +1,27 @@
 import React from "react";
-
+import '../css/profile.css'
 
 function Avatar(props) {
 
-    const myStyle = {
-        color: "#696969",
-        backgroundColor: "#e8e8e8",
-        padding: "10px",
-        marginLeft : "20px",
-        fontFamily: "Arial"
 
-    }
-    const nameStyle = {
-        width: "200px",
-
-    }
 
 
     return(
         <div>
+        <div className='profile-picture-container'>
             <img
                 className="profile-picture"
                 src={props.profilePictures[props.currentProfilePicture].name}
                 alt={props.profilePictures[props.currentProfilePicture].description}
-            /><br/>
-            <div >
-                <button style = {myStyle} onClick = {() => props.solvePictureChange(-1)}>prev</button>
-                <button style = {myStyle} onClick = {() => props.solvePictureChange(1)}>next</button>
+            />
+            <div className='picture-btn-container'>
+                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(-1)}><i class="bi bi-chevron-left"></i></button>
+                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(1)}><i class="bi bi-chevron-right"></i></button>
             </div>
-            <div >
-                <h1 style={nameStyle}>
+            <div>
+        </div>
+
+                <h1 className='profile-name'>
                     {props.online?props.profileName:props.defaultCharacters[props.currentProfilePicture].username}
                 </h1>
             </div>
@@ -37,7 +29,7 @@ function Avatar(props) {
                 <h2>Money - {props.money}€</h2>
                 <h2>Points - {props.points}</h2>
                 <h2>Lives - {props.lives}</h2>
-                <button onClick={ () => {props.setRender(true)}}>Hide Profile</button>
+                <button className='profile-mode-btn' onClick={ () => {props.setRender(true)}}>Hide Profile</button>
             </div>
         </div>
 
@@ -64,8 +56,8 @@ function Character(props) {
         <div className='profile-container left-aligned'>
             <div >
                 {props.isLoggedIn
-                    ?<button  onClick={() => {props.setLoggedIn(false)}}>Go offline</button>
-                    :<button  onClick={() => {props.setLoggedIn(true)}}>Go online</button>
+                    ?<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(false)}}>Go offline</button>
+                    :<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(true)}}>Go online</button>
                 }
             </div>
             {props.isLoggedIn
@@ -74,7 +66,7 @@ function Character(props) {
                     Go online to save progress</p>
             }
             <div>
-            {props.render? <button onClick={ () => {props.setRender(false)}}>Check Profile</button> :
+            {props.render? <button className='profile-mode-btn' onClick={ () => {props.setRender(false)}}>Check Profile</button> :
             <Avatar
                 solvePictureChange = {solvePictureChange}
                 profilePictures = {props.profilePictures}

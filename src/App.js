@@ -16,8 +16,7 @@ import Meta from "./pages/apps/meta";
 import Reddit from "./pages/apps/reddit";
 import Gmail from "./pages/apps/gmail";
 import CNN from "./pages/apps/cnn";
-
-
+import FinalScreen from './pages/final-screen';
 
 function App() {
 
@@ -46,6 +45,7 @@ function App() {
                 <Route path="reddit" element={<Reddit />} />
                 <Route path="gmail" element={<Gmail />} />
                 <Route path="cnn" element={<CNN />} />
+                <Route path="final-screen" element={<FinalScreen />} />
             </Routes>
 
 

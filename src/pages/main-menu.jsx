@@ -19,6 +19,10 @@ import Gmail from "./apps/gmail";
 import Meta from "./apps/meta";
 import CNN from "./apps/cnn";
 import Reddit from "./apps/reddit";
+import {child, get} from "firebase/database";
+import {dbRef} from "../firebase";
+import BackButton from "../components/buttons/Back";
+
 //import {Character, Avatar} from ... if export function...
 //import Character from ... if export default...
 
@@ -26,23 +30,23 @@ import Reddit from "./apps/reddit";
 
 const defaultCharacters = [{
     username : "Anonymous",
-    name  : profile_pic,
+    path  : profile_pic,
     description : "Its me"
 },
     {username: "Casual",
-        name : casual,
+        path : casual,
         description: "casual gamer"
     },
     {username: "MinTTr3Sss",
-        name : cool,
+        path : cool,
         description: "cool logo"
     },
     {username: "ILoveAnime",
-        name : wtf,
+        path : wtf,
         description: "wtf"
     },
     {username: "Mares",
-        name : guy,
+        path : guy,
         description: "Young Mares"
     }]
 
@@ -54,15 +58,9 @@ const allowed = {
     cursor: "pointer"
 }
 
-//import {useEffect, useState} from 'react';
-
-// <div className='profile-container left-aligned'>M
-//     <img className='profile-picture' src={}></img>
-//     <h1>Nickname</h1>
-//     <div className='stats-contaier'>
-//         <h2>Points - 2</h2>
-//     </div>
-// </div>
+const megaStyle = {
+    margin: "200px 250px 100px 300px"
+}
 
 
 function IconsMenu(props) {
@@ -73,8 +71,6 @@ function IconsMenu(props) {
             <div className='container'>
                 <Character
                     isLoggedIn = {props.isLoggedIn}
-                    lives = {props.lives}
-                    points = {props.points}
                     setLoggedIn = {props.setLoggedIn}
                     save = {props.save}
                     render = {props.render}
@@ -149,31 +145,37 @@ function MainMenu(props){
     const [isError, setIsError] = useState(false);
 
     const setProfilePictures = props.setProfilePictures
-    const setLoggedIn = props.setLoggedIn
     const isLoggedIn = props.isLoggedIn
     const setCurrentPicture = props.setCurrentPicture
 
     useEffect(() => {
         setCurrentPicture(0)
         if (isLoggedIn){
-            fetch("http://localhost:8080/profile-pictures/", {method: 'GET'})
-                .then(response => response.json())
-                .then(body => {
+            get(child(dbRef, `profilePicture`)).then((snapshot) => {
+                if (snapshot.exists()) {
                     setIsError(false);
+                    setIsLoading(true)
                     setIsLoading(false);
-                    setProfilePictures(body)
-                })
-                .catch((error) => {
+                    console.log(snapshot.val())
+                    return setProfilePictures(snapshot.val());
+                } else {
+                    console.log("No data available");
+                    return setProfilePictures(defaultCharacters);
+                }
+            }).catch((error) => {
                     setIsLoading(false);
-                    setLoggedIn(false);
                     setIsError(true);
                     console.log(error);
                 });
         }else {
-            setProfilePictures(defaultCharacters)
+           return setProfilePictures(defaultCharacters);
         }
-    }, [isLoggedIn, setCurrentPicture, setLoggedIn, setProfilePictures]);
+    }, [isLoggedIn, setCurrentPicture, setProfilePictures]);
 
+    const handleDonate = () => {
+        alert("You have donated 300$ but got nothing ")
+        props.setMoney(props.money-300)
+    }
 
 
     function chooseApp(app) {
@@ -195,6 +197,7 @@ function MainMenu(props){
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />)
                     setAppChoice(false)
                     break;
@@ -209,6 +212,7 @@ function MainMenu(props){
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />)
                     setAppChoice(false)
                     break;
@@ -223,6 +227,7 @@ function MainMenu(props){
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />)
                     setAppChoice(false)
                     break;
@@ -237,6 +242,7 @@ function MainMenu(props){
                         setMoney={props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />)
                     setAppChoice(false)
                     break;
@@ -251,6 +257,7 @@ function MainMenu(props){
                         setMoney={props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />)
                     setAppChoice(false)
                     break;
@@ -262,26 +269,30 @@ function MainMenu(props){
     }
 
     return (
-        <div>
-            {chosenApp}
-            {appChoice && <IconsMenu
-                isLoggedIn = {props.isLoggedIn}
-                setLoggedIn = {props.setLoggedIn}
-                chooseApp = {chooseApp}
-                save = {props.save}
-                render = {render}
-                setRender = {setRender}
-                currentProfilePicture = {props.currentProfilePicture}
-                setCurrentPicture = {props.setCurrentPicture}
-                profilePictures = {props.profilePictures}
-                setProfilePictures = {props.setProfilePictures}
-                isLoading = {isLoading}
-                isError= {isError}
-                money = {props.money}
-                disabledApps = {props.disabledApps}
-            />}
-
-        </div>
+        <>
+            <BackButton setInAppsMenu = {props.setInMenu}/>
+            <div>
+                {appChoice ? <IconsMenu
+                    chosenApp = {chosenApp}
+                    isLoggedIn = {props.isLoggedIn}
+                    setLoggedIn = {props.setLoggedIn}
+                    chooseApp = {chooseApp}
+                    save = {props.save}
+                    render = {render}
+                    setRender = {setRender}
+                    currentProfilePicture = {props.currentProfilePicture}
+                    setCurrentPicture = {props.setCurrentPicture}
+                    profilePictures = {props.profilePictures}
+                    setProfilePictures = {props.setProfilePictures}
+                    isLoading = {isLoading}
+                    isError= {isError}
+                    money = {props.money}
+                    disabledApps = {props.disabledApps}
+                />:chosenApp}
+                {appChoice?<div style={megaStyle}  className="modal-skip-btn" onClick={() => {handleDonate()}
+                }>{chosenApp}</div>:""}
+            </div>
+        </>
     )
 }
 

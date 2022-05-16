@@ -12,17 +12,17 @@ function Amazon(props){
     const [event, changeEvent] = useState([{
         id:1,
         name:"Interesting proposition",
-        description:"Veebipood pakub lisa-allahindlust -10% kui nende e-maili listiga liitud. Kuidas käitud?",
-        positive:"Ei liitu.",
-        negative:"Liitun listiga ja saan allahindlust.",
+        description:"An online shop offers an extra discount of -10% when you join their email list. What do you do?",
+        positive:"I do not join.",
+        negative:"Join the list and get a discount.",
         points: 2,
         lives: 0,
     },{
         id:2,
         name:"Fishing rod",
-        description:"Liitudes näed, et allahindlus -10% on vaid valitud toodetele ja sinu soovitud esemele soodustus ei laiene. Kuidas käitud?",
-        positive:"Lahkun meililistist.",
-        negative:"Valin soodustustega toodet ja ostan neid. Kasumlik.",
+        description:"When you join, you'll see that the -10% discount is only for selected products and the discount does not apply to the item you want. How do I proceed?",
+        positive:"Unsubscribe.",
+        negative:"I buy things from the list to get the discount.",
         points: 1,
         lives: 1
     }]);
@@ -70,6 +70,7 @@ function Amazon(props){
                             setMoney = {props.setMoney}
                             disabledApps={props.disabledApps}
                             setDisabledApps={props.setDisabledApps}
+
                     />}
                 </div>
             </div>

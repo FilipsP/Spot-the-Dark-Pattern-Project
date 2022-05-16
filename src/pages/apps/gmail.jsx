@@ -57,6 +57,7 @@ function Gmail(props) {
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+
                   />}
             </div>
          </div>

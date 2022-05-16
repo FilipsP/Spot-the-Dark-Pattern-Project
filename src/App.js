@@ -23,14 +23,9 @@ function App() {
     const [openSettings, setSettings] = useState(false);
 
 
+
     return (
         <div className="App">
-        {/* "back" button */}
-            <div className='back-btn-container'>
-                <i className="bi bi-arrow-left-circle back-btn"></i>
-                <p className='back-btn-text'>Back</p>
-            </div>
-        {/* "back" button */}
             <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
             {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>

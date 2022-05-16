@@ -2,7 +2,8 @@ import React from "react";
 
 const AnswerButtons = (props) => {
 
-    const closeApp = (options) => {
+
+    const closeApp = () => {
             props.closeEvent(false)
             props.hidePage(true)
             props.showApps(true)
@@ -13,10 +14,11 @@ const AnswerButtons = (props) => {
         const question = props.event[props.eventNumber]
         console.log(question)
         const newSave = {
-            lives: props.save.lives - question.lives,
-            points: props.save.points ,
-            spamMail: props.save.spamMail + 1,
-            name: props.save.name
+            spamMailNumber: props.save.spamMail + 1,
+            livesOwned: props.save.livesOwned - question.lives,
+            pointsOwned: props.save.pointsOwned,
+            characterName: props.save.characterName,
+            profilePictureId: 5
         }
         props.setSave(newSave)
         if (props.event[props.eventNumber +1]) {
@@ -35,10 +37,11 @@ const AnswerButtons = (props) => {
         const question = props.event[props.eventNumber]
         console.log(question)
         const newSave = {
-            lives: props.save.lives,
-            points: props.save.points + question.points,
-            spamMail: props.save.spamMail,
-            name: props.save.name
+            livesOwned: props.save.livesOwned,
+            pointsOwned: props.save.pointsOwned + question.points,
+            spamMailNumber: props.save.spamMail,
+            characterName: props.save.characterName,
+            profilePictureId: 5
         }
         props.setSave(newSave)
         const newDisabledApps = props.disabledApps

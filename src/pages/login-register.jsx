@@ -25,14 +25,23 @@ function LoginRegister(props) {
                         <i className="bi bi-person-plus-fill big-icon"></i>
                         <p className="register-text">Register</p>
                     </div>
-                    {openRegister && <Register setProgressNote = {setProgressNote}  closeRegister={setRegister} />}
+                    {openRegister && <Register
+                        setProgressNote = {setProgressNote}
+                        closeRegister={setRegister}
+                        registerUser = {props.registerUser}
+                    />}
                 </div>
                 <div className="item-container">
                     <div onClick={()=>{setLogin(true)}}>
                         <i className="bi bi-person-fill big-icon"></i>
                         <p className="register-text">Login</p>
                     </div>
-                    {openLogin && <Login setProgressNote = {setProgressNote} LoggedIn = {props.logIn} closeLogin={setLogin} />}
+                    {openLogin && <Login
+                        setProgressNote = {setProgressNote}
+                        LoggedIn = {props.logIn}
+                        closeLogin={setLogin}
+                        connect = {props.connect}
+                    />}
                 </div>
             </div>
             

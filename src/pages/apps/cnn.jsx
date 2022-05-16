@@ -14,7 +14,7 @@ function CNN(props) {
       positive:"I buy the one-time-right to read the article or subscribe to the newspaper and read the article in full.",
       negative:"I do not mind that I can’t read the full article, I go to the comments section to read what others think and comment my opinion as well.",
       points: 2,
-      lives: 0,
+      lives: 0
    }]);
 
    return(
@@ -57,6 +57,7 @@ function CNN(props) {
                          setMoney = {props.setMoney}
                          disabledApps={props.disabledApps}
                          setDisabledApps={props.setDisabledApps}
+
                   />}
             </div>
          </div>

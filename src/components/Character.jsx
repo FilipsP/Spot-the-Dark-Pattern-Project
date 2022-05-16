@@ -2,21 +2,17 @@ import React from "react";
 import '../css/profile.css'
 
 function Avatar(props) {
-
-
-
-
     return(
         <div>
         <div className='profile-picture-container'>
             <img
                 className="profile-picture"
-                src={props.profilePictures[props.currentProfilePicture].name}
+                src={props.profilePictures[props.currentProfilePicture].path}
                 alt={props.profilePictures[props.currentProfilePicture].description}
             />
             <div className='picture-btn-container'>
-                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(-1)}><i class="bi bi-chevron-left"></i></button>
-                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(1)}><i class="bi bi-chevron-right"></i></button>
+                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(-1)}><i className="bi bi-chevron-left"></i></button>
+                <button className='change-picture-btn' onClick = {() => props.solvePictureChange(1)}><i className="bi bi-chevron-right"></i></button>
             </div>
             <div>
         </div>
@@ -27,8 +23,8 @@ function Avatar(props) {
             </div>
             <div className='stats-container'>
                 <h2>Money - {props.money}€</h2>
-                <h2>Points - {props.points}</h2>
-                <h2>Lives - {props.lives}</h2>
+                <h2>Points - {props.save.pointsOwned}</h2>
+                <h2>Lives - {props.save.livesOwned}</h2>
                 <button className='profile-mode-btn' onClick={ () => {props.setRender(true)}}>Hide Profile</button>
             </div>
         </div>
@@ -54,12 +50,12 @@ function Character(props) {
 
     return(
         <div className='profile-container left-aligned'>
-            <div >
-                {props.isLoggedIn
-                    ?<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(false)}}>Go offline</button>
-                    :<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(true)}}>Go online</button>
-                }
-            </div>
+            {/*<div >*/}
+            {/*    {props.isLoggedIn*/}
+            {/*        ?<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(false)}}>Go offline</button>*/}
+            {/*        :<button className='profile-mode-btn'  onClick={() => {props.setLoggedIn(true)}}>Go online</button>*/}
+            {/*    }*/}
+            {/*</div>*/}
             {props.isLoggedIn
                 ? <p>You are online</p>
                 : <p>You are offline<br/>
@@ -71,14 +67,12 @@ function Character(props) {
                 solvePictureChange = {solvePictureChange}
                 profilePictures = {props.profilePictures}
                 currentProfilePicture = {props.currentProfilePicture}
-                profileName = {props.save.name}
+                profileName = {props.save.characterName}
                 setRender = {props.setRender}
-                lives = {props.save.lives}
-                points = {props.save.points}
+                save = {props.save}
                 online = {props.isLoggedIn}
                 defaultCharacters = {props.defaultCharacters}
                 money = {props.money}
-
             />}
             </div>
             {props.isError && <p>No connection to server :(</p>}

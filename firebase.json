@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "dark-patterns-project",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

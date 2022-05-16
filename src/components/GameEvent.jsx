@@ -23,6 +23,7 @@ function GameEvent(props){
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+                        checkForFinish = {props.checkForFinish}
                     />
                 </div>
             </div>

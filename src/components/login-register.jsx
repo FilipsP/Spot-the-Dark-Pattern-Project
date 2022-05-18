@@ -11,14 +11,14 @@ import ProgressNote from "./modals/progressNote";
 function LoginRegister(props) {
 
     const [openRegister, setRegister] = useState(false);
-    const [openLogin, setLogin] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
     const [openProgressNote, setProgressNote] = useState(false);
 
 
     return(<div>
         
         <div className="container">
-            <h1 className="main-heading">Please register or login</h1>
+            <h1 className="main-heading">Please register or log in</h1>
             <div className="login-register-container">
                 <div className="item-container">
                     <div onClick={()=>{setRegister(true)}}>
@@ -33,14 +33,15 @@ function LoginRegister(props) {
                     />}
                 </div>
                 <div className="item-container">
-                    <div onClick={()=>{setLogin(true)}}>
+                    <div onClick={()=>{setOpenLogin(true)}}>
                         <i className="bi bi-person-fill big-icon"></i>
-                        <p className="register-text">Login</p>
+                        <p className="register-text">Log in</p>
                     </div>
                     {openLogin && <Login
+                        setOpenLogin ={setOpenLogin}
                         setProgressNote = {setProgressNote}
                         LoggedIn = {props.logIn}
-                        closeLogin={setLogin}
+                        openedLogIn={setOpenLogin}
                         connect = {props.connect}
                     />}
                 </div>

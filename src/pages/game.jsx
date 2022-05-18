@@ -29,22 +29,25 @@ function Game() {
     const [gameOver, setGameOver] = useState(false)
 
 
-    const connectUser = (username , password ) => {
+    const connectUser = (username , password, setOpenLogIn ) => {
+        setIsLoading(true)
         console.log(profiles)
         for (const profile in profiles) {
-            if ( profiles[profile].username === username && profiles[profile].password === password){
-                const newUser = {
-                    id :  profiles[profile].id,
-                    username:  profiles[profile].username
+            if ( profiles[profile].username === username){
+                if (profiles[profile].password === password) {
+                    const newUser = {
+                        id: profiles[profile].id,
+                        username: profiles[profile].username
+                    }
+                    setIsLoading(false)
+                    alert("You have successfully logged in")
+                    setOpenLogIn(false)
+                    return getSave(newUser)
                 }
-                setIsLoading(false)
-                return getSave(newUser)
-            }
-            else {
-                setIsLoading(true)
-                console.log("next user")
+                return alert("Wrong password")
             }
         }
+        return alert("Couldn't find this user :(")
     }
 
 
@@ -102,15 +105,15 @@ function Game() {
 
     
 
-    const registerUser = (username, password, characterName,closeRegister,setError) => {
+    const registerUser = async (username, password, characterName, closeRegister, setError) => {
         let newID = 0;
         for (const profile in profiles) {
-            if (newID <= profiles[profile].id){
+            if (newID <= profiles[profile].id) {
                 newID = profiles[profile].id + 1
             }
             console.log(newID)
             if (profile.includes(username)) {
-                return setError("Already registered");
+                return alert("Already registered");
             }
         }
 
@@ -129,12 +132,13 @@ function Game() {
 
         const updates = {};
         updates['/profile/' + username] = userData;
-        updates['/save/' + newID ] = newSave;
+        updates['/save/' + newID] = newSave;
         console.log("Successfully registered");
         closeRegister(false)
         alert("Successfully registered");
-        return update(dbRef, updates);
-
+        await update(dbRef, updates)
+        await setIsLoading(true)
+        return true;
     }
 
 
@@ -165,7 +169,10 @@ function Game() {
                     </div>
                     : <div>
                     {isLoggedIn ?
-                        <button onClick={()=>{setLoggedIn(false)}}>LogOut</button>:
+                        <button onClick={()=>{setLoggedIn(false)}}>
+                            <p className="register-text">Log out</p>
+                        </button>
+                        :
                         <LoginRegister
                             logIn = {setLoggedIn}
                             showMenu = {setInMenu}

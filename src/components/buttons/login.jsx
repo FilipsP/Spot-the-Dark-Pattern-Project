@@ -11,9 +11,10 @@ function Login(props){
     const [nameValue, setNameValue] = useState("")
     const [passValue, setPassValue] = useState("")
 
+
+
     function handleLogIn() {
-        props.connect(nameValue,passValue);
-        props.closeLogin(false);
+        props.connect(nameValue,passValue,props.setOpenLogin);
 
     }
 
@@ -21,7 +22,7 @@ function Login(props){
         <div>
             <div className="modal-background">
                 <div className="form-container">
-                    <div onClick={() => props.closeLogin(false)}><i className="bi bi-x-square exit-btn"></i></div>
+                    <div onClick={() => props.setOpenLogin(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Login</h1> 
                     
                     <div className="input-element">

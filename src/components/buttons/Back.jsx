@@ -6,7 +6,7 @@ const BackButton = (props) => {
     return(
             <div  onClick={() => {handleBack()}} className='back-btn-container'>
                 <i className="bi bi-arrow-left-circle back-btn"></i>
-                <p className='back-btn-text'>Back</p>
+                <p className='back-btn-text'>Back to <br/>log in</p>
             </div>
     )
 }

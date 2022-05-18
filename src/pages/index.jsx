@@ -1,9 +1,9 @@
 import {useState} from "react";
 import LoginRegister from "./login-register";
 import MainMenu from "./main-menu";
-import { ref, child, push, update,get,set } from "firebase/database";
+import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
-import {db, dbRef} from "../firebase";
+import {dbRef} from "../firebase";
 import FinalScreen from "./final-screen";
 
 const defaultSave = {
@@ -29,12 +29,32 @@ function Index() {
     const [gameOver, setGameOver] = useState(false)
 
 
+    const connectUser = (username , password ) => {
+        console.log(profiles)
+        for (const profile in profiles) {
+            if ( profiles[profile].username === username && profiles[profile].password === password){
+                const newUser = {
+                    id :  profiles[profile].id,
+                    username:  profiles[profile].username
+                }
+                setIsLoading(false)
+                return getSave(newUser)
+            }
+            else {
+                setIsLoading(true)
+                console.log("next user")
+            }
+        }
+    }
+
+
+
     useEffect(() => {
         get(child(dbRef, `profile`)).then((snapshot) => {
             if (snapshot.exists()) {
                 setIsError(false);
-                setIsLoading(true)
-                setProfiles(snapshot.val())
+                setIsLoading(true);
+                setProfiles(snapshot.val());
                 setIsLoading(false);
                 console.log("Profiles received");
             } else {
@@ -54,9 +74,6 @@ function Index() {
         }
         console.log("not yet")
     },[save.livesOwned, save.pointsOwned])
-
-        
-
 
 
     const getSave = (user) => {
@@ -83,43 +100,22 @@ function Index() {
         });
     }
 
-    const connectUser = (username , password ) => {
-        console.log(profiles)
-        profiles.forEach(element => {
-            if (element.username === username && element.password === password){
-                const newUser = {
-                    id : element.id,
-                    username: element.username
-                }
+    
 
-                console.log("username: " + newUser.username)
-                console.log("new user: " + newUser.id)
-                setIsLoading(false)
-                return getSave(newUser)
-            }
-            else {
-                setIsLoading(true)
-                console.log("next user")
-            }
-        })
-    }
-
-
-
-
-
-
-
-    const registerUser = (username, password, characterName,closeRegister) => {
-
+    const registerUser = (username, password, characterName,closeRegister,setError) => {
+        let newID = 0;
         for (const profile in profiles) {
+            if (newID <= profiles[profile].id){
+                newID = profiles[profile].id + 1
+            }
+            console.log(newID)
             if (profile.includes(username)) {
-                alert("Already registered");
-                return;
+                return setError("Already registered");
             }
         }
+
         const userData = {
-            id: profiles.length,
+            id: newID,
             username: username,
             password: password
         };
@@ -131,51 +127,52 @@ function Index() {
             profilePictureId: 0
         };
 
-        // Write the new post's data simultaneously in the posts list and the user's post list.
-
         const updates = {};
         updates['/profile/' + username] = userData;
-        updates['/save/' + profiles.length ] = newSave;
+        updates['/save/' + newID ] = newSave;
+        console.log(updates)
 
         closeRegister(false)
-        return update(ref(db), updates);
+        alert("Successfully registered");
+        return update(dbRef, updates);
+
     }
 
 
 
     return(
-        <div>   <h1>{gameOver?"Game over" : " Game is ongoing" }</h1>
-                <h1>{isError && "Error :("}</h1>
-                <h1>{isLoading && "Loading, please wait..."}</h1>
+        <div>
+            <h1>{isError && "Error :("}</h1>
+            <h1>{isLoading && "Loading, please wait..."}</h1>
+            <div>
+                {gameOver?<FinalScreen save={save}/>:<div>
+                {inMenu ?
                 <div>
-                    {gameOver?<FinalScreen save={save}/>:<div>
-                    {inMenu ?
-                    <div>
-                    <MainMenu
-                        setInMenu = {setInMenu}
-                        setLoggedIn = {setLoggedIn}
-                        isLoggedIn = {isLoggedIn}
-                        save = {save}
-                        setSave = {setSave}
-                        currentProfilePicture = {currentProfilePicture}
-                        setCurrentPicture = {setCurrentPicture}
-                        profilePictures = {profilePictures}
-                        setProfilePictures = {setProfilePictures}
-                        money = {money}
-                        setMoney = {setMoney}
-                        disabledApps={disabledApps}
-                        setDisabledApps={setDisabledApps}
-                        />
-                        </div>
-                        : <div>
-                        {isLoggedIn ?
-                            <button onClick={()=>{setLoggedIn(false)}}>LogOut</button>:
-                            <LoginRegister
-                                logIn = {setLoggedIn}
-                                showMenu = {setInMenu}
-                                connect = {connectUser}
-                                registerUser = {registerUser}
-                            />}
+                <MainMenu
+                    setInMenu = {setInMenu}
+                    setLoggedIn = {setLoggedIn}
+                    isLoggedIn = {isLoggedIn}
+                    save = {save}
+                    setSave = {setSave}
+                    currentProfilePicture = {currentProfilePicture}
+                    setCurrentPicture = {setCurrentPicture}
+                    profilePictures = {profilePictures}
+                    setProfilePictures = {setProfilePictures}
+                    money = {money}
+                    setMoney = {setMoney}
+                    disabledApps={disabledApps}
+                    setDisabledApps={setDisabledApps}
+                    />
+                    </div>
+                    : <div>
+                    {isLoggedIn ?
+                        <button onClick={()=>{setLoggedIn(false)}}>LogOut</button>:
+                        <LoginRegister
+                            logIn = {setLoggedIn}
+                            showMenu = {setInMenu}
+                            connect = {connectUser}
+                            registerUser = {registerUser}
+                        />}
                     </div>}
                 </div>}
             </div>

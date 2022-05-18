@@ -12,8 +12,9 @@ function Login(props){
     const [passValue, setPassValue] = useState("")
 
     function handleLogIn() {
-        props.connect(nameValue,passValue)
-        props.closeLogin(false)
+        props.connect(nameValue,passValue);
+        props.closeLogin(false);
+
     }
 
     return(

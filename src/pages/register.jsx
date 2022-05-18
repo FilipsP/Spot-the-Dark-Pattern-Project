@@ -8,15 +8,18 @@ function Register(props) {
     const [characterNameValue, setCharacterNameValue] = useState("")
     const [passValue, setPassValue] = useState("")
     const [confirmPassValue, setConfirmPassValue] = useState("")
+    const [registerError, setRegisterError] = useState("")
 
     const handleRegister = () => {
+        setRegisterError("")
         if (nameValue.length && characterNameValue.length && passValue.length){
             if (passValue === confirmPassValue){
-                props.registerUser(nameValue,passValue,characterNameValue,props.closeRegister)
+                props.registerUser(nameValue,passValue,characterNameValue,props.closeRegister,setRegisterError)
             }else {
                 alert("Enter the same pass twice to proceed")
             }
-        }
+        } else{alert("Each input should contain at least one symbol")}
+        if(registerError.length){alert(registerError)}
     }
 
     return(
@@ -62,6 +65,7 @@ function Register(props) {
                             onChange={(event) => {setConfirmPassValue(event.target.value)}}
                         ></input>
 
+                    </div>
                     <div className="input-element">
                         <label className="form-label" htmlFor="character">Character</label>
                         <input
@@ -72,8 +76,6 @@ function Register(props) {
                             placeholder="Character name"
                             onChange={(event) => {setCharacterNameValue(event.target.value)}}
                         ></input>
-                    </div>
-
                     </div>
                     <button
                         className="submit"

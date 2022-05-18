@@ -9,19 +9,20 @@ import cnn_logo from '../img/cnn_logo.png';
 import instagram_logo from '../img/instagram_logo.png';
 import Character from '../components/Character.jsx';
 import {useState, useEffect} from "react";
-import Amazon from "./apps/amazon";
 import profile_pic from '../img/profile_pic.png';
 import casual from "../img/avatars/casual.png";
 import cool from "../img/avatars/cool.jpg";
 import guy from "../img/avatars/guy.jpg";
 import wtf from "../img/avatars/wtf.png";
-import Gmail from "./apps/gmail";
-import Meta from "./apps/meta";
-import CNN from "./apps/cnn";
-import Reddit from "./apps/reddit";
 import {child, get} from "firebase/database";
 import {dbRef} from "../firebase";
 import BackButton from "../components/buttons/Back";
+import amazonBackground from "./../img/apps-background/amazon_bg_2.png";
+import redditBackground from "./../img/apps-background/reddit_bg.png";
+import gmailBackground from "./../img/apps-background/gmail_bg.png";
+import cnnBackground from "./../img/apps-background/cnn_bg.PNG";
+import metaBackground from "./../img/apps-background/meta_bg.png";
+import UnitedApp from "./apps/UnitedApp";
 
 //import {Character, Avatar} from ... if export function...
 //import Character from ... if export default...
@@ -179,6 +180,7 @@ function MainMenu(props){
 
 
     function chooseApp(app) {
+        let appURL;
         setApp(null)
         const appIsDisabled = props.disabledApps.includes(app)
         console.log(appIsDisabled)
@@ -187,8 +189,11 @@ function MainMenu(props){
         }else {
             switch (app) {
                 case "Amazon":
+                    appURL = amazonBackground
                     console.log("Amazon is chosen and not disabled")
-                    setApp(<Amazon
+                    setApp(<UnitedApp
+                        app = {app}
+                        appURL = {appURL}
                         showApps = {setAppChoice}
                         hidePage = {setApp}
                         setSave = {props.setSave}
@@ -202,8 +207,11 @@ function MainMenu(props){
                     setAppChoice(false)
                     break;
                 case "Gmail":
+                    appURL = gmailBackground
                     console.log("Gmail is chosen and not disabled")
-                    setApp(<Gmail
+                    setApp(<UnitedApp
+                        app = {app}
+                        appURL = {appURL}
                         showApps = {setAppChoice}
                         hidePage = {setApp}
                         setSave = {props.setSave}
@@ -217,8 +225,11 @@ function MainMenu(props){
                     setAppChoice(false)
                     break;
                 case "Meta":
+                    appURL = metaBackground
                     console.log("Meta is chosen and not disabled")
-                    setApp(<Meta
+                    setApp(<UnitedApp
+                        app = {app}
+                        appURL = {appURL}
                         showApps = {setAppChoice}
                         hidePage = {setApp}
                         setSave = {props.setSave}
@@ -232,8 +243,11 @@ function MainMenu(props){
                     setAppChoice(false)
                     break;
                 case "CNN":
+                    appURL = cnnBackground
                     console.log("CNN is chosen and not disabled")
-                    setApp(<CNN
+                    setApp(<UnitedApp
+                        app = {app}
+                        appURL = {appURL}
                         showApps={setAppChoice}
                         hidePage={setApp}
                         setSave={props.setSave}
@@ -247,8 +261,11 @@ function MainMenu(props){
                     setAppChoice(false)
                     break;
                 case "Reddit":
+                    appURL = redditBackground
                     console.log("Reddit is chosen and not disabled")
-                    setApp(<Reddit
+                    setApp(<UnitedApp
+                        app = {app}
+                        appURL = {appURL}
                         showApps={setAppChoice}
                         hidePage={setApp}
                         setSave={props.setSave}

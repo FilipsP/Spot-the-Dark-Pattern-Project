@@ -5,7 +5,7 @@ import { useState} from 'react';
 import GameEvent from '../../components/GameEvent';
 
 function CNN(props) {
-   const [openEvent, setEvent] = useState(false);
+   const [openEvent, setOpenEvent] = useState(false);
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
       id:1,
@@ -40,12 +40,12 @@ function CNN(props) {
                   </div>
                   <div className='content'>
                   <hr></hr>
-                     <img className='background-image' src={cnnBackground} alt="cnn background"  onClick={() => {setEvent(true)}}></img>
+                     <img className='background-image' src={cnnBackground} alt="cnn background"  onClick={() => {setOpenEvent(true)}}></img>
                   </div>
                   {openEvent &&
                      <GameEvent
                          app = "CNN"
-                         closeEvent={setEvent}
+                         closeEvent={setOpenEvent}
                          showApps = {props.showApps}
                          hidePage = {props.hidePage}
                          setSave = {props.setSave}

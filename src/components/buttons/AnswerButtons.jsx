@@ -12,7 +12,6 @@ const AnswerButtons = (props) => {
 
     const handleNegativeAnswer = () => {
         const question = props.event[props.eventNumber]
-        console.log(question)
         const newSave = {
             spamMailNumber: props.save.spamMail + 1,
             livesOwned: props.save.livesOwned - question.lives,
@@ -35,7 +34,6 @@ const AnswerButtons = (props) => {
 
     const handlePositiveAnswer = () => {
         const question = props.event[props.eventNumber]
-        console.log(question)
         const newSave = {
             livesOwned: props.save.livesOwned,
             pointsOwned: props.save.pointsOwned + question.points,

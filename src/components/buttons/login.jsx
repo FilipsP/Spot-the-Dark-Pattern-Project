@@ -1,5 +1,5 @@
-import "../css/login-register.css";
-import Skip from '../components/buttons/Skip.jsx';
+import "../../css/login-register.css";
+import Skip from './Skip.jsx';
 import {useState} from "react";
 
 

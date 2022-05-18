@@ -1,5 +1,5 @@
 
-import "../css/progress-note.css";
+import "../../css/progress-note.css";
 
 function ProgressNote(props){
     return (

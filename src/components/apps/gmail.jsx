@@ -1,28 +1,21 @@
-import "./apps.css";
+// eslint-disable-next-line
+/*import "./apps.css";
 import "./browser.css";
-import metaBackground from "../../img/apps-background/meta_bg.png";
+import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import { useState} from 'react';
-import GameEvent from '../../components/GameEvent';
+import GameEvent from '../modals/GameEvent';
 
-function Meta(props) {
+function Gmail(props) {
    const [openEvent, setEvent] = useState(false);
    const [eventNumber, setEventNumber] = useState(0);
    const [event, changeEvent] = useState([{
-      id:1,
-      name:"Game invite",
-      description:"You see a game invitation in your inbox on social media. How do you react?",
-      positive:"I ignore the invite and do not play the game.",
-      negative:"Find out what game it is.",
-      points: 2,
-      lives: 0,
-   },{
-      id:2,
-      name:"Extra shit",
-      description:"The game asks for your credit card details and a subscription to let you play.",
-      positive:"I do not enter any data and exit the game.",
-      negative:"I enter my credit card details and play the game.",
-      points: 1,
-      lives: 1
+       id:1,
+       name:"Spam",
+       description:"You receive a promotional email in your inbox. Do you mark spam emails as junk?",
+       positive:"Yes, always!",
+       negative:"No, never...",
+       points: 2,
+       lives: 0,
    }]);
 
    return(
@@ -36,7 +29,7 @@ function Meta(props) {
                         <span className='dot green-dot'></span>
                      </div>
                      <div className='column middle'>
-                        <input className='browser-input' type="text" readOnly value="https://www.meta.com/"></input>
+                        <input className='browser-input' type="text" readOnly value="https://www.gmail.com/"></input>
                      </div>
                      <div className="column right">
                         <div style={{float:"right"}}>
@@ -48,11 +41,11 @@ function Meta(props) {
                   </div>
                   <div className='content'>
                   <hr></hr>
-                     <img className='background-image' src={metaBackground} alt="amazon background"  onClick={() => {setEvent(true)}}></img>
+                     <img className='background-image' src={gmailBackground} alt="gmail background"  onClick={() => {setEvent(true)}}></img>
                   </div>
                   {openEvent &&
                      <GameEvent
-                         app = "Meta"
+                         app = "Gmail"
                         closeEvent={setEvent}
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}
@@ -65,6 +58,7 @@ function Meta(props) {
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
+
                   />}
             </div>
          </div>
@@ -74,4 +68,4 @@ function Meta(props) {
 
 }
 
-export default Meta;
+export default Gmail;*/

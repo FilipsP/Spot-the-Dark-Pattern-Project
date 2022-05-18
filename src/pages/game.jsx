@@ -1,10 +1,10 @@
 import {useState} from "react";
-import LoginRegister from "./login-register";
-import MainMenu from "./main-menu";
+import LoginRegister from "../components/login-register";
+import MainMenu from "../components/main-menu/main-menu";
 import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
 import {dbRef} from "../firebase";
-import FinalScreen from "./final-screen";
+import FinalScreen from "../components/final-screen/final-screen";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -14,7 +14,7 @@ const defaultSave = {
     profilePictureId: 3
 }
 
-function Index() {
+function Game() {
 
     const [save, setSave] = useState(defaultSave);
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -180,4 +180,4 @@ function Index() {
     )
 }
 
-export default Index
+export default Game

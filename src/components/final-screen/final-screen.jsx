@@ -1,7 +1,11 @@
-import '../css/final-screen.css';
+import '../../css/final-screen.css';
 
 
 function FinalScreen(props){
+
+
+
+
 
     const winner = props.save.livesOwned > 0
    return(
@@ -21,8 +25,8 @@ function FinalScreen(props){
                <p className='final-text'>To start all over just refresh this page by the refresh icon or pressing "F5"</p>
 
            </div>}
-           <button className='share-button' onClick={()=>{alert("Thanks a lot for sharing")}}>Share statistics</button>
-           <a href="https://forms.gle/qwAwGdWHoxsYS36H6"><button className='share-button' >Leave your feedback</button></a><br/>
+           <button className='share-button' onClick={()=>{alert("Thanks a lot for sharing")}}>Share statistics</button><br/>
+           <a href="https://forms.gle/qwAwGdWHoxsYS36H6"><button className='share-button' >Leave your feedback</button></a>
       </div>
    )
 }

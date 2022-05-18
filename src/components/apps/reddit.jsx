@@ -1,8 +1,8 @@
-import "./apps.css";
-import "./browser.css";
+/*import "../../css/apps.css";
+import "../../css/browser.css";
 import redditBackground from "../../img/apps-background/reddit_bg.png";
 import { useState} from 'react';
-import GameEvent from '../../components/GameEvent';
+import GameEvent from '../modals/GameEvent';
 
 function Reddit(props) {
    const [openEvent, setEvent] = useState(false);
@@ -66,4 +66,4 @@ function Reddit(props) {
 
 }
 
-export default Reddit;
+export default Reddit;*/

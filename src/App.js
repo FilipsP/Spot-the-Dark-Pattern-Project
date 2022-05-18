@@ -1,22 +1,22 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route,Routes} from 'react-router-dom';
 import StartPage from './pages/startPage';
-import LoginRegister from './pages/login-register';
+import LoginRegister from './components/login-register';
 import Settings from './components/settings';
 import WelcomePage from './pages/welcome';
 // import MainMenu from './pages/main-menu';
 // import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
-import Testing from './components/martest/Testing';
+import Testing from './components/test/Testing';
 import NotFound from "./components/NotFound";
-import Index from "./pages";
+import Game from "./pages/game";
 
-//  ! Route for testing purposes 
-import Meta from "./pages/apps/meta";
-import Reddit from "./pages/apps/reddit";
-import Gmail from "./pages/apps/gmail";
-import CNN from "./pages/apps/cnn";
-import FinalScreen from './pages/final-screen';
+//  ! Route for testing purposes
+import Meta from "./components/apps/meta";
+import Reddit from "./components/apps/reddit";
+import Gmail from "./components/apps/gmail";
+import CNN from "./components/apps/cnn";
+import FinalScreen from './components/final-screen/final-screen';
 
 function App() {
 
@@ -29,18 +29,12 @@ function App() {
             <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
             {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>
-                <Route exact path = "" element = {<StartPage />} />
+                <Route exact path = "/" element = {<StartPage />} />
                 <Route exact path ="/login-register" element = {<LoginRegister />} />
                 <Route exact path = "/test" element = {<Testing />}/>
                 <Route path="*" element={<NotFound />}/>
                 <Route path="welcome" element={<WelcomePage/>} />
-                <Route path="index" element={<Index />} />
-                {/* Route for testing purposes  */}
-                <Route path="meta" element={<Meta />} />
-                <Route path="reddit" element={<Reddit />} />
-                <Route path="gmail" element={<Gmail />} />
-                <Route path="cnn" element={<CNN />} />
-                <Route path="final-screen" element={<FinalScreen />} />
+                <Route path="index" element={<Game />} />
             </Routes>
 
 

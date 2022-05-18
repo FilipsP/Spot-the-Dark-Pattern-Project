@@ -1,9 +1,9 @@
 import "../css/login-register-menu.css"
 import {useState} from 'react';
-import Register from './register';
-import Login from './login';
-import Skip from '../components/buttons/Skip.jsx';
-import ProgressNote from "./progressNote";
+import Register from './buttons/register';
+import Login from './buttons/login';
+import Skip from './buttons/Skip.jsx';
+import ProgressNote from "./modals/progressNote";
 
 
 

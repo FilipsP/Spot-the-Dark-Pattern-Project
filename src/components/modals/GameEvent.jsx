@@ -1,5 +1,5 @@
-import "./event.css";
-import AnswerButtons from "./buttons/AnswerButtons";
+import "../../css/event.css";
+import AnswerButtons from "../buttons/AnswerButtons";
 
 
 function GameEvent(props){

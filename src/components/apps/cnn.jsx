@@ -1,8 +1,8 @@
-import "./apps.css";
-import "./browser.css";
+/*import "../../css/apps.css";
+import "../../css/browser.css";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import { useState} from 'react';
-import GameEvent from '../../components/GameEvent';
+import GameEvent from '../modals/GameEvent';
 
 function CNN(props) {
    const [openEvent, setOpenEvent] = useState(false);
@@ -67,4 +67,4 @@ function CNN(props) {
 
 }
 
-export default CNN;
+export default CNN;*/

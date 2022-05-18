@@ -29,6 +29,7 @@ function LoginRegister(props) {
                         setProgressNote = {setProgressNote}
                         closeRegister={setRegister}
                         registerUser = {props.registerUser}
+                        connectUser = {props.connectUser}
                     />}
                 </div>
                 <div className="item-container">

@@ -64,7 +64,7 @@ function Game() {
             console.error(error);
             setIsError(true);
         });
-    },[])
+    },[isLoading])
 
     useEffect(() => {
         console.log("checking for finish...")
@@ -130,8 +130,7 @@ function Game() {
         const updates = {};
         updates['/profile/' + username] = userData;
         updates['/save/' + newID ] = newSave;
-        console.log(updates)
-
+        console.log("Successfully registered");
         closeRegister(false)
         alert("Successfully registered");
         return update(dbRef, updates);
@@ -172,6 +171,7 @@ function Game() {
                             showMenu = {setInMenu}
                             connect = {connectUser}
                             registerUser = {registerUser}
+                            connectUser = {connectUser}
                         />}
                     </div>}
                 </div>}

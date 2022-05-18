@@ -22,9 +22,9 @@ function Avatar(props) {
                 </h1>
             </div>
             <div className='stats-container'>
-                <h2>Money - {props.money}€</h2>
-                <h2>Points - {props.save.pointsOwned}</h2>
-                <h2>Lives - {props.save.livesOwned}</h2>
+                <h2>Money : {props.money}€</h2>
+                <h2>Points : {props.save.pointsOwned}</h2>
+                <h2>Lives : {props.save.livesOwned}</h2>
                 <button className='profile-mode-btn' onClick={ () => {props.setRender(true)}}>Hide Profile</button>
             </div>
         </div>

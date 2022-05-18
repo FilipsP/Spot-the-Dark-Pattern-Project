@@ -88,7 +88,7 @@ return(<div>
             <p className="game-description">Kr,Development team.</p>
 
         </div>
-        <Link to="/index">
+        <Link to="/game">
             <button className="start-game-btn">Start game</button>
         </Link>
         {showMoreInfo && <MoreInfo/>}

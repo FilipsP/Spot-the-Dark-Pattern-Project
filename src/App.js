@@ -1,22 +1,12 @@
 import './App.css';
 import { Route,Routes} from 'react-router-dom';
 import StartPage from './pages/startPage';
-import LoginRegister from './components/login-register';
 import Settings from './components/settings';
 import WelcomePage from './pages/welcome';
-// import MainMenu from './pages/main-menu';
-// import Amazon from './pages/apps/amazon';
 import {useState} from 'react';
 import Testing from './components/test/Testing';
 import NotFound from "./components/NotFound";
 import Game from "./pages/game";
-
-//  ! Route for testing purposes
-import Meta from "./components/apps/meta";
-import Reddit from "./components/apps/reddit";
-import Gmail from "./components/apps/gmail";
-import CNN from "./components/apps/cnn";
-import FinalScreen from './components/final-screen/final-screen';
 
 function App() {
 
@@ -30,11 +20,10 @@ function App() {
             {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>
                 <Route exact path = "/" element = {<StartPage />} />
-                <Route exact path ="/login-register" element = {<LoginRegister />} />
                 <Route exact path = "/test" element = {<Testing />}/>
                 <Route path="*" element={<NotFound />}/>
                 <Route path="welcome" element={<WelcomePage/>} />
-                <Route path="index" element={<Game />} />
+                <Route path="game" element={<Game />} />
             </Routes>
 
 

@@ -15,6 +15,7 @@ function Register(props) {
         if (nameValue.length && characterNameValue.length && passValue.length){
             if (passValue === confirmPassValue){
                 props.registerUser(nameValue,passValue,characterNameValue,props.closeRegister,setRegisterError)
+                props.connectUser(nameValue,passValue)
             }else {
                 alert("Enter the same pass twice to proceed")
             }

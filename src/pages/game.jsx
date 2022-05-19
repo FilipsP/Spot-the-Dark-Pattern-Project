@@ -181,11 +181,13 @@ function Game() {
                 userID = {userID}
                 save={save}
                 disabledApps={disabledApps}
+                currentProfilePicture={currentProfilePicture}
             />}
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
             <div>
                 {gameOver?<FinalScreen
+                    currentProfilePicture={currentProfilePicture}
                     userID = {userID}
                     save={save}
                     isLoggedIn = {isLoggedIn}

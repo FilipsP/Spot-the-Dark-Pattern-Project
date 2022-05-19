@@ -168,7 +168,8 @@ function MainMenu(props){
         }else {
            return props.setProfilePictures(defaultCharacters);
         }
-    }, [props, props.isLoggedIn, props.save.profilePictureId, props.setCurrentPicture, props.setProfilePictures]);
+        // eslint-disable-next-line
+    }, [props.isLoggedIn]);
 
     const handleDonate = () => {
         alert("You have donated 300€ but got nothing ")

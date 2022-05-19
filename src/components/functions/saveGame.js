@@ -5,10 +5,12 @@ import {newEventSave} from "../templates/saveTemplates";
 
 
 
-const saveGame = (id,save,isLoggedIn,disabledApps) => {
+const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
     if (isLoggedIn){
         const updates = {};
-        updates['/save/' + id] = save;
+        const newSave = save;
+        newSave["profilePictureId"] = currentProfilePicture;
+        updates['/save/' + id] = newSave;
         let eventSaveTemp = newEventSave;
         for (const app in disabledApps) {
             eventSaveTemp[disabledApps[app]] = true

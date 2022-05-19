@@ -6,7 +6,7 @@ import clearSave from "./functions/clearSave";
 function Settings(props){
 
     const handleSaveGame = () => {
-        saveGame(props.userID, props.save, props.isLoggedIn,props.disabledApps)
+        saveGame(props.userID, props.save, props.isLoggedIn,props.disabledApps,props.currentProfilePicture)
             .then(() => props.getSave(props.userID))
     }
 

@@ -13,13 +13,14 @@ const AnswerButtons = (props) => {
     const handleNegativeAnswer = () => {
         const question = props.event[props.eventNumber]
         const newSave = {
-            spamMailNumber: props.save.spamMail + 1,
+            spamMailNumber: props.save.spamMailNumber + 1,
             livesOwned: props.save.livesOwned - question.lives,
             pointsOwned: props.save.pointsOwned,
             characterName: props.save.characterName,
-            profilePictureId: 5
+            profilePictureId: props.save.profilePictureId
         }
         props.setSave(newSave)
+        alert("Poor choice...")
         if (props.event[props.eventNumber +1]) {
             props.setEventNumber(props.eventNumber + 1)
         }else {
@@ -37,10 +38,11 @@ const AnswerButtons = (props) => {
         const newSave = {
             livesOwned: props.save.livesOwned,
             pointsOwned: props.save.pointsOwned + question.points,
-            spamMailNumber: props.save.spamMail,
+            spamMailNumber: props.save.spamMailNumber,
             characterName: props.save.characterName,
-            profilePictureId: 5
+            profilePictureId: props.save.profilePictureId
         }
+        alert("Good choice ☺")
         props.setSave(newSave)
         const newDisabledApps = props.disabledApps
         newDisabledApps.push(props.app)

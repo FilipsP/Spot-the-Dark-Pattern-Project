@@ -57,9 +57,13 @@ function Character(props) {
             {/*    }*/}
             {/*</div>*/}
             {props.isLoggedIn
-                ? <p>You are online</p>
-                : <p>You are offline<br/>
-                    Go online to save progress</p>
+                ?<div>
+                    <button className='profile-mode-btn' onClick={()=>{props.setLoggedIn(false)}}>
+                        <p>Log out</p>
+                    </button>
+                </div>
+                : <p className="register-text">You are not logged in<br/>
+                    Log in to save progress</p>
             }
             <div>
             {props.render? <button className='profile-mode-btn' onClick={ () => {props.setRender(false)}}>Check Profile</button> :
@@ -75,7 +79,7 @@ function Character(props) {
                 money = {props.money}
             />}
             </div>
-            {props.isError && <p>No connection to server :(</p>}
+            {props.isError && <p className="register-text">No connection to server :(</p>}
         </div>
 
         )

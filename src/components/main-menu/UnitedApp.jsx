@@ -6,7 +6,9 @@ import {useEffect} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
 
-
+const background = {
+    cursor: "pointer"
+}
 
 function UnitedApp(props){
     const [openEvent, setOpenEvent] = useState(false);
@@ -14,6 +16,7 @@ function UnitedApp(props){
     const [isLoading, setIsLoading] = useState(false)
     const [eventNumber, setEventNumber] = useState(1);
     const [event, setEvent] = useState([]);
+
 
     const appName = props.app.toLowerCase()
     useEffect(() => {
@@ -31,6 +34,7 @@ function UnitedApp(props){
             console.error(error);
             setIsError(true);
         });
+        // eslint-disable-next-line
     },[setOpenEvent])
     //<img src= "../../img/avatars/casual.png" alt= "avatar"/>
 
@@ -60,7 +64,7 @@ function UnitedApp(props){
                     </div>
                     <div className='content'>
                         <hr></hr>
-                        <img className='background-image' src={props.appURL} alt= {appName+" background"}  onClick={() => {setOpenEvent(true)}}></img>
+                        <img style={background} className='background-image' src={props.appURL} alt= {appName+" background"}  onClick={() => {setOpenEvent(true)}}></img>
                     </div>
                     {openEvent &&
                         <GameEvent

@@ -5,6 +5,8 @@ import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
 import {dbRef} from "../firebase";
 import FinalScreen from "../components/final-screen/final-screen";
+import Settings from "../components/settings";
+import {newEventSave} from "../components/templates/saveTemplates";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -16,6 +18,8 @@ const defaultSave = {
 
 function Game() {
 
+
+    const [userID,setUserID] = useState(null)
     const [save, setSave] = useState(defaultSave);
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [profiles, setProfiles] = useState([])
@@ -27,11 +31,36 @@ function Game() {
     const [money, setMoney] = useState(999);
     const [disabledApps, setDisabledApps] = useState([]);
     const [gameOver, setGameOver] = useState(false)
+    const [openSettings, setSettings] = useState(false);
 
+    useEffect(()=>{
+        if (isLoggedIn){
+            get(child(dbRef, `eventSave/`+ userID)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    setIsError(false);
+                    setIsLoading(true);
+                    const disabledAppsTemp = snapshot.val()
+                    let disabledAppsToAdd=[];
+                    for (const app in disabledAppsTemp) {
+                        if (disabledAppsTemp[app] === true){
+                            disabledAppsToAdd.push(app.toString())
+                        }
+                    }
+                    console.log(disabledAppsToAdd)
+                    setDisabledApps(disabledAppsToAdd);
+                    setIsLoading(false);
+                } else {
+                    console.error("Failed to get saves for events");
+                }
+            }).catch((error) => {
+                console.error(error);
+                setIsError(true);
+            });
+        }else {console.error("Log in to get event saves")}
+    },[isLoggedIn, userID])
 
     const connectUser = (username , password, setOpenLogIn ) => {
         setIsLoading(true)
-        console.log(profiles)
         for (const profile in profiles) {
             if ( profiles[profile].username === username){
                 if (profiles[profile].password === password) {
@@ -39,10 +68,12 @@ function Game() {
                         id: profiles[profile].id,
                         username: profiles[profile].username
                     }
+                    setUserID(newUser.id)
                     setIsLoading(false)
                     alert("You have successfully logged in")
                     setOpenLogIn(false)
-                    return getSave(newUser)
+                    return getSave(newUser.id)
+
                 }
                 return alert("Wrong password")
             }
@@ -59,9 +90,8 @@ function Game() {
                 setIsLoading(true);
                 setProfiles(snapshot.val());
                 setIsLoading(false);
-                console.log("Profiles received");
             } else {
-                console.log("Try again");
+                console.error("Failed to get profiles");
             }
         }).catch((error) => {
             console.error(error);
@@ -75,20 +105,19 @@ function Game() {
             console.log("finish!")
             return setGameOver(true)
         }
-        console.log("not yet")
+        return setGameOver(false)
     },[save.livesOwned, save.pointsOwned])
 
 
-    const getSave = (user) => {
-        get(child(dbRef, '/save/' + user.id)).then((snapshot) => {
+    const getSave = (id) => {
+        get(child(dbRef, '/save/' + id)).then((snapshot) => {
             if (snapshot.exists()) {
                 setIsError(false)
                 setIsLoading(true)
-                console.log("DB user: " + snapshot.val().characterName)
                 setLoggedIn(true)
                 setInMenu(true)
-                setIsLoading(false)
                 setSave(snapshot.val());
+                setIsLoading(false)
 
             } else {
                 console.log("No data available");
@@ -103,15 +132,15 @@ function Game() {
         });
     }
 
-    
+
 
     const registerUser = async (username, password, characterName, closeRegister, setError) => {
+        setIsLoading(true)
         let newID = 0;
         for (const profile in profiles) {
             if (newID <= profiles[profile].id) {
                 newID = profiles[profile].id + 1
             }
-            console.log(newID)
             if (profile.includes(username)) {
                 return alert("Already registered");
             }
@@ -130,25 +159,38 @@ function Game() {
             profilePictureId: 0
         };
 
+
         const updates = {};
         updates['/profile/' + username] = userData;
         updates['/save/' + newID] = newSave;
+        updates['/eventSave/' + newID] = newEventSave;
         console.log("Successfully registered");
         closeRegister(false)
-        alert("Successfully registered");
-        await update(dbRef, updates)
-        await setIsLoading(true)
-        return true;
+        return update(dbRef, updates)
     }
 
 
 
     return(
         <div>
+            <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
+            {openSettings && <Settings
+                getSave = {getSave}
+                closeSettings={setSettings}
+                isLoggedIn={isLoggedIn}
+                userID = {userID}
+                save={save}
+                disabledApps={disabledApps}
+            />}
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
             <div>
-                {gameOver?<FinalScreen save={save}/>:<div>
+                {gameOver?<FinalScreen
+                    userID = {userID}
+                    save={save}
+                    isLoggedIn = {isLoggedIn}
+                    disabledApps={disabledApps}
+                />:<div>
                 {inMenu ?
                 <div>
                 <MainMenu
@@ -167,20 +209,14 @@ function Game() {
                     setDisabledApps={setDisabledApps}
                     />
                     </div>
-                    : <div>
-                    {isLoggedIn ?
-                        <button onClick={()=>{setLoggedIn(false)}}>
-                            <p className="register-text">Log out</p>
-                        </button>
-                        :
-                        <LoginRegister
-                            logIn = {setLoggedIn}
-                            showMenu = {setInMenu}
-                            connect = {connectUser}
-                            registerUser = {registerUser}
-                            connectUser = {connectUser}
-                        />}
-                    </div>}
+                    :
+                    <LoginRegister
+                        logIn = {setLoggedIn}
+                        showMenu = {setInMenu}
+                        connect = {connectUser}
+                        registerUser = {registerUser}
+                        connectUser = {connectUser}
+                    />}
                 </div>}
             </div>
         </div>

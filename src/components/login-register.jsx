@@ -15,6 +15,7 @@ function LoginRegister(props) {
     const [openProgressNote, setProgressNote] = useState(false);
 
 
+
     return(<div>
         
         <div className="container">
@@ -29,7 +30,8 @@ function LoginRegister(props) {
                         setProgressNote = {setProgressNote}
                         closeRegister={setRegister}
                         registerUser = {props.registerUser}
-                        connectUser = {props.connectUser}
+                        openedLogIn={setOpenLogin}
+                        connect = {props.connect}
                     />}
                 </div>
                 <div className="item-container">

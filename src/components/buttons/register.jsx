@@ -14,10 +14,9 @@ function Register(props) {
         setRegisterError("")
         if (nameValue.length && characterNameValue.length && passValue.length) {
             if (passValue === confirmPassValue) {
-                const isLoading = props.registerUser(nameValue, passValue, characterNameValue, props.closeRegister, setRegisterError)
-                if (typeof isLoading === "boolean"){
-                    props.connectUser(nameValue,passValue)
-                }
+                props.registerUser(nameValue, passValue, characterNameValue, props.closeRegister, setRegisterError)
+                props.openedLogIn(true)
+
             } else {
                 alert("Enter the same pass twice to proceed")
             }

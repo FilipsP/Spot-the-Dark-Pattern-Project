@@ -145,23 +145,20 @@ function MainMenu(props){
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const setProfilePictures = props.setProfilePictures
-    const isLoggedIn = props.isLoggedIn
-    const setCurrentPicture = props.setCurrentPicture
 
     useEffect(() => {
-        setCurrentPicture(0)
-        if (isLoggedIn){
+        props.setCurrentPicture(0)
+        if (props.isLoggedIn){
+            props.setCurrentPicture(props.save.profilePictureId)
             get(child(dbRef, `profilePicture`)).then((snapshot) => {
                 if (snapshot.exists()) {
                     setIsError(false);
                     setIsLoading(true)
                     setIsLoading(false);
-                    console.log(snapshot.val())
-                    return setProfilePictures(snapshot.val());
+                    return props.setProfilePictures(snapshot.val());
                 } else {
-                    console.log("No data available");
-                    return setProfilePictures(defaultCharacters);
+                    alert("No data available");
+                    return props.setProfilePictures(defaultCharacters);
                 }
             }).catch((error) => {
                     setIsLoading(false);
@@ -169,12 +166,12 @@ function MainMenu(props){
                     console.log(error);
                 });
         }else {
-           return setProfilePictures(defaultCharacters);
+           return props.setProfilePictures(defaultCharacters);
         }
-    }, [isLoggedIn, setCurrentPicture, setProfilePictures]);
+    }, [props, props.isLoggedIn, props.save.profilePictureId, props.setCurrentPicture, props.setProfilePictures]);
 
     const handleDonate = () => {
-        alert("You have donated 300$ but got nothing ")
+        alert("You have donated 300€ but got nothing ")
         props.setMoney(props.money-300)
     }
 
@@ -190,7 +187,6 @@ function MainMenu(props){
             switch (app) {
                 case "Amazon":
                     appURL = amazonBackground
-                    console.log("Amazon is chosen and not disabled")
                     setApp(<UnitedApp
                         app = {app}
                         appURL = {appURL}
@@ -208,7 +204,6 @@ function MainMenu(props){
                     break;
                 case "Gmail":
                     appURL = gmailBackground
-                    console.log("Gmail is chosen and not disabled")
                     setApp(<UnitedApp
                         app = {app}
                         appURL = {appURL}
@@ -226,7 +221,6 @@ function MainMenu(props){
                     break;
                 case "Meta":
                     appURL = metaBackground
-                    console.log("Meta is chosen and not disabled")
                     setApp(<UnitedApp
                         app = {app}
                         appURL = {appURL}
@@ -244,7 +238,6 @@ function MainMenu(props){
                     break;
                 case "CNN":
                     appURL = cnnBackground
-                    console.log("CNN is chosen and not disabled")
                     setApp(<UnitedApp
                         app = {app}
                         appURL = {appURL}
@@ -262,7 +255,6 @@ function MainMenu(props){
                     break;
                 case "Reddit":
                     appURL = redditBackground
-                    console.log("Reddit is chosen and not disabled")
                     setApp(<UnitedApp
                         app = {app}
                         appURL = {appURL}
@@ -287,7 +279,7 @@ function MainMenu(props){
 
     return (
         <>
-            <BackButton setInAppsMenu = {props.setInMenu}/>
+            {appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}
             <div>
                 {appChoice ? <IconsMenu
                     chosenApp = {chosenApp}

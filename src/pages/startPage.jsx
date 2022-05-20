@@ -83,7 +83,7 @@ return(<div>
             <p>You are going to enter a game related to <button style={styleForLink} onClick={linkToInfo}><strong>Dark Patterns</strong></button> - <em>bad</em> things all over the internet that try
                 to <em><strong>manipulate</strong></em> you with different <em>mechanics</em>.</p>
             <p>You will be given options on different situations - the choice is yours!
-            Please remember - you will only have <strong>3</strong> lives, otherwise - game over.</p>
+            Please remember - you will only have <strong>3</strong> lives, lose them - game over.</p>
             <p className="game-description">Good luck!</p>
             <p className="game-description">Kr,Development team.</p>
 

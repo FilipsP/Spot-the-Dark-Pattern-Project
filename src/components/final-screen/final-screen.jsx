@@ -10,12 +10,12 @@ const Stats = (props) => {
 
 
     return(
-        <div className='final-text'>
+        <li className='final-text'>
             <h1>{props.element.characterName}</h1>
             <p>Points: {props.element.pointsOwned}</p>
             <p>Lives: {props.element.livesOwned}</p>
             -------------------------
-        </div>
+        </li>
     )
 }
 
@@ -26,7 +26,7 @@ function FinalScreen(props){
 
 
     useEffect(() => {
-        saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture).catch(error => console.log('There was an error:' + error))
+        saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture)
         get(child(dbRef, '/save/')).then((snapshot) => {
             if (snapshot.exists()) {
                 setResults(snapshot.val());
@@ -63,7 +63,7 @@ function FinalScreen(props){
            </div>}
            <button className='share-button' onClick={()=>{alert("Thanks a lot for sharing")}}>Share statistics</button><br/>
            <a href="https://forms.gle/qwAwGdWHoxsYS36H6"><button className='share-button' >Leave your feedback</button></a>
-           <ul>{results.map(element => <Stats key = {element.id} element={element}/>)}</ul>
+           <ul>{results.map((element) =>  <Stats key={results.indexOf(element).toString()} element={element}/>)}</ul>
       </div>
    )
 }

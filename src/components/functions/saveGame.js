@@ -30,6 +30,6 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
             .then(()=>alert("Successfully saved"))
             .catch(()=>(console.error("Oops, error while saving")))
     }
-    console.error("Could not save")
+    return console.log("Log in to save progress")
 }
 export default saveGame

@@ -1,6 +1,7 @@
 import '../../css/settings.css';
 import saveGame from "../functions/saveGame";
 import clearSave from "../functions/clearSave";
+import Player from "./MusicPlayer";
 
 
 function Settings(props){
@@ -25,11 +26,14 @@ return(
             <div className="settings-container">
                     <div onClick={() => props.closeSettings(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Options</h1>
+
+                    <Player />
+
                     <div className="setting-element">
-                        <p className="setting-text" onClick={()=>alert("This feature will be added later")}>Theme</p>
+                        <p className="setting-text" >Theme</p>
                         <label className="switch">
                             <input type="checkbox"></input>
-                            <span className="slider round"></span>
+                            <span  onClick={()=>alert("This feature will be added later")} className="slider round"></span>
                         </label>
                     </div>
                 {props.isLoggedIn &&<div>

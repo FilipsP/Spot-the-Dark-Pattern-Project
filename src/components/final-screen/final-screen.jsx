@@ -26,7 +26,7 @@ function FinalScreen(props){
 
 
     useEffect(() => {
-        saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps).catch(error => console.log('There was an error:' + error))
+        saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture).catch(error => console.log('There was an error:' + error))
         get(child(dbRef, '/save/')).then((snapshot) => {
             if (snapshot.exists()) {
                 setResults(snapshot.val());
@@ -36,7 +36,8 @@ function FinalScreen(props){
         }).catch((error) => {
             console.error(error);
         });
-    },[props.disabledApps, props.isLoggedIn, props.save, props.userID])
+        // eslint-disable-next-line
+    },[])
 
 
 
@@ -62,7 +63,7 @@ function FinalScreen(props){
            </div>}
            <button className='share-button' onClick={()=>{alert("Thanks a lot for sharing")}}>Share statistics</button><br/>
            <a href="https://forms.gle/qwAwGdWHoxsYS36H6"><button className='share-button' >Leave your feedback</button></a>
-           <ul>{results.map(element => <Stats key = {results[element]} element={element}/>)}</ul>
+           <ul>{results.map(element => <Stats key = {element.id} element={element}/>)}</ul>
       </div>
    )
 }

@@ -1,9 +1,10 @@
 import {update} from "firebase/database";
 import {dbRef} from "../../firebase";
-import {newEventSave} from "../templates/saveTemplates";
+
 
 
 const clearSave = (id,save) => {
+
     const clearedSave = {
         characterName: save.characterName,
         spamMailNumber: 0,
@@ -12,13 +13,20 @@ const clearSave = (id,save) => {
         profilePictureId: save.profilePictureId
     };
 
+    const cleanEvents = {
+        Amazon: false,
+        CNN: false,
+        Gmail: false,
+        Instagram: false,
+        Meta: false,
+        Reddit: false
+    };
+
 
     const updates = {};
     updates['/save/' + id] = clearedSave;
-    updates['/eventSave/' + id] = newEventSave;
+    updates['/eventSave/' + id] = cleanEvents;
     return update(dbRef, updates)
-        .then(()=>alert("Successfully cleared"))
-        .catch(() => console.error("Oops, error while clearing save"))
 
 }
 export default clearSave

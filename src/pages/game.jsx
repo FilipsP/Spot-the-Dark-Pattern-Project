@@ -5,8 +5,7 @@ import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
 import {dbRef} from "../firebase";
 import FinalScreen from "../components/final-screen/final-screen";
-import Settings from "../components/settings";
-import {newEventSave} from "../components/templates/saveTemplates";
+import Settings from "../components/buttons/settings";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -19,7 +18,7 @@ const defaultSave = {
 function Game() {
 
 
-    const [userID,setUserID] = useState(null)
+    const [userID,setUserID] = useState("")
     const [save, setSave] = useState(defaultSave);
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [profiles, setProfiles] = useState([])
@@ -33,22 +32,27 @@ function Game() {
     const [gameOver, setGameOver] = useState(false)
     const [openSettings, setSettings] = useState(false);
 
-    useEffect(()=>{
+    const getEventSaves = () => {
         if (isLoggedIn){
-            get(child(dbRef, `eventSave/`+ userID)).then((snapshot) => {
+            get(child(dbRef, `/eventSave/`+ userID)).then((snapshot) => {
+                console.error("user id: "+ userID)
                 if (snapshot.exists()) {
                     setIsError(false);
                     setIsLoading(true);
-                    const disabledAppsTemp = snapshot.val()
-                    let disabledAppsToAdd=[];
-                    for (const app in disabledAppsTemp) {
-                        if (disabledAppsTemp[app] === true){
-                            disabledAppsToAdd.push(app.toString())
+                    setDisabledApps(snapshot.val())
+                    console.log(disabledApps)
+                    if (disabledApps){
+                        let disabledAppsToAdd=[];
+                        for (const app in disabledApps) {
+                            if (disabledApps[app] === true){
+                                disabledAppsToAdd.push(app)
+                            }
                         }
+                        console.log("list of disabled apps: "+disabledAppsToAdd)
+                        setDisabledApps(disabledAppsToAdd);
+                        setIsLoading(false);
                     }
-                    console.log(disabledAppsToAdd)
-                    setDisabledApps(disabledAppsToAdd);
-                    setIsLoading(false);
+
                 } else {
                     console.error("Failed to get saves for events");
                 }
@@ -56,8 +60,12 @@ function Game() {
                 console.error(error);
                 setIsError(true);
             });
-        }else {console.error("Log in to get event saves")}
-    },[isLoggedIn, userID])
+        }else {
+            console.error("Log in to get event saves")
+            setDisabledApps([]);
+        }
+        // eslint-disable-next-line
+    }
 
     const connectUser = (username , password, setOpenLogIn ) => {
         setIsLoading(true)
@@ -119,6 +127,7 @@ function Game() {
                 setSave(snapshot.val());
                 setIsLoading(false)
 
+
             } else {
                 console.log("No data available");
 
@@ -159,11 +168,20 @@ function Game() {
             profilePictureId: 0
         };
 
+        const freshEventSave = {
+            Amazon: false,
+            CNN: false,
+            Gmail: false,
+            Instagram: false,
+            Meta: false,
+            Reddit: false
+        }
+
 
         const updates = {};
         updates['/profile/' + username] = userData;
         updates['/save/' + newID] = newSave;
-        updates['/eventSave/' + newID] = newEventSave;
+        updates['/eventSave/' + newID] = freshEventSave;
         console.log("Successfully registered");
         closeRegister(false)
         return update(dbRef, updates)
@@ -176,12 +194,14 @@ function Game() {
             <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
             {openSettings && <Settings
                 getSave = {getSave}
+                getEventSaves={getEventSaves}
                 closeSettings={setSettings}
                 isLoggedIn={isLoggedIn}
                 userID = {userID}
                 save={save}
                 disabledApps={disabledApps}
                 currentProfilePicture={currentProfilePicture}
+
             />}
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>

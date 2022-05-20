@@ -1,6 +1,6 @@
-import '../css/settings.css';
-import saveGame from "./functions/saveGame";
-import clearSave from "./functions/clearSave";
+import '../../css/settings.css';
+import saveGame from "../functions/saveGame";
+import clearSave from "../functions/clearSave";
 
 
 function Settings(props){
@@ -13,6 +13,9 @@ function Settings(props){
     const handleClearSave = () => {
         clearSave(props.userID, props.save)
             .then(() => props.getSave(props.userID))
+            .then(() => props.getEventSaves())
+            .then(()=>alert("Successfully cleared"))
+            .catch(() => console.error("Oops, error while clearing save"))
     }
 
 

@@ -181,7 +181,6 @@ function MainMenu(props){
         let appURL;
         setApp(null)
         const appIsDisabled = props.disabledApps.includes(app)
-        console.log(appIsDisabled)
         if (appIsDisabled) {
             setApp(<h2>"{app}" was temporally disabled. Donate to unlock it.</h2>)
         }else {

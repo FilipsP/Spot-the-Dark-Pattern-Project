@@ -31,6 +31,13 @@ function Game() {
     const [disabledApps, setDisabledApps] = useState([]);
     const [gameOver, setGameOver] = useState(false)
     const [openSettings, setSettings] = useState(false);
+    const [on, toggle] = useState(false);
+
+
+    const toggleMusic = () => {
+      return toggle(!on)
+    }
+
 
     const getEventSaves = () => {
         if (isLoggedIn){
@@ -201,6 +208,8 @@ function Game() {
                 save={save}
                 disabledApps={disabledApps}
                 currentProfilePicture={currentProfilePicture}
+                musicOn = {on}
+                toggleMusic = {toggleMusic}
 
             />}
             <h1>{isError && "Error :("}</h1>

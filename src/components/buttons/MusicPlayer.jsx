@@ -1,21 +1,23 @@
 import useSound from 'use-sound';
 
 import music from "../../music/Morning-Routine-Lofi-Study-Music.mp3"
-import { useState} from "react";
 
-const Player = () => {
+const Player = (props) => {
     const [play, { stop }] = useSound(music);
-    const [on, toggle] = useState(false);
+
 
 
     const handleClick = () => {
-        if (on){
+        console.log(props.on)
+        if (props.on){
+            console.log("turned off")
+            props.toggleMusic()
             stop()
-            toggle(false)
         }
         else {
+            props.toggleMusic()
             play()
-            toggle(true)
+
         }
     }
     return (

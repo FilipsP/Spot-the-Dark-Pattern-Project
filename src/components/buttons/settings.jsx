@@ -27,7 +27,7 @@ return(
                     <div onClick={() => props.closeSettings(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Options</h1>
 
-                    <Player />
+                    <Player  toggleMusic = {props.toggleMusic} on = {props.musicOn}/>
 
                     <div className="setting-element">
                         <p className="setting-text" >Theme</p>

@@ -24,7 +24,7 @@ const Player = () => {
             <p className="setting-text" >Music</p>
             <label className="switch">
                 <input type="checkbox"></input>
-                <span onClick={()=>handleClick()} className="slider round"></span>
+                <span onClick={()=>handleClick()}  className="slider round"></span>
             </label>
         </div>
 

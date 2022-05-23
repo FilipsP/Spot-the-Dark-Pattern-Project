@@ -24,7 +24,7 @@ const AnswerButtons = (props) => {
         if (props.event[props.eventNumber +1]) {
             props.setEventNumber(props.eventNumber + 1)
         }else {
-            props.setMoney(props.money-99)
+            props.setMoney(props.money-question.money)
             const newDisabledApps = props.disabledApps
             newDisabledApps.push(props.app)
             console.log(newDisabledApps)

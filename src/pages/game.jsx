@@ -12,7 +12,8 @@ const defaultSave = {
     spamMailNumber: 0,
     livesOwned: 3,
     pointsOwned: 0,
-    profilePictureId: 3
+    profilePictureId: 3,
+    lastAnswerTime: ''
 }
 
 function Game() {
@@ -32,6 +33,17 @@ function Game() {
     const [gameOver, setGameOver] = useState(false)
     const [openSettings, setSettings] = useState(false);
     const [on, toggle] = useState(false);
+
+
+
+    const handleLastAnswerTiming = () => {
+        console.log("handleAnswerTiming")
+        const newSave = save;
+        newSave["lastAnswerTime"] = new Date().toLocaleString() + "";
+        console.log(newSave)
+        setSave(newSave)
+        console.log(save)
+    }
 
 
     const toggleMusic = () => {
@@ -211,6 +223,7 @@ function Game() {
                 musicOn = {on}
                 toggleMusic = {toggleMusic}
 
+
             />}
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
@@ -221,6 +234,7 @@ function Game() {
                     save={save}
                     isLoggedIn = {isLoggedIn}
                     disabledApps={disabledApps}
+
                 />:<div>
                 {inMenu ?
                 <div>
@@ -238,6 +252,7 @@ function Game() {
                     setMoney = {setMoney}
                     disabledApps={disabledApps}
                     setDisabledApps={setDisabledApps}
+                    handleLastAnswerTiming = {handleLastAnswerTiming}
                     />
                     </div>
                     :

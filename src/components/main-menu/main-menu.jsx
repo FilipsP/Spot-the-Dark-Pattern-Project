@@ -177,6 +177,26 @@ function MainMenu(props){
     }
 
 
+    const buildAppToShow = (app,appURL) => {
+        setApp(<UnitedApp
+            app = {app}
+            appURL = {appURL}
+            showApps = {setAppChoice}
+            hidePage = {setApp}
+            setSave = {props.setSave}
+            save = {props.save}
+            money = {props.money}
+            setMoney = {props.setMoney}
+            disabledApps={props.disabledApps}
+            setDisabledApps={props.setDisabledApps}
+            checkForFinish = {props.checkForFinish}
+            handleLastAnswerTiming = {props.handleLastAnswerTiming}
+        />)
+        setAppChoice(false)
+    }
+
+
+
     function chooseApp(app) {
         let appURL;
         setApp(null)
@@ -187,88 +207,23 @@ function MainMenu(props){
             switch (app) {
                 case "Amazon":
                     appURL = amazonBackground
-                    setApp(<UnitedApp
-                        app = {app}
-                        appURL = {appURL}
-                        showApps = {setAppChoice}
-                        hidePage = {setApp}
-                        setSave = {props.setSave}
-                        save = {props.save}
-                        money = {props.money}
-                        setMoney = {props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
-                    />)
-                    setAppChoice(false)
+                    buildAppToShow(app,appURL)
                     break;
                 case "Gmail":
                     appURL = gmailBackground
-                    setApp(<UnitedApp
-                        app = {app}
-                        appURL = {appURL}
-                        showApps = {setAppChoice}
-                        hidePage = {setApp}
-                        setSave = {props.setSave}
-                        save = {props.save}
-                        money = {props.money}
-                        setMoney = {props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
-                    />)
-                    setAppChoice(false)
+                    buildAppToShow(app,appURL)
                     break;
                 case "Meta":
                     appURL = metaBackground
-                    setApp(<UnitedApp
-                        app = {app}
-                        appURL = {appURL}
-                        showApps = {setAppChoice}
-                        hidePage = {setApp}
-                        setSave = {props.setSave}
-                        save = {props.save}
-                        money = {props.money}
-                        setMoney = {props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
-                    />)
-                    setAppChoice(false)
+                    buildAppToShow(app,appURL)
                     break;
                 case "CNN":
                     appURL = cnnBackground
-                    setApp(<UnitedApp
-                        app = {app}
-                        appURL = {appURL}
-                        showApps={setAppChoice}
-                        hidePage={setApp}
-                        setSave={props.setSave}
-                        save={props.save}
-                        money={props.money}
-                        setMoney={props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
-                    />)
-                    setAppChoice(false)
+                    buildAppToShow(app,appURL)
                     break;
                 case "Reddit":
                     appURL = redditBackground
-                    setApp(<UnitedApp
-                        app = {app}
-                        appURL = {appURL}
-                        showApps={setAppChoice}
-                        hidePage={setApp}
-                        setSave={props.setSave}
-                        save={props.save}
-                        money={props.money}
-                        setMoney={props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
-                    />)
-                    setAppChoice(false)
+                    buildAppToShow(app,appURL)
                     break;
                 default :
                     setAppChoice(true)
@@ -297,6 +252,7 @@ function MainMenu(props){
                     isError= {isError}
                     money = {props.money}
                     disabledApps = {props.disabledApps}
+                    lastAnswerTime = {props.lastAnswerTime}
                 />:chosenApp}
                 {appChoice?<div style={megaStyle}  className="modal-skip-btn" onClick={() => {handleDonate()}
                 }>{chosenApp}</div>:""}

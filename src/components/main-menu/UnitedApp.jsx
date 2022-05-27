@@ -81,6 +81,7 @@ function UnitedApp(props){
                             setMoney = {props.setMoney}
                             disabledApps={props.disabledApps}
                             setDisabledApps={props.setDisabledApps}
+                            handleLastAnswerTiming = {props.handleLastAnswerTiming}
 
                         />}
                 </div>

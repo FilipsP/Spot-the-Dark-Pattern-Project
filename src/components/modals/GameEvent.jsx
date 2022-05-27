@@ -24,6 +24,7 @@ function GameEvent(props){
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
                         checkForFinish = {props.checkForFinish}
+                        handleLastAnswerTiming = {props.handleLastAnswerTiming}
                     />
                 </div>
             </div>

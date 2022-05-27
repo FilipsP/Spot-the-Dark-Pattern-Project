@@ -12,6 +12,7 @@ const Stats = (props) => {
     return(
         <li className='final-text'>
             <h1>{props.element.characterName}</h1>
+            <p>Finished on: {props.element.lastAnswerTime}</p>
             <p>Points: {props.element.pointsOwned}</p>
             <p>Lives: {props.element.livesOwned}</p>
             -------------------------

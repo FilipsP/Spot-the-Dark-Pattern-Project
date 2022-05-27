@@ -22,6 +22,7 @@ function Avatar(props) {
                 </h1>
             </div>
             <div className='stats-container'>
+                {props.save.lastAnswerTime && <h3>Last answer on: {props.save.lastAnswerTime}</h3>}
                 <h2>Money : {props.money}€</h2>
                 <h2>Points : {props.save.pointsOwned}</h2>
                 <h2>Lives : {props.save.livesOwned}</h2>
@@ -77,6 +78,7 @@ function Character(props) {
                 online = {props.isLoggedIn}
                 defaultCharacters = {props.defaultCharacters}
                 money = {props.money}
+
             />}
             </div>
             {props.isError && <p className="register-text">No connection to server :(</p>}

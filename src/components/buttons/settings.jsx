@@ -7,7 +7,7 @@ import Player from "./MusicPlayer";
 function Settings(props){
 
     const handleSaveGame = () => {
-        saveGame(props.userID, props.save, props.isLoggedIn,props.disabledApps,props.currentProfilePicture)
+        saveGame(props.userID, props.save, props.isLoggedIn,props.disabledApps,props.currentProfilePicture,props.lastAnswerTime)
             .then(() => props.getSave(props.userID))
     }
 

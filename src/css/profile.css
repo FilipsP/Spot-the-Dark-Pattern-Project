@@ -1,6 +1,6 @@
 
 .profile-container{
-    background-color: rgb(220, 220, 220);
+    background: var(--secondary-bg-color);
     padding: 1rem;
     display: flex;
     flex-direction: column;

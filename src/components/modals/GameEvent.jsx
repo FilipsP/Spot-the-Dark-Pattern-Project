@@ -7,7 +7,7 @@ function GameEvent(props){
     return(
         <div>
             <div className='modal-background'>
-                <div className="form-container event-container">
+                <div className="form-container event-container modal">
                     <p className='event-text'>{props.event[props.eventNumber].description}</p>
                     <AnswerButtons
                         app = {props.app}

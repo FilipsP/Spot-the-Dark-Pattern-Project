@@ -21,7 +21,7 @@ function Login(props){
     return(
         <div>
             <div className="modal-background">
-                <div className="form-container">
+                <div className="form-container modal">
                     <div onClick={() => props.setOpenLogin(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Login</h1> 
                     
@@ -57,7 +57,7 @@ function Login(props){
                         type="submit"
                         id="login-submit"
                         onClick={() => {handleLogIn()}}
-                    >Finished<i className="bi bi-check-circle-fill"></i>
+                    >Login
                     </button>
 
                     <Skip setProgressNote = {props.setProgressNote}/>

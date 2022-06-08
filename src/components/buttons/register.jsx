@@ -31,7 +31,7 @@ function Register(props) {
     return(
         <div>
             <div className="modal-background">
-                <div className="form-container">
+                <div className="form-container modal">
                 
                     <div onClick={() => props.closeRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Register</h1> 
@@ -88,7 +88,7 @@ function Register(props) {
                         type="submit"
                         id="register-submit"
                         onClick={()=>{handleRegister()}}
-                    >Finished<i className="bi bi-check-circle-fill"></i>
+                    >Register
                     </button>
 
                     <Skip setProgressNote = {props.setProgressNote}/>

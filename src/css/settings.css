@@ -71,7 +71,6 @@ input:checked+.slider:before {
 
 .settings-container{
     width: 60%;
-    background-color: var(--main-bg-color);
     margin: 0 auto;
     padding: 1rem 2rem 1rem;
     border-radius: 10px;

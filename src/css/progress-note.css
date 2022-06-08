@@ -14,3 +14,16 @@
     display: flex;
     justify-content: center;
 }
+
+
+@media screen and (max-width: 700px){
+    .note-text{
+        font-size: 1.5rem;
+        width: 95%;
+    }
+
+    .note-submit{
+        font-size: 1.5rem;
+    }
+
+}

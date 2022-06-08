@@ -5,7 +5,7 @@ function ProgressNote(props){
     return (
         <div>
             <div className='modal-background'>
-                <div className='form-container'>
+                <div className='form-container modal'>
                     <h1 className='main-heading modal-heading'>Note</h1>
                     <p className='note-text'>Please note, that if you are not logged in, you can lose progress after closing the game.</p>
 

@@ -23,7 +23,7 @@ function Settings(props){
 return(
     <div>
         <div className="modal-background">
-            <div className="settings-container">
+            <div className="settings-container modal">
                     <div onClick={() => props.closeSettings(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Options</h1>
 

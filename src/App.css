@@ -2,10 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,600;0,700;1,600&display=swap');
 
 :root {
-    --main-bg-color: #40BD76;
+    /* --main-bg-color: #40BD76;
     --text-color: black;
+    */
+    --main-bg-color: linear-gradient(#141e30, #243b55);
+    --secondary-bg-color: linear-gradient(#304f72, #2c426b);
+    --text-color: #fff;
 }
 
+html{
+    scroll-behavior: smooth;
+}
 
 body{
     font-family: 'Open Sans', sans-serif;
@@ -24,7 +31,9 @@ html[data-theme='dark']{
 body{
     margin: 0;
     padding: 0;
-    background-color: var(--main-bg-color);
+    background: var(--main-bg-color);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text-color);
 }
 
@@ -137,3 +146,6 @@ a{
 }
 
 
+.modal{
+    background: var(--secondary-bg-color);
+}

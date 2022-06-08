@@ -6,18 +6,13 @@ import Skip from './buttons/Skip.jsx';
 import ProgressNote from "./modals/progressNote";
 
 
-
-
 function LoginRegister(props) {
 
     const [openRegister, setRegister] = useState(false);
     const [openLogin, setOpenLogin] = useState(false);
     const [openProgressNote, setProgressNote] = useState(false);
 
-
-
     return(<div>
-        
         <div className="container">
             <h1 className="main-heading">Please register or log in</h1>
             <div className="login-register-container">
@@ -51,7 +46,6 @@ function LoginRegister(props) {
             
             <Skip openProgressNote = {openProgressNote} setProgressNote = {setProgressNote}/>
             {openProgressNote && <ProgressNote showMenu = {props.showMenu} />}
-
 
         </div>
     </div>)

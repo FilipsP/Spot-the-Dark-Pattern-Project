@@ -149,6 +149,7 @@ function MainMenu(props){
     useEffect(() => {
         props.setCurrentPicture(0)
         if (props.isLoggedIn){
+            props.checkForFinish()
             props.setCurrentPicture(props.save.profilePictureId)
             get(child(dbRef, `profilePicture`)).then((snapshot) => {
                 if (snapshot.exists()) {
@@ -171,6 +172,8 @@ function MainMenu(props){
         // eslint-disable-next-line
     }, [props.isLoggedIn]);
 
+
+
     const handleDonate = () => {
         alert("You have donated 300€ but got nothing ")
         props.setMoney(props.money-300)
@@ -183,13 +186,12 @@ function MainMenu(props){
             appURL = {appURL}
             showApps = {setAppChoice}
             hidePage = {setApp}
-            setSave = {props.setSave}
+            handleSaveUpdate = {props.handleSaveUpdate}
             save = {props.save}
             money = {props.money}
             setMoney = {props.setMoney}
             disabledApps={props.disabledApps}
             setDisabledApps={props.setDisabledApps}
-            checkForFinish = {props.checkForFinish}
             handleLastAnswerTiming = {props.handleLastAnswerTiming}
         />)
         setAppChoice(false)

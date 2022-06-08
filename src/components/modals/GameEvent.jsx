@@ -14,7 +14,7 @@ function GameEvent(props){
                         showApps = {props.showApps}
                         hidePage = {props.hidePage}
                         closeEvent = {props.closeEvent}
-                        setSave = {props.setSave}
+                        handleSaveUpdate = {props.handleSaveUpdate}
                         save = {props.save}
                         event = {props.event}
                         eventNumber = {props.eventNumber}
@@ -23,7 +23,6 @@ function GameEvent(props){
                         setMoney = {props.setMoney}
                         disabledApps={props.disabledApps}
                         setDisabledApps={props.setDisabledApps}
-                        checkForFinish = {props.checkForFinish}
                         handleLastAnswerTiming = {props.handleLastAnswerTiming}
                     />
                 </div>

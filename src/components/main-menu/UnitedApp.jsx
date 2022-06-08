@@ -72,7 +72,7 @@ function UnitedApp(props){
                             closeEvent={setOpenEvent}
                             showApps = {props.showApps}
                             hidePage = {props.hidePage}
-                            setSave = {props.setSave}
+                            handleSaveUpdate = {props.handleSaveUpdate}
                             save = {props.save}
                             event = {event}
                             eventNumber = {eventNumber}

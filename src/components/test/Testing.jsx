@@ -122,6 +122,7 @@ function Testing() {
                     lives =  {user.lives}
                     points = {user.points}
                     pointsGiven = {question.pointsGiven}
+
                 /> {/*info from "DB"(↓const question↓) goes to the button menu(ButtonControl)↑
                     There it goes to the question description and buttons */}
                 <CallPictures />

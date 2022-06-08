@@ -15,7 +15,7 @@ const AnswerButtons = (props) => {
         const newSave = props.save
         newSave["spamMailNumber"] = props.save.spamMailNumber + 1
         newSave["livesOwned"] = props.save.livesOwned - question.lives
-        props.setSave(newSave)
+        props.handleSaveUpdate(newSave)
         alert("Poor choice...")
         props.handleLastAnswerTiming()
         if (props.event[props.eventNumber +1]) {
@@ -36,7 +36,7 @@ const AnswerButtons = (props) => {
         newSave["pointsOwned"] = props.save.pointsOwned + question.points
         alert("Good choice ☺")
         props.handleLastAnswerTiming()
-        props.setSave(newSave)
+        props.handleSaveUpdate(newSave)
         const newDisabledApps = props.disabledApps
         newDisabledApps.push(props.app)
         console.log(newDisabledApps)

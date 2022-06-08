@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useCallback, useLayoutEffect, useState} from "react";
 import LoginRegister from "../components/login-register";
 import MainMenu from "../components/main-menu/main-menu";
 import { child, update,get } from "firebase/database";
@@ -35,11 +35,29 @@ function Game() {
     const [on, toggle] = useState(false);
 
 
+    const handleSaveUpdate = (newSave) => {
+        setSave(newSave)
+        checkForFinish()
+    }
+
+
+
+    const checkForFinish = () => {
+        console.log("checking for finish...")
+        if (save.livesOwned < 1 || save.pointsOwned > 5 ) {
+            console.log("finish!")
+            return setGameOver(true)
+        }
+        return setGameOver(false)
+    }
+
+
+
 
     const handleLastAnswerTiming = () => {
         console.log("handleAnswerTiming")
         const newSave = save;
-        newSave["lastAnswerTime"] = new Date().toLocaleString() + "";
+        newSave["lastAnswerTime"] = new Date().toLocaleString('EST', { timeZone: 'UTC' }) + "";
         console.log(newSave)
         setSave(newSave)
         console.log(save)
@@ -126,14 +144,14 @@ function Game() {
         });
     },[isLoading])
 
-    useEffect(() => {
-        console.log("checking for finish...")
-        if (save.livesOwned < 1 || save.pointsOwned > 5 ) {
-            console.log("finish!")
-            return setGameOver(true)
-        }
-        return setGameOver(false)
-    },[save.livesOwned, save.pointsOwned])
+    // useEffect(() => {
+    //     console.log("checking for finish...")
+    //     if (save.livesOwned < 1 || save.pointsOwned > 5 ) {
+    //         console.log("finish!")
+    //         return setGameOver(true)
+    //     }
+    //     return setGameOver(false)
+    // },[save.livesOwned, save.pointsOwned])
 
 
     const getSave = (id) => {
@@ -243,7 +261,7 @@ function Game() {
                     setLoggedIn = {setLoggedIn}
                     isLoggedIn = {isLoggedIn}
                     save = {save}
-                    setSave = {setSave}
+                    handleSaveUpdate = {handleSaveUpdate}
                     currentProfilePicture = {currentProfilePicture}
                     setCurrentPicture = {setCurrentPicture}
                     profilePictures = {profilePictures}
@@ -253,6 +271,8 @@ function Game() {
                     disabledApps={disabledApps}
                     setDisabledApps={setDisabledApps}
                     handleLastAnswerTiming = {handleLastAnswerTiming}
+                    checkForFinish = {checkForFinish}
+
                     />
                     </div>
                     :

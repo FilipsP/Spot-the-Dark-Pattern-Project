@@ -1,12 +1,15 @@
 import "../css/start-page.css"
 import { Link } from 'react-router-dom';
-import { useState} from "react";
+import {useState} from "react";
 
-function MoreInfo() {
+function MoreInfo(props) {
+
+
+
     return(
-        <div>
+        <div id = "info">
             <div>
-                <h2>Privacy Zuckering</h2>
+                <h2 >Privacy Zuckering</h2>
                 <p>'Privacy Zuckering' is a practice that tricks the user into sharing more information than they intended to.
                     Users may give up this information unknowingly or through practices that obscure or delay the option to
                     opt out of sharing your private information. California has approved regulations that limit this practice
@@ -59,6 +62,7 @@ function StartPage() {
 
     const [showMoreInfo, setShowMoreInfo] = useState(false);
 
+
     const styleForLink = {
         fontSize : "25px",
         border: "none",
@@ -72,15 +76,19 @@ function StartPage() {
         setShowMoreInfo(false)
         }else{
             setShowMoreInfo(true)
-        }
 
+        }
     }
+
+
+
+
 
 return(<div>
     <div className="container" >
         <h1 className="main-heading">Spot the Dark Pattern</h1>
         <div className="game-description game-description-container">Hello Friend!<br></br>
-            <p>You are going to enter a game related to <button style={styleForLink} onClick={linkToInfo}><strong>Dark Patterns</strong></button> - <em>bad</em> things all over the internet that try
+            <p>You are going to enter a game related to <button style={styleForLink} onClick={linkToInfo}><strong><a href='#info'>Dark Patterns</a></strong></button> - <em>bad</em> things all over the internet that try
                 to <em><strong>manipulate</strong></em> you with different <em>mechanics</em>.</p>
             <p>You will be given options on different situations - the choice is yours!
             Please remember - you will only have <strong>3</strong> lives, lose them - game over.</p>
@@ -89,9 +97,9 @@ return(<div>
 
         </div>
         <Link to="/game">
-            <button className="start-game-btn">Start game</button>
+            <button  className="start-game-btn">Start game</button>
         </Link>
-        {showMoreInfo && <MoreInfo/>}
+        {showMoreInfo && <MoreInfo />}
 
     </div>
     

@@ -1,6 +1,6 @@
 
 .login-register-container {
-    width: 50%;
+    max-width: 45%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

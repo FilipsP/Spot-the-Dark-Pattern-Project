@@ -1,0 +1,20 @@
+.sidebar{
+   position: fixed;
+   top: 10%;
+   width: 20%;
+   height: 80%;
+   background:var(--secondary-bg-color);
+
+}
+
+.left-aligned{
+   left: 0;
+   border-radius: 0 1rem 1rem 0;
+}
+
+.right-aligned{
+   right: 0;
+   border-radius: 1rem 0 0 1rem;
+}
+
+

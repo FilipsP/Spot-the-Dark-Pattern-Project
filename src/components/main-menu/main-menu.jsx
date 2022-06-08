@@ -1,5 +1,5 @@
 import "../../css/main-menu.css";
-import "../../css/pc.css";
+import "../../css/sidebar.css";
 import "../../css/profile.css";
 import amazon_logo from '../../img/amazon_logo.png';
 import meta_logo from '../../img/meta_logo.png';
@@ -23,6 +23,7 @@ import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
+import Settings from '../buttons/settings';
 
 //import {Character, Avatar} from ... if export function...
 //import Character from ... if export default...
@@ -66,7 +67,6 @@ const megaStyle = {
 
 function IconsMenu(props) {
 
-
     return(
         <div>
             <div className='container'>
@@ -85,8 +85,46 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
-                <div className='desktop right-aligned'>
-                    <div className='pc-content'>
+                {/* New character sidebar */}
+                <div className='sidebar left-aligned'>
+                    <div className='profile-picture-container'>
+                        <img className='profile-picture' 
+                            src={casual}
+                            alt="profile picture"
+                        />
+                        <h1 className='profile-name'>
+                            Username
+                        </h1>
+                        <div className='stats-container'>
+                            <h2>Money: ...€</h2>
+                            <h2>Points: ...</h2>
+                            <h2>Lives: ...</h2>
+                        </div>
+                    </div>
+                </div>
+                {/* New settings sidebar */}
+                <div className='sidebar right-aligned'>
+                    <div className='settings-container'>
+                        <h1>Options</h1>
+                        <div className="setting-element">
+                        <p className="setting-text" >Theme</p>
+                        <label className="switch">
+                            <input type="checkbox"></input>
+                            <span  onClick={()=>alert("This feature will be added later")} className="slider round"></span>
+                        </label>
+                    </div>
+                    <div className="setting-element">
+                            <p className="setting-text">Save progress</p>
+                            <button className="option-btn">Save</button>
+                        </div>
+                        <div className="setting-element">
+                            <p className="setting-text">Clear saves</p>
+                            <button className="option-btn">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+                    <div className='icon-frame'>
                         <div className='icon-grid'>
                             <div><img
                                 className='icon'
@@ -130,7 +168,6 @@ function IconsMenu(props) {
                                 onClick={() => {props.chooseApp("CNN")}}>
                             </img></div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -166,7 +203,7 @@ function MainMenu(props){
                     console.log(error);
                 });
         }else {
-           return props.setProfilePictures(defaultCharacters);
+            return props.setProfilePictures(defaultCharacters);
         }
         // eslint-disable-next-line
     }, [props.isLoggedIn]);

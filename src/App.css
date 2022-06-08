@@ -57,10 +57,12 @@ body{
     cursor: pointer;
 }
 
+/*
 .settings-btn:hover{
     transform: scale(1.1);
     transition: .2s ease-in-out;
 }
+*/
 
 a{
     color: var(--text-color);
@@ -131,21 +133,32 @@ a{
     left: 0;
 }
 
-.back-btn-text{
-    font-size: 1.5rem;
-    margin: 0;
-}
 
 .back-btn{
     font-size: 2.5rem;
+    width: 3rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
 }
 
-.back-btn-container:hover{
+/*
+.back-btn:hover{
     cursor: pointer;
     color: #616562;
 }
+*/
 
+i:hover{
+    cursor: pointer;
+    color: #aeaeae;
+}
 
 .modal{
     background: var(--secondary-bg-color);
+}
+
+.d-none{
+    display: none;
 }

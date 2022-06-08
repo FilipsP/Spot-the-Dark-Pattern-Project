@@ -9,8 +9,8 @@
 
 
 .profile-picture{
-    width: 15rem;
-    height: 15rem;
+    width: 12rem;
+    height: 12rem;
     object-fit: cover;
     max-width: 100%;
     border-radius: 10px;
@@ -18,15 +18,11 @@
     align-items: center;
 }
 
-.stats-container{
-    display: block;
-    width: 100%;
-    float: left;
-}
 
 .profile-picture-container{
     width: 100%;
     margin: 0 auto;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -23,31 +23,32 @@ import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
-import Settings from '../buttons/settings';
+import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
+
 
 //import {Character, Avatar} from ... if export function...
 //import Character from ... if export default...
 
 
-
-const defaultCharacters = [{
-    username : "Anonymous",
-    path  : profile_pic,
-    description : "Its me"
-},
-    {username: "Casual",
+const defaultCharacters = [
+    {
+        username : "Anonymous",
+        path  : profile_pic,
+        description : "Its me"
+    }, {
+        username: "Casual",
         path : casual,
         description: "casual gamer"
-    },
-    {username: "MinTTr3Sss",
+    }, {
+        username: "MinTTr3Sss",
         path : cool,
         description: "cool logo"
-    },
-    {username: "ILoveAnime",
+    }, {
+        username: "ILoveAnime",
         path : wtf,
         description: "wtf"
-    },
-    {username: "Mares",
+    }, {
+        username: "Mares",
         path : guy,
         description: "Young Mares"
     }]
@@ -74,8 +75,8 @@ function IconsMenu(props) {
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}
                     save = {props.save}
-                    render = {props.render}
-                    setRender = {props.setRender}
+                    // render = {props.render}
+                    // setRender = {props.setRender}
                     currentProfilePicture = {props.currentProfilePicture}
                     setCurrentPicture = {props.setCurrentPicture}
                     profilePictures = {props.profilePictures}
@@ -85,45 +86,7 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
-                {/* New character sidebar */}
-                <div className='sidebar left-aligned'>
-                    <div className='profile-picture-container'>
-                        <img className='profile-picture' 
-                            src={casual}
-                            alt="profile picture"
-                        />
-                        <h1 className='profile-name'>
-                            Username
-                        </h1>
-                        <div className='stats-container'>
-                            <h2>Money: ...€</h2>
-                            <h2>Points: ...</h2>
-                            <h2>Lives: ...</h2>
-                        </div>
-                    </div>
-                </div>
-                {/* New settings sidebar */}
-                <div className='sidebar right-aligned'>
-                    <div className='settings-container'>
-                        <h1>Options</h1>
-                        <div className="setting-element">
-                        <p className="setting-text" >Theme</p>
-                        <label className="switch">
-                            <input type="checkbox option-btn"></input>
-                            <span  onClick={()=>alert("This feature will be added later")} className="slider round"></span>
-                        </label>
-                    </div>
-                    <div className="setting-element">
-                            <p className="setting-text">Save progress</p>
-                            <button className="option-btn">Save</button>
-                        </div>
-                        <div className="setting-element">
-                            <p className="setting-text">Clear saves</p>
-                            <button className="option-btn">Clear</button>
-                        </div>
-
-                    </div>
-                </div>
+                <SettingsSideBar/>
                     <div className='icon-frame'>
                         <div className='icon-grid'>
                             <div><img
@@ -176,7 +139,7 @@ function IconsMenu(props) {
 
 function MainMenu(props){
 
-    const [render, setRender] = useState(true);
+    // const [render, setRender] = useState(true);
     const [appChoice, setAppChoice] = useState(true);
     const [chosenApp, setApp] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -281,8 +244,8 @@ function MainMenu(props){
                     setLoggedIn = {props.setLoggedIn}
                     chooseApp = {chooseApp}
                     save = {props.save}
-                    render = {render}
-                    setRender = {setRender}
+                    // render = {render}
+                    // setRender = {setRender}
                     currentProfilePicture = {props.currentProfilePicture}
                     setCurrentPicture = {props.setCurrentPicture}
                     profilePictures = {props.profilePictures}

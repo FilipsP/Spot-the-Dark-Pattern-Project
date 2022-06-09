@@ -1,4 +1,4 @@
-import {useCallback, useLayoutEffect, useState} from "react";
+import { useState} from "react";
 import LoginRegister from "../components/login-register";
 import MainMenu from "../components/main-menu/main-menu";
 import { child, update,get } from "firebase/database";
@@ -6,6 +6,11 @@ import {useEffect} from "react";
 import {dbRef} from "../firebase";
 import FinalScreen from "../components/final-screen/final-screen";
 import Settings from "../components/buttons/settings";
+import profile_pic from "../img/profile_pic.png";
+import casual from "../img/avatars/casual.png";
+import cool from "../img/avatars/cool.jpg";
+import wtf from "../img/avatars/wtf.png";
+import guy from "../img/avatars/guy.jpg";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -27,12 +32,34 @@ function Game() {
     const [isError, setIsError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [currentProfilePicture, setCurrentPicture] = useState(0);
-    const [profilePictures, setProfilePictures] = useState([]);
+    const [profilePictures, setProfilePictures] = useState([
+        {
+            username : "Anonymous",
+            path  : profile_pic,
+            description : "Its me"
+        }, {
+            username: "Casual",
+            path : casual,
+            description: "casual gamer"
+        }, {
+            username: "MinTTr3Sss",
+            path : cool,
+            description: "cool logo"
+        }, {
+            username: "ILoveAnime",
+            path : wtf,
+            description: "wtf"
+        }, {
+            username: "Mares",
+            path : guy,
+            description: "Young Mares"
+        }]);
     const [money, setMoney] = useState(999);
     const [disabledApps, setDisabledApps] = useState([]);
     const [gameOver, setGameOver] = useState(false)
     const [openSettings, setSettings] = useState(false);
     const [on, toggle] = useState(false);
+
 
 
     const handleSaveUpdate = (newSave) => {
@@ -228,7 +255,7 @@ function Game() {
 
     return(
         <div>
-            <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
+            {inMenu&&<div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>}
             {openSettings && <Settings
                 getSave = {getSave}
                 getEventSaves={getEventSaves}
@@ -240,7 +267,6 @@ function Game() {
                 currentProfilePicture={currentProfilePicture}
                 musicOn = {on}
                 toggleMusic = {toggleMusic}
-
 
             />}
             <h1>{isError && "Error :("}</h1>

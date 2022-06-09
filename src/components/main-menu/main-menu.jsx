@@ -24,6 +24,10 @@ import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
 import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
+import {
+    CSSTransition,
+    TransitionGroup,
+    } from 'react-transition-group';
 
 
 //import {Character, Avatar} from ... if export function...
@@ -68,11 +72,31 @@ const megaStyle = {
 
 function IconsMenu(props) {
 
+    const [profileStyle, setProfileStyle] = useState("sidebar profile-sidebar");
+    const [profileOpened, setProfileOpened] = useState(false);
+    
+    function showProfile(){
+        if(profileOpened){
+            setProfileStyle("sidebar profile-sidebar");
+            setProfileOpened(false);
+        }else{
+            setProfileStyle("sidebar profile-sidebar show-sidebar");
+            setProfileOpened(true);
+        }
+    }   
+
     return(
         <div>
             <div className='container'>
-            <div><i class='bi bi-person-circle icon-btn profile-btn'></i></div>
+                <div onClick={() => {showProfile()}}><i class='bi bi-person-circle icon-btn profile-btn'></i></div>
+                <TransitionGroup>
+                <CSSTransition
+
+                    timeout={500}
+                    classNames="animated-profile-sidebar"
+                >
                 <Character
+                    profileStyle={profileStyle}
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}
                     save = {props.save}
@@ -87,6 +111,9 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
+                </CSSTransition>
+                </TransitionGroup>
+            
                 <SettingsSideBar/>
                     <div className='icon-frame'>
                         <div className='icon-grid'>

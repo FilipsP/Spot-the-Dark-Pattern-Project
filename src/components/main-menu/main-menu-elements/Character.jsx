@@ -2,6 +2,7 @@ import React from "react";
 import '../../../css/profile.css'
 
 
+
 // function Avatar(props) {
 //
 //     return(
@@ -74,7 +75,8 @@ function Character(props) {
 
 
     return(
-            <div className='sidebar profile-sidebar'>
+           
+            <div className={props.profileStyle}>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
@@ -118,8 +120,9 @@ function Character(props) {
                 : <p className="register-text">You are not logged in<br/>
                     Log in to save progress</p>
             }
-            {props.isError && <p className="register-text">No connection to server :(</p>}
+            {props.isError && <p className="register-text">No connection to server :</p>}
         </div>
+        
 
         )
 }

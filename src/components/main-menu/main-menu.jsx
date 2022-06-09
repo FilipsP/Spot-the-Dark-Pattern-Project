@@ -24,6 +24,7 @@ import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
 import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
+import AlertModal from "../modals/AlertModal";
 
 
 //import {Character, Avatar} from ... if export function...
@@ -61,9 +62,6 @@ const allowed = {
     cursor: "pointer"
 }
 
-const megaStyle = {
-    margin: "200px 250px 100px 300px"
-}
 
 
 function IconsMenu(props) {
@@ -71,7 +69,7 @@ function IconsMenu(props) {
     return(
         <div>
             <div className='container'>
-            <div><i class='bi bi-person-circle icon-btn profile-btn'></i></div>
+            <div><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
                 <Character
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}
@@ -87,7 +85,11 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
-                <SettingsSideBar/>
+                <SettingsSideBar
+                    isLoggedIn = {props.isLoggedIn}
+                    musicOn = {props.on}
+                    toggleMusic = {props.toggleMusic}
+                />
                     <div className='icon-frame'>
                         <div className='icon-grid'>
                             <div><img
@@ -205,7 +207,7 @@ function MainMenu(props){
         setApp(null)
         const appIsDisabled = props.disabledApps.includes(app)
         if (appIsDisabled) {
-            setApp(<h2>"{app}" was temporally disabled. Donate to unlock it.</h2>)
+            setApp(<AlertModal closeAlert = {closeAlert} content = {app + " was temporally disabled. Donate to unlock it."}/>)
         }else {
             switch (app) {
                 case "Amazon":
@@ -235,6 +237,11 @@ function MainMenu(props){
         }
     }
 
+    const closeAlert = () => {
+        handleDonate()
+        setApp(null)
+    }
+
     return (
         <div>
             {appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}
@@ -256,9 +263,10 @@ function MainMenu(props){
                     money = {props.money}
                     disabledApps = {props.disabledApps}
                     lastAnswerTime = {props.lastAnswerTime}
+                    musicOn = {props.on}
+                    toggleMusic = {props.toggleMusic}
                 />:chosenApp}
-                {appChoice?<div style={megaStyle}  className="modal-skip-btn" onClick={() => {handleDonate()}
-                }>{chosenApp}</div>:""}
+                {appChoice?<div>{chosenApp}</div>:""}
             </div>
         </div>
     )

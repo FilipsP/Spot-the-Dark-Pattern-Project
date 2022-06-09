@@ -28,6 +28,7 @@ import {
     CSSTransition,
     TransitionGroup,
     } from 'react-transition-group';
+import AlertModal from "../modals/AlertModal";
 
 
 //import {Character, Avatar} from ... if export function...
@@ -85,7 +86,7 @@ function IconsMenu(props) {
     return(
         <div>
             <div className='container'>
-                <div onClick={() => {showProfile()}}><i class='bi bi-person-circle icon-btn profile-btn'></i></div>
+                <div onClick={() => {showProfile()}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
                 <TransitionGroup>
                 <CSSTransition
 
@@ -254,7 +255,8 @@ function MainMenu(props){
                     break;
                 default :
                     setAppChoice(true)
-                    setApp(<h2>Your choice "{app}" is <strong>not</strong> Included in Prototype</h2>)
+                    setApp(<AlertModal closeAlert = {closeAlert} content = {app + " is available in ultimate edition. Upgrade to unlock it."}/>)
+
             }
         }
     }

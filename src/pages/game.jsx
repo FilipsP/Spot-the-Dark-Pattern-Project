@@ -255,7 +255,7 @@ function Game() {
 
     return(
         <div>
-            {inMenu&&<div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>}
+            {inMenu&&<div onClick={()=>{setSettings(true)}}><i className="bi bi-gear icon-btn settings-btn"></i></div>}
             {openSettings && <Settings
                 getSave = {getSave}
                 getEventSaves={getEventSaves}

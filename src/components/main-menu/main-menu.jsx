@@ -71,6 +71,7 @@ function IconsMenu(props) {
     return(
         <div>
             <div className='container'>
+            <div><i class='bi bi-person-circle icon-btn profile-btn'></i></div>
                 <Character
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}

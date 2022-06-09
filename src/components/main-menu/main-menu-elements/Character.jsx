@@ -5,7 +5,7 @@ import '../../../css/profile.css'
 // function Avatar(props) {
 //
 //     return(
-//         <div className='sidebar left-aligned'>
+//         <div className='sidebar profile-sidebar'>
 //             <div className='profile-picture-container'>
 //                 <img className='profile-picture'
 //                      src={props.profilePictures[props.currentProfilePicture].path}
@@ -74,11 +74,11 @@ function Character(props) {
 
 
     return(
-            <div className='sidebar left-aligned'>
+            <div className='sidebar profile-sidebar'>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
-                         src={props.profilePictures[props.currentProfilePicture].path}
-                         alt={props.profilePictures[props.currentProfilePicture].description}
+                        src={props.profilePictures[props.currentProfilePicture].path}
+                        alt={props.profilePictures[props.currentProfilePicture].description}
                     />
                     <div className='picture-btn-container'>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-chevron-left"></i></button>

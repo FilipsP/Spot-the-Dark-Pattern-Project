@@ -5,7 +5,7 @@ const BackButton = (props) => {
     }
     return(
             <div  onClick={() => {handleBack()}}>
-                <i className="bi bi-arrow-left-circle back-btn"></i>
+                <i className="bi bi-arrow-left-circle icon-btn back-btn"></i>
             </div>
     )
 }

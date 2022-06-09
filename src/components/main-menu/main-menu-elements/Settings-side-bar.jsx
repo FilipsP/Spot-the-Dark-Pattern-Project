@@ -1,7 +1,7 @@
 
 function SettingsSideBar() {
     return(
-        <div className='sidebar right-aligned'>
+        <div className='sidebar settings-sidebar'>
             <div className='settings-container'>
                 <h1>Options</h1>
                 <div className="setting-element">

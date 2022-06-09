@@ -48,14 +48,24 @@ body{
     font-size: 3.5rem;
 }
 
-.settings-btn{
-    display: none;
+.icon-btn{
     position: absolute;
-    right: 0;
     top: 0;
     margin: 1rem;
     font-size: 2.5rem;
     cursor: pointer;
+
+}
+
+.settings-btn{
+    display: none;
+    right: 0;
+}
+
+.profile-btn{
+    display:none;
+    left: 0;
+    margin-left: 4rem;
 }
 
 /*
@@ -136,10 +146,7 @@ a{
 
 
 .back-btn{
-    font-size: 2.5rem;
     width: 3rem;
-    position: absolute;
-    top: 0;
     left: 0;
     margin: 1rem;
 }

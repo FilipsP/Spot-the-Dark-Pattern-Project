@@ -5,15 +5,16 @@
    height: 80%;
    background:var(--secondary-bg-color);
    max-width: 30rem;
+   translate: transform 300ms ease-out;
 
 }
 
-.left-aligned{
+.profile-sidebar{
    left: 0;
    border-radius: 0 1rem 1rem 0;
 }
 
-.right-aligned{
+.settings-sidebar{
    right: 0;
    border-radius: 1rem 0 0 1rem;
 }

@@ -109,7 +109,7 @@ function IconsMenu(props) {
                         <div className="setting-element">
                         <p className="setting-text" >Theme</p>
                         <label className="switch">
-                            <input type="checkbox"></input>
+                            <input type="checkbox option-btn"></input>
                             <span  onClick={()=>alert("This feature will be added later")} className="slider round"></span>
                         </label>
                     </div>
@@ -272,7 +272,7 @@ function MainMenu(props){
     }
 
     return (
-        <>
+        <div>
             {appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}
             <div>
                 {appChoice ? <IconsMenu
@@ -296,7 +296,7 @@ function MainMenu(props){
                 {appChoice?<div style={megaStyle}  className="modal-skip-btn" onClick={() => {handleDonate()}
                 }>{chosenApp}</div>:""}
             </div>
-        </>
+        </div>
     )
 }
 

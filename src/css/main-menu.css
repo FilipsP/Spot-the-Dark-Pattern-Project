@@ -65,6 +65,16 @@
     }
 }
 
+@media screen and (max-width: 1000px){
+    .sidebar{
+        display: none;
+    }
+    .settings-btn{
+        display: block;
+    }
+}
+
+
 @media screen and (max-width: 950px){
     .icon-frame{
         max-width: 60%;
@@ -89,4 +99,3 @@
         width: 7rem;
     }
 }
-    

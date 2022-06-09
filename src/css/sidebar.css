@@ -4,6 +4,7 @@
    width: 20%;
    height: 80%;
    background:var(--secondary-bg-color);
+   max-width: 30rem;
 
 }
 

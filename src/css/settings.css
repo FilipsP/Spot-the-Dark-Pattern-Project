@@ -70,33 +70,40 @@ input:checked+.slider:before {
 }
 
 .settings-container{
-    width: 60%;
+    width: 90%;
     margin: 0 auto;
-    padding: 1rem 2rem 1rem;
-    border-radius: 10px;
 }
 
 .option-btn{
-    height: 4rem;
+    height: 3rem;
     font-size: 1.5rem;
-    border: solid;
     border-radius: 10px;
     width: 30%;
+    border: none;
     float: right;
 }
 
 .option-btn:hover{
     cursor: pointer;
-    background-color: rgb(231, 231, 231);
+    background-color: rgb(200, 200, 200);
 }
 
 .setting-text{
-    width: 70%;
+    width: 50%;
     float: left;
+    font-size: 1.5rem;
 }
 
 
 .settings-heading{
     margin: 0;
     padding-bottom: 2rem;
+}
+
+.setting-element{
+    position: relative;
+}
+
+.option-btn{
+    margin: auto 0;
 }

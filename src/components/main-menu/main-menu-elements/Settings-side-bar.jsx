@@ -1,9 +1,11 @@
+import Player from "../../buttons/MusicPlayer";
 
-function SettingsSideBar() {
+function SettingsSideBar(props) {
     return(
         <div className='sidebar settings-sidebar'>
             <div className='settings-container'>
                 <h1>Options</h1>
+                <Player  toggleMusic = {props.toggleMusic} on = {props.musicOn}/>
                 <div className="setting-element">
                     <p className="setting-text" >Theme</p>
                     <label className="switch">
@@ -11,14 +13,17 @@ function SettingsSideBar() {
                         <span  onClick={()=>alert("This feature will be added later")} className="slider round"></span>
                     </label>
                 </div>
-                <div className="setting-element">
-                    <p className="setting-text">Save progress</p>
-                    <button className="option-btn">Save</button>
-                </div>
-                <div className="setting-element">
-                    <p className="setting-text">Clear saves</p>
-                    <button className="option-btn">Clear</button>
-                </div>
+                {props.isLoggedIn &&
+                <>
+                    <div className="setting-element">
+                        <p className="setting-text">Save progress</p>
+                        <button className="option-btn">Save</button>
+                    </div>
+                    <div className="setting-element">
+                        <p className="setting-text">Clear saves</p>
+                        <button className="option-btn">Clear</button>
+                    </div>
+                </>}
 
             </div>
         </div>

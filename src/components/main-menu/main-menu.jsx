@@ -65,9 +65,6 @@ const allowed = {
     cursor: "pointer"
 }
 
-const megaStyle = {
-    margin: "200px 250px 100px 300px"
-}
 
 
 function IconsMenu(props) {
@@ -232,7 +229,7 @@ function MainMenu(props){
         setApp(null)
         const appIsDisabled = props.disabledApps.includes(app)
         if (appIsDisabled) {
-            setApp(<h2>"{app}" was temporally disabled. Donate to unlock it.</h2>)
+            setApp(<AlertModal closeAlert = {closeAlert} content = {app + " was temporally disabled. Donate to unlock it."}/>)
         }else {
             switch (app) {
                 case "Amazon":
@@ -262,6 +259,11 @@ function MainMenu(props){
         }
     }
 
+    const closeAlert = () => {
+        handleDonate()
+        setApp(null)
+    }
+
     return (
         <div>
             {appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}
@@ -283,9 +285,10 @@ function MainMenu(props){
                     money = {props.money}
                     disabledApps = {props.disabledApps}
                     lastAnswerTime = {props.lastAnswerTime}
+                    musicOn = {props.on}
+                    toggleMusic = {props.toggleMusic}
                 />:chosenApp}
-                {appChoice?<div style={megaStyle}  className="modal-skip-btn" onClick={() => {handleDonate()}
-                }>{chosenApp}</div>:""}
+                {appChoice?<div>{chosenApp}</div>:""}
             </div>
         </div>
     )

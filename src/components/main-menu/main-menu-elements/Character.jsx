@@ -75,7 +75,7 @@ function Character(props) {
 
 
     return(
-           
+        
             <div className={props.profileStyle}>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
@@ -94,6 +94,15 @@ function Character(props) {
                         <h2>Money : {props.money}€</h2>
                         <h2>Points : {props.save.pointsOwned}</h2>
                         <h2>Lives : {props.save.livesOwned}</h2>
+                        {props.isLoggedIn
+                            ?<div>
+                                <button className='profile-mode-btn' onClick={()=>{props.setLoggedIn(false)}}>
+                                    <p>Log out</p>
+                                </button>
+                            </div>
+                            : <p className="register-text">You are not logged in<br/>
+                                Log in to save progress</p>
+                        }
                     </div>
                 </div>
             {/*<div>*/}

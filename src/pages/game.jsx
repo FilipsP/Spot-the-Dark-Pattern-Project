@@ -278,6 +278,7 @@ function Game() {
                     save={save}
                     isLoggedIn = {isLoggedIn}
                     disabledApps={disabledApps}
+                    setSettings = {setSettings}
 
                 />:<div>
                 {inMenu ?
@@ -298,6 +299,8 @@ function Game() {
                     setDisabledApps={setDisabledApps}
                     handleLastAnswerTiming = {handleLastAnswerTiming}
                     checkForFinish = {checkForFinish}
+                    musicOn = {on}
+                    toggleMusic = {toggleMusic}
 
                     />
                     </div>

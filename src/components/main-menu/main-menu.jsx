@@ -84,6 +84,7 @@ function IconsMenu(props) {
                 >
                 <Character
                     profileStyle={"sidebar profile-sidebar show-sidebar"}
+                    setProfileOpened={setProfileOpened}
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}
                     save = {props.save}

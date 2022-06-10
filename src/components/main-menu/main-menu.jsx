@@ -82,7 +82,7 @@ function IconsMenu(props) {
                     timeout={500}
                     classNames="animated-profile-sidebar"
                 >
-                <Character
+                <Character //sidebar character
                     profileStyle={"sidebar profile-sidebar show-sidebar"}
                     setProfileOpened={setProfileOpened}
                     isLoggedIn = {props.isLoggedIn}
@@ -114,7 +114,18 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
-                <SettingsSideBar/>
+                <SettingsSideBar
+                    getSave = {props.getSave}
+                    getEventSaves={props.getEventSaves}
+                    closeSettings={props.setSettings}
+                    isLoggedIn={props.isLoggedIn}
+                    userID = {props.userID}
+                    save={props.save}
+                    disabledApps={props.disabledApps}
+                    currentProfilePicture={props.currentProfilePicture}
+                    musicOn = {props.on}
+                    toggleMusic = {props.toggleMusic}
+                />
                     <div className='icon-frame'>
                         <div className='icon-grid'>
                             <div><img
@@ -291,6 +302,10 @@ function MainMenu(props){
                     lastAnswerTime = {props.lastAnswerTime}
                     musicOn = {props.on}
                     toggleMusic = {props.toggleMusic}
+                    getSave = {props.getSave}
+                    getEventSaves={props.getEventSaves}
+                    closeSettings={props.setSettings}
+                    userID = {props.userID}
                 />:chosenApp}
                 {appChoice?<div>{chosenApp}</div>:""}
             </div>

@@ -301,6 +301,10 @@ function Game() {
                     checkForFinish = {checkForFinish}
                     musicOn = {on}
                     toggleMusic = {toggleMusic}
+                    getSave = {getSave}
+                    getEventSaves={getEventSaves}
+                    closeSettings={setSettings}
+                    userID = {userID}
 
                     />
                     </div>

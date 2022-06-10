@@ -24,7 +24,7 @@ import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
 import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
-import { CSSTransition } from 'react-transition-group';
+import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
 
 
@@ -67,31 +67,23 @@ const allowed = {
 
 function IconsMenu(props) {
 
-    const [profileStyle, setProfileStyle] = useState("sidebar profile-sidebar");
     const [profileOpened, setProfileOpened] = useState(false);
 
-    function showProfile(){
-        if(profileOpened){
-            setProfileStyle("sidebar profile-sidebar");
-            setProfileOpened(false);
-        }else{
-            setProfileStyle("sidebar profile-sidebar show-sidebar");
-            setProfileOpened(true);
-        }
-    }   
 
     return(
         <div>
-            <div className='container'>
-                <div onClick={() => {showProfile()}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
+            <div className='container' >
+
+                <div onClick={() => {setProfileOpened(!profileOpened)}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
 
                 <CSSTransition
                     in={profileOpened}
+                    unmountOnExit
                     timeout={500}
                     classNames="animated-profile-sidebar"
                 >
                 <Character
-                    profileStyle={profileStyle}
+                    profileStyle={"sidebar profile-sidebar show-sidebar"}
                     isLoggedIn = {props.isLoggedIn}
                     setLoggedIn = {props.setLoggedIn}
                     save = {props.save}
@@ -107,7 +99,20 @@ function IconsMenu(props) {
                     money = {props.money}
                 />
                 </CSSTransition>
-            
+                <Character
+                    profileStyle={"sidebar profile-sidebar"}
+                    isLoggedIn = {props.isLoggedIn}
+                    setLoggedIn = {props.setLoggedIn}
+                    save = {props.save}
+                    currentProfilePicture = {props.currentProfilePicture}
+                    setCurrentPicture = {props.setCurrentPicture}
+                    profilePictures = {props.profilePictures}
+                    setProfilePictures = {props.setProfilePictures}
+                    isLoading = {props.isLoading}
+                    isError= {props.isError}
+                    defaultCharacters ={defaultCharacters}
+                    money = {props.money}
+                />
                 <SettingsSideBar/>
                     <div className='icon-frame'>
                         <div className='icon-grid'>

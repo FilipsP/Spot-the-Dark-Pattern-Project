@@ -27,12 +27,12 @@
 
 
 .animated-profile-sidebar-enter{
-   opacity: 0;
+   transform: translate(-350px);
 }
 
 .animated-profile-sidebar-enter-active{
-   opacity: 1;
-   transition: opacity 500ms;
+   transform: translate(0px);
+   transition: all 500ms ease-in;
 }
 
 .animated-profile-sidebar-exit {
@@ -40,11 +40,12 @@
 }
 
 .animated-profile-sidebar-exit-active {
-   opacity: 0;
-   transition: opacity 500ms;
+   transform: translate(-350px);
+   transition: all 500ms ease-in;
 }
 
 .close-sidebar-icon{
+   display: none;
    position: absolute;
    top: 0;
    margin: .5rem;

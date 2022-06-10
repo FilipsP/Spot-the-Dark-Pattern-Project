@@ -2,9 +2,6 @@ import React from "react";
 import '../../../css/profile.css'
 
 
-
-
-
 function Character(props) {
 
 
@@ -24,6 +21,7 @@ function Character(props) {
     return(
         
             <div className={props.profileStyle}>
+            <div><i className='bi bi-x-lg icon-btn close-sidebar-icon close-profile-btn'></i></div>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
@@ -55,7 +53,6 @@ function Character(props) {
             {props.isError && <p className="register-text">No connection to server :</p>}
         </div>
         
-
         )
 }
 

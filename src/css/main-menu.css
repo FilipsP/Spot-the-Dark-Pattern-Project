@@ -65,6 +65,7 @@
     }
 }
 
+
 @media screen and (max-width: 1000px){
     .sidebar{
         display: none;
@@ -78,9 +79,10 @@
 }
 
 
+
 @media screen and (max-width: 950px){
     .icon-frame{
-        max-width: 60%;
+        max-width: 70%;
     }
     .icon-grid{
         grid-template-columns: repeat(2, 1fr);
@@ -88,7 +90,6 @@
     .icon{
         width: 8rem;
     }
-
 }
 
 @media screen and (max-width: 650px){

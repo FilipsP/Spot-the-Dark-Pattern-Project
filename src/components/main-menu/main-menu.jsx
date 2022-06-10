@@ -24,10 +24,7 @@ import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
 import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
-import {
-    CSSTransition,
-    TransitionGroup,
-    } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
 
 
@@ -72,7 +69,7 @@ function IconsMenu(props) {
 
     const [profileStyle, setProfileStyle] = useState("sidebar profile-sidebar");
     const [profileOpened, setProfileOpened] = useState(false);
-    
+
     function showProfile(){
         if(profileOpened){
             setProfileStyle("sidebar profile-sidebar");
@@ -87,9 +84,9 @@ function IconsMenu(props) {
         <div>
             <div className='container'>
                 <div onClick={() => {showProfile()}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
-                <TransitionGroup>
-                <CSSTransition
 
+                <CSSTransition
+                    in={profileOpened}
                     timeout={500}
                     classNames="animated-profile-sidebar"
                 >
@@ -110,7 +107,6 @@ function IconsMenu(props) {
                     money = {props.money}
                 />
                 </CSSTransition>
-                </TransitionGroup>
             
                 <SettingsSideBar/>
                     <div className='icon-frame'>

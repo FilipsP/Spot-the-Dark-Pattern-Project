@@ -5,17 +5,20 @@
    height: 80%;
    background:var(--secondary-bg-color);
    max-width: 30rem;
-  
+   z-index: 100;
 }
 
 .profile-sidebar{
    left: 0;
    border-radius: 0 1rem 1rem 0;
+   padding-top: 1rem;
+
 }
 
 .settings-sidebar{
    right: 0;
    border-radius: 1rem 0 0 1rem;
+   padding-top: 1rem;
 }
 
 .show-sidebar{
@@ -29,7 +32,7 @@
 
 .animated-profile-sidebar-enter-active{
    opacity: 1;
-   transition: opacity 2s ease-in;
+   transition: opacity 500ms;
 }
 
 .animated-profile-sidebar-exit {
@@ -38,5 +41,44 @@
 
 .animated-profile-sidebar-exit-active {
    opacity: 0;
-   transition: opacity 2s ease-in;
+   transition: opacity 500ms;
+}
+
+.close-sidebar-icon{
+   position: absolute;
+   top: 0;
+   margin: .5rem;
+}
+
+
+.close-profile-btn{
+   right: 0;
+}
+
+.close-settings-btn{
+   left: 0;
+}
+
+@media screen and (max-width:1000px) {
+   .sidebar{
+      width: 30%;
+      height: 100%;
+      margin: 0;
+      top: 10%;
+   }
+   .close-sidebar-icon{
+      display: block;
+   }
+}
+
+@media screen and (max-width:700px) {
+   .sidebar{
+      width: 40%;
+   }
+}
+
+@media screen and (max-width:600px) {
+   .sidebar{
+      width: 50%;
+   }
 }

@@ -16,16 +16,15 @@ import guy from "../../img/avatars/guy.jpg";
 import wtf from "../../img/avatars/wtf.png";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
-import BackButton from "../buttons/Back";
 import amazonBackground from "../../img/apps-background/amazon_bg_2.png";
 import redditBackground from "../../img/apps-background/reddit_bg.png";
 import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
 import UnitedApp from "./UnitedApp";
-import SettingsSideBar from "./main-menu-elements/Settings-side-bar";
 import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
+import Settings from "../buttons/settings";
 
 
 //import {Character, Avatar} from ... if export function...
@@ -114,7 +113,8 @@ function IconsMenu(props) {
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
                 />
-                <SettingsSideBar
+                <Settings
+                    settingsStyle = "sidebar settings-sidebar "
                     getSave = {props.getSave}
                     getEventSaves={props.getEventSaves}
                     closeSettings={props.setSettings}
@@ -126,6 +126,18 @@ function IconsMenu(props) {
                     musicOn = {props.on}
                     toggleMusic = {props.toggleMusic}
                 />
+                {/*<SettingsSideBar*/}
+                {/*    getSave = {props.getSave}*/}
+                {/*    getEventSaves={props.getEventSaves}*/}
+                {/*    closeSettings={props.setSettings}*/}
+                {/*    isLoggedIn={props.isLoggedIn}*/}
+                {/*    userID = {props.userID}*/}
+                {/*    save={props.save}*/}
+                {/*    disabledApps={props.disabledApps}*/}
+                {/*    currentProfilePicture={props.currentProfilePicture}*/}
+                {/*    musicOn = {props.on}*/}
+                {/*    toggleMusic = {props.toggleMusic}*/}
+                {/*/>*/}
                     <div className='icon-frame'>
                         <div className='icon-grid'>
                             <div><img
@@ -281,7 +293,7 @@ function MainMenu(props){
 
     return (
         <div>
-            {appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}
+            {/*{appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}*/}
             <div>
                 {appChoice ? <IconsMenu
                     chosenApp = {chosenApp}

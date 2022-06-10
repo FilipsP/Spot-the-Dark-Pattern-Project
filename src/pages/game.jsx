@@ -11,6 +11,7 @@ import casual from "../img/avatars/casual.png";
 import cool from "../img/avatars/cool.jpg";
 import wtf from "../img/avatars/wtf.png";
 import guy from "../img/avatars/guy.jpg";
+import {CSSTransition} from "react-transition-group";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -256,19 +257,27 @@ function Game() {
     return(
         <div>
             {inMenu&&<div onClick={()=>{setSettings(true)}}><i className="bi bi-gear icon-btn settings-btn"></i></div>}
-            {openSettings && <Settings
-                getSave = {getSave}
-                getEventSaves={getEventSaves}
-                closeSettings={setSettings}
-                isLoggedIn={isLoggedIn}
-                userID = {userID}
-                save={save}
-                disabledApps={disabledApps}
-                currentProfilePicture={currentProfilePicture}
-                musicOn = {on}
-                toggleMusic = {toggleMusic}
+            <CSSTransition
+                in={openSettings}
+                unmountOnExit
+                timeout={500}
+                classNames="animated-settings-sidebar"
+            >
+                <Settings
+                    getSave = {getSave}
+                    getEventSaves={getEventSaves}
+                    openSettings={setSettings}
+                    isLoggedIn={isLoggedIn}
+                    userID = {userID}
+                    save={save}
+                    disabledApps={disabledApps}
+                    currentProfilePicture={currentProfilePicture}
+                    musicOn = {on}
+                    toggleMusic = {toggleMusic}
+                    settingsStyle = "sidebar settings-sidebar show-sidebar"
 
-            />}
+                />
+            </CSSTransition>
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
             <div>

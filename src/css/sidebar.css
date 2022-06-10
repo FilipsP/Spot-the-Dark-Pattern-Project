@@ -26,6 +26,7 @@
 }
 
 
+
 .animated-profile-sidebar-enter{
    transform: translate(-350px);
 }
@@ -51,6 +52,30 @@
    margin: .5rem;
 }
 
+.animated-settings-sidebar-enter{
+   transform: translate(+350px);
+}
+
+.animated-settings-sidebar-enter-active{
+   transform: translate(0px);
+   transition: all 500ms ease-in;
+}
+
+.animated-settings-sidebar-exit {
+   opacity: 1;
+}
+
+.animated-settings-sidebar-exit-active {
+   transform: translate(+350px);
+   transition: all 500ms ease-in;
+}
+
+.close-sidebar-icon{
+   display: none;
+   position: absolute;
+   top: 0;
+   margin: .5rem;
+}
 
 .close-profile-btn{
    right: 0;

@@ -32,7 +32,7 @@ function Character(props) {
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-chevron-right"></i></button>
                     </div>
                     <h1 className='profile-name'>
-                        {props.online?props.save.characterName:props.defaultCharacters[props.currentProfilePicture].username}
+                        {props.isLoggedIn?props.save.characterName:props.defaultCharacters[props.currentProfilePicture].username}
                     </h1>
                     <div className='stats-container'>
                         {props.save.lastAnswerTime && <h3>Last answer on: {props.save.lastAnswerTime}</h3>}

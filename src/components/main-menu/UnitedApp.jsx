@@ -6,6 +6,7 @@ import {useEffect} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
 import SpotTheDP from "../modals/SpotTheDarkPattern";
+import ProgressNote from "../modals/progressNote";
 
 const background = {
     cursor: "pointer"
@@ -19,6 +20,8 @@ function UnitedApp(props){
     const [isLoading, setIsLoading] = useState(false)
     const [eventNumber, setEventNumber] = useState(1);
     const [event, setEvent] = useState([]);
+    const [note, setNote] = useState(false);
+
 
 
     const appName = props.app.toLowerCase()
@@ -40,6 +43,10 @@ function UnitedApp(props){
         // eslint-disable-next-line
     },[setOpenEvent])
     //<img src= "../../img/avatars/casual.png" alt= "avatar"/>
+
+    useEffect(()=>{
+        setNote(true)
+    },[])
 
     return(
         <div>
@@ -92,9 +99,10 @@ function UnitedApp(props){
                             setDisabledApps={props.setDisabledApps}
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
                         />
-                        :<SpotTheDP
+                        :note&&<ProgressNote
                             content = {"Spot the dark pattern"}
-                            setOpenEvent = {setOpenEvent}
+                            continue = {setNote}
+                            state = {note}
                         />
                     }
                 </div>

@@ -1,12 +1,23 @@
 import "../../css/event.css";
 import AnswerButtons from "../buttons/AnswerButtons";
+import {CSSTransition} from "react-transition-group";
+import {useEffect,useState} from "react";
 
 
 function GameEvent(props){
-    console.log(props.app)
+    const [startAnimation,setStartAnimation] = useState(false)
+    useEffect(()=>{
+        setStartAnimation(true)
+    },[])
     return(
         <div>
             <div className='modal-background'>
+                <CSSTransition
+                    in={startAnimation}
+                    timeout={300}
+                    classNames="animated-profile-sidebar"
+                    unmountOnExit
+                >
                 <div className="form-container event-container modal">
                     <p className='event-text'>{props.event[props.eventNumber].description}</p>
                     <AnswerButtons
@@ -26,6 +37,7 @@ function GameEvent(props){
                         handleLastAnswerTiming = {props.handleLastAnswerTiming}
                     />
                 </div>
+                </CSSTransition>
             </div>
         </div>
     )

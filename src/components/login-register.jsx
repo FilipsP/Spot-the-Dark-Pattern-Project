@@ -4,6 +4,7 @@ import Register from './buttons/register';
 import Login from './buttons/login';
 import Skip from './buttons/Skip.jsx';
 import ProgressNote from "./modals/progressNote";
+import SkipNoteContent from "./noteContent/SkipNoteContent";
 
 
 function LoginRegister(props) {
@@ -45,7 +46,12 @@ function LoginRegister(props) {
             </div>
             
             <Skip openProgressNote = {openProgressNote} setProgressNote = {setProgressNote}/>
-            {openProgressNote && <ProgressNote showMenu = {props.showMenu} />}
+            {openProgressNote && <ProgressNote
+                            continue = {props.showMenu}
+                            content = {<SkipNoteContent/>}
+                            state = {props.state}
+
+            />}
 
         </div>
     </div>)

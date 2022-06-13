@@ -5,10 +5,13 @@ import GameEvent from '../modals/GameEvent';
 import {useEffect} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
+import SpotTheDP from "../modals/SpotTheDarkPattern";
 
 const background = {
     cursor: "pointer"
 }
+
+
 
 function UnitedApp(props){
     const [openEvent, setOpenEvent] = useState(false);
@@ -64,10 +67,16 @@ function UnitedApp(props){
                     </div>
                     <div className='content'>
                         <hr></hr>
-                        <img style={background} className='background-image' src={props.appURL} alt= {appName+" background"}  onClick={() => {setOpenEvent(true)}}></img>
+                        <img
+                            style={background}
+                            className='background-image'
+                            src={props.appPath}
+                            alt= {appName+" background"}
+                            onClick={() => {setOpenEvent(true)}}>
+                        </img>
                     </div>
-                    {openEvent &&
-                        <GameEvent
+                    {openEvent
+                        ? <GameEvent
                             app = {props.app}
                             closeEvent={setOpenEvent}
                             showApps = {props.showApps}
@@ -82,8 +91,12 @@ function UnitedApp(props){
                             disabledApps={props.disabledApps}
                             setDisabledApps={props.setDisabledApps}
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
-
-                        />}
+                        />
+                        :<SpotTheDP
+                            content = {"Spot the dark pattern"}
+                            setOpenEvent = {setOpenEvent}
+                        />
+                    }
                 </div>
             </div>
         </div>

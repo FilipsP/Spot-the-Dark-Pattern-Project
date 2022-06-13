@@ -21,6 +21,7 @@ function Character(props) {
     return(
         
             <div className={props.profileStyle}>
+            <button>login</button>
             <div onClick={() => {props.setProfileOpened(false)}}><i className='bi bi-x-lg icon-btn close-sidebar-icon close-profile-btn'></i></div>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'

@@ -25,6 +25,8 @@ import UnitedApp from "./UnitedApp";
 import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
 import Settings from "../buttons/settings";
+import ProgressNote from "../modals/progressNote";
+import MainMenuTutorial from "../noteContent/MainMenuTutorial";
 
 
 //import {Character, Avatar} from ... if export function...
@@ -195,6 +197,8 @@ function MainMenu(props){
     const [chosenApp, setApp] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [note, setNote] = useState(true);
+
 
 
     useEffect(() => {
@@ -231,10 +235,10 @@ function MainMenu(props){
     }
 
 
-    const buildAppToShow = (app,appURL) => {
+    const buildAppToShow = (app,appPath) => {
         setApp(<UnitedApp
             app = {app}
-            appURL = {appURL}
+            appPath = {appPath}
             showApps = {setAppChoice}
             hidePage = {setApp}
             handleSaveUpdate = {props.handleSaveUpdate}
@@ -295,6 +299,11 @@ function MainMenu(props){
         <div>
             {/*{appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}*/}
             <div>
+                {note&&<ProgressNote
+                    content = {<MainMenuTutorial/>}
+                    continue = {setNote}
+                    state = {note}
+                />}
                 {appChoice ? <IconsMenu
                     chosenApp = {chosenApp}
                     isLoggedIn = {props.isLoggedIn}

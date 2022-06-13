@@ -321,6 +321,7 @@ function Game() {
                     <LoginRegister
                         logIn = {setLoggedIn}
                         showMenu = {setInMenu}
+                        state = {inMenu}
                         connect = {connectUser}
                         registerUser = {registerUser}
                         connectUser = {connectUser}

@@ -7,10 +7,9 @@ function ProgressNote(props){
             <div className='modal-background'>
                 <div className='form-container modal'>
                     <h1 className='main-heading modal-heading'>Note</h1>
-                    <p className='note-text'>Please note, that if you are not logged in, you can lose progress after closing the game.</p>
-
+                    {props.content}
                     <div className='note-submit-container'>
-                    <button className='submit note-submit' type='submit' onClick={ () => {props.showMenu(true)}}>Continue</button>
+                    <button className='submit note-submit' type='submit' onClick={ () => {props.continue(!props.state)}}>Continue</button>
                     </div>
                 </div>
             </div>

@@ -72,7 +72,7 @@ function IconsMenu(props) {
     return(
         <div>
             <div className='container' >
-
+                <div className='bell-container'><i className='bi bi-bell icon-btn'></i></div>
                 <div onClick={() => {setProfileOpened(!profileOpened)}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
 
                 <CSSTransition

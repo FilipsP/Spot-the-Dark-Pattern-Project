@@ -45,7 +45,7 @@ function LoginRegister(props) {
                 </div>
             </div>
             
-            <Skip openProgressNote = {openProgressNote} setProgressNote = {setProgressNote}/>
+            <Skip setProgressNote = {setProgressNote}/>
             {openProgressNote && <ProgressNote
                             continue = {props.showMenu}
                             content = {<SkipNoteContent/>}

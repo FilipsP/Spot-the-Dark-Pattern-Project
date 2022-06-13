@@ -21,13 +21,13 @@ function Character(props) {
     return(
         
             <div className={props.profileStyle}>
-            <button>login</button>
             <div onClick={() => {props.setProfileOpened(false)}}><i className='bi bi-x-lg icon-btn close-sidebar-icon close-profile-btn'></i></div>
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
                         alt={props.profilePictures[props.currentProfilePicture].description}
                     />
+                    {props.isLoggedIn&&<i className= "bi bi-activity"> Log in</i>}
                     <div className='picture-btn-container'>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-chevron-left"></i></button>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-chevron-right"></i></button>
@@ -53,7 +53,6 @@ function Character(props) {
                 </div>
             {props.isError && <p className="register-text">No connection to server :</p>}
         </div>
-        
         )
 }
 

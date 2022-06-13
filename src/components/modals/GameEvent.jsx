@@ -15,7 +15,7 @@ function GameEvent(props){
                 <CSSTransition
                     in={startAnimation}
                     timeout={300}
-                    classNames="animated-profile-sidebar"
+                    classNames="animated-modal"
                     unmountOnExit
                 >
                 <div className="form-container event-container modal">

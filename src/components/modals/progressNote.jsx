@@ -17,7 +17,7 @@ function ProgressNote(props){
                 <CSSTransition
                     in={startAnimation}
                     timeout={300}
-                    classNames="animated-profile-sidebar"
+                    classNames="animated-modal"
                     unmountOnExit
                 >
                 <div className='form-container modal'>

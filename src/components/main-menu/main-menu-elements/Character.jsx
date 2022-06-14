@@ -1,6 +1,11 @@
 import React from "react";
 import '../../../css/profile.css'
 
+const logInButton = {
+    border: "2px",
+    borderBlockColor:"gray",
+    textAlign:"center"
+}
 
 function Character(props) {
 
@@ -22,12 +27,22 @@ function Character(props) {
         
             <div className={props.profileStyle}>
             <div onClick={() => {props.setProfileOpened(false)}}><i className='bi bi-x-lg icon-btn close-sidebar-icon close-profile-btn'></i></div>
+                {props.isLoggedIn
+                    ?<div>
+                        <button className='profile-mode-btn' onClick={()=>{props.setLoggedIn(false)}}>
+                            <p>Log out</p>
+                        </button>
+                    </div>
+                    : <p style={logInButton} className="register-text">You are not logged in<br/>
+                        Log in to save progress:<br/>
+                        ----------------------------------<br/>
+                        <i  className= "bi bi-activity" onClick={()=>{props.openLoginRegister(true)}}> Log in</i></p>
+                }
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
                         alt={props.profilePictures[props.currentProfilePicture].description}
                     />
-                    {props.isLoggedIn&&<i className= "bi bi-activity"> Log in</i>}
                     <div className='picture-btn-container'>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-chevron-left"></i></button>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-chevron-right"></i></button>
@@ -40,18 +55,9 @@ function Character(props) {
                         <h2>Money : {props.money}€</h2>
                         <h2>Points : {props.save.pointsOwned}</h2>
                         <h2>Lives : {props.save.livesOwned}</h2>
-                        {props.isLoggedIn
-                            ?<div>
-                                <button className='profile-mode-btn' onClick={()=>{props.setLoggedIn(false)}}>
-                                    <p>Log out</p>
-                                </button>
-                            </div>
-                            : <p className="register-text">You are not logged in<br/>
-                                Log in to save progress</p>
-                        }
                     </div>
                 </div>
-            {props.isError && <p className="register-text">No connection to server :</p>}
+            {props.isError && <p className="register-text">No connection to server try again:*add connect button*</p>}
         </div>
         )
 }

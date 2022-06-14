@@ -6,9 +6,11 @@ import {useEffect,useState} from "react";
 
 function GameEvent(props){
     const [startAnimation,setStartAnimation] = useState(false)
+
     useEffect(()=>{
         setStartAnimation(true)
     },[])
+
     return(
         <div>
             <div className='modal-background'>

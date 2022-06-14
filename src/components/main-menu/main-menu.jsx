@@ -27,6 +27,7 @@ import AlertModal from "../modals/AlertModal";
 import Settings from "../buttons/settings";
 import ProgressNote from "../modals/progressNote";
 import MainMenuTutorial from "../noteContent/MainMenuTutorial";
+import LoginRegisterModal from "../modals/LoginRegister";
 
 
 //import {Character, Avatar} from ... if export function...
@@ -71,6 +72,7 @@ function IconsMenu(props) {
     const [profileOpened, setProfileOpened] = useState(false);
 
 
+
     return(
         <div>
             <div className='container' >
@@ -99,6 +101,7 @@ function IconsMenu(props) {
                     isError= {props.isError}
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
+                    openLoginRegister = {props.openLoginRegister}
                 />
                 </CSSTransition>
                 <Character
@@ -198,6 +201,7 @@ function MainMenu(props){
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [note, setNote] = useState(true);
+    const [loginRegisterOpened, setLoginRegister] = useState(false);
 
 
 
@@ -304,6 +308,7 @@ function MainMenu(props){
                     continue = {setNote}
                     state = {note}
                 />}
+                {loginRegisterOpened&&<LoginRegisterModal/>}
                 {appChoice ? <IconsMenu
                     chosenApp = {chosenApp}
                     isLoggedIn = {props.isLoggedIn}
@@ -327,6 +332,7 @@ function MainMenu(props){
                     getEventSaves={props.getEventSaves}
                     closeSettings={props.setSettings}
                     userID = {props.userID}
+                    openLoginRegister = {setLoginRegister}
                 />:chosenApp}
                 {appChoice?<div>{chosenApp}</div>:""}
             </div>

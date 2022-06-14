@@ -27,7 +27,7 @@ import AlertModal from "../modals/AlertModal";
 import Settings from "../buttons/settings";
 import ProgressNote from "../modals/progressNote";
 import MainMenuTutorial from "../noteContent/MainMenuTutorial";
-import LoginRegisterModal from "../modals/LoginRegister";
+
 
 
 //import {Character, Avatar} from ... if export function...
@@ -73,10 +73,16 @@ function IconsMenu(props) {
 
 
 
+
     return(
         <div>
             <div className='container' >
-                <div className='bell-container'><i className='bi bi-bell icon-btn'></i></div>
+                <div className='bell-container'>
+                    <i
+                        onClick={()=>{props.openNotifications(true)}} className='bi bi-bell icon-btn'>
+                        <div>{props.notificationNumber}</div>
+                    </i>
+                </div>
                 <div onClick={() => {setProfileOpened(!profileOpened)}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>
 
                 <CSSTransition
@@ -333,6 +339,8 @@ function MainMenu(props){
                     closeSettings={props.setSettings}
                     userID = {props.userID}
                     openLoginRegister = {props.openLoginRegister}
+                    openNotifications = {props.openNotifications}
+                    notificationNumber={props.notificationNumber}
 
                 />:chosenApp}
                 {appChoice?<div>{chosenApp}</div>:""}

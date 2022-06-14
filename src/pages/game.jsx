@@ -13,6 +13,7 @@ import wtf from "../img/avatars/wtf.png";
 import guy from "../img/avatars/guy.jpg";
 import {CSSTransition} from "react-transition-group";
 import LoginRegisterModal from "../components/modals/LoginRegister";
+import Notifications from "../components/modals/Notifications";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -24,6 +25,10 @@ const defaultSave = {
 }
 
 function Game() {
+
+    const [notifications, setNotifications] = useState([]);
+    const [notificationNumber, setNotificationsNumber] = useState(0);
+    const [openNotifications, setOpenNotifications] = useState(false);
 
     const [logInRegisterOpened, setLogInRegister] = useState(false);
     const [userID,setUserID] = useState("")
@@ -63,6 +68,28 @@ function Game() {
     const [on, toggle] = useState(false);
 
 
+    useEffect(()=>{
+        setNotificationsNumber(notifications.length)
+    },[notifications])
+
+
+    useEffect(()=>{
+        get(child(dbRef, `/notifications/`)).then((snapshot) => {
+            console.error("user id: "+ userID)
+            if (snapshot.exists()) {
+                setIsError(false);
+                setIsLoading(true);
+                setNotifications(snapshot.val())
+                console.log("got notifications")
+
+            } else {
+                console.error("Failed to get notifications");
+            }
+        }).catch((error) => {
+            console.error(error);
+            setIsError(true);
+        });
+    },[])
 
     const handleSaveUpdate = (newSave) => {
         setSave(newSave)
@@ -281,6 +308,17 @@ function Game() {
             </CSSTransition>
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
+
+            <CSSTransition
+                in={openNotifications}
+                unmountOnExit
+                timeout={500}
+                classNames="animated-modal"
+            >
+                <Notifications
+                    notifications ={notifications}
+                />
+            </CSSTransition>
             <div>
                 {gameOver?<FinalScreen
                     currentProfilePicture={currentProfilePicture}
@@ -316,6 +354,8 @@ function Game() {
                     closeSettings={setSettings}
                     userID = {userID}
                     openLoginRegister = {setLogInRegister}
+                    openNotifications = {setOpenNotifications}
+                    notificationNumber={notificationNumber}
 
                     />
                     </div>

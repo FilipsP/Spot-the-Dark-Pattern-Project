@@ -96,8 +96,8 @@ input:checked+.slider:before {
 
 
 .settings-heading{
-    margin: 0;
-    padding-bottom: 2rem;
+    font-size: 2rem;
+    margin-top: 25%;
 }
 
 .setting-element{

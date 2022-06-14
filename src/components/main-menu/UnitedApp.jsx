@@ -5,8 +5,10 @@ import GameEvent from '../modals/GameEvent';
 import {useEffect} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
-import SpotTheDP from "../modals/SpotTheDarkPattern";
+//import SpotTheDP from "../modals/SpotTheDarkPattern";
 import ProgressNote from "../modals/progressNote";
+import SpotTheDPAlert from '../noteContent/SpotTheDPAlert';
+
 
 const background = {
     cursor: "pointer"
@@ -100,7 +102,7 @@ function UnitedApp(props){
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
                         />
                         :note&&<ProgressNote
-                            content = {"Spot the dark pattern"}
+                            content = {<SpotTheDPAlert></SpotTheDPAlert>}
                             continue = {setNote}
                             state = {note}
                         />

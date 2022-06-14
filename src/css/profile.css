@@ -62,3 +62,7 @@
     background-color: rgb(220, 220, 220);
     cursor: pointer;
 }
+
+.stats-container{
+    width: 90%;
+}

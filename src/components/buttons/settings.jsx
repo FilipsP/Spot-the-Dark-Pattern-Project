@@ -24,7 +24,7 @@ return(
     <div className={props.settingsStyle}>
         <div><i onClick={()=>{props.openSettings(false)}} className='bi bi-x-lg icon-btn close-sidebar-icon close-settings-btn'></i></div>
         <div className='settings-container'>
-            <h1>Options</h1>
+            <h1 className='settings-heading'>Options</h1>
             <Player  toggleMusic = {props.toggleMusic} on = {props.musicOn}/>
             <div className="setting-element">
                 <p className="setting-text" >Theme</p>

@@ -14,6 +14,7 @@ import guy from "../img/avatars/guy.jpg";
 import {CSSTransition} from "react-transition-group";
 import LoginRegisterModal from "../components/modals/LoginRegister";
 import Notifications from "../components/modals/Notifications";
+import ErrorBoundary from "../components/errors/ErrorBoundary";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -89,6 +90,7 @@ function Game() {
             console.error(error);
             setIsError(true);
         });
+// eslint-disable-next-line
     },[])
 
     const handleSaveUpdate = (newSave) => {
@@ -157,7 +159,6 @@ function Game() {
             console.error("Log in to get event saves")
             setDisabledApps([]);
         }
-        // eslint-disable-next-line
     }
 
     const connectUser = (username , password, setOpenLogIn ) => {
@@ -308,17 +309,18 @@ function Game() {
             </CSSTransition>
             <h1>{isError && "Error :("}</h1>
             <h1>{isLoading && "Loading, please wait..."}</h1>
-
-            <CSSTransition
-                in={openNotifications}
-                unmountOnExit
-                timeout={500}
-                classNames="animated-modal"
-            >
-                <Notifications
-                    notifications ={notifications}
-                />
-            </CSSTransition>
+            <ErrorBoundary>
+                <CSSTransition
+                    in={openNotifications}
+                    unmountOnExit
+                    timeout={500}
+                    classNames="animated-modal"
+                >
+                    <Notifications
+                        notifications ={notifications}
+                    />
+                </CSSTransition>
+            </ErrorBoundary>
             <div>
                 {gameOver?<FinalScreen
                     currentProfilePicture={currentProfilePicture}

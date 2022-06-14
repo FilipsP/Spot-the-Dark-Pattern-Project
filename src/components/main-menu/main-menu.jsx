@@ -117,6 +117,7 @@ function IconsMenu(props) {
                     isError= {props.isError}
                     defaultCharacters ={defaultCharacters}
                     money = {props.money}
+                    openLoginRegister = {props.openLoginRegister}
                 />
                 <Settings
                     settingsStyle = "sidebar settings-sidebar "
@@ -201,7 +202,7 @@ function MainMenu(props){
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [note, setNote] = useState(true);
-    const [loginRegisterOpened, setLoginRegister] = useState(false);
+
 
 
 
@@ -308,7 +309,6 @@ function MainMenu(props){
                     continue = {setNote}
                     state = {note}
                 />}
-                {loginRegisterOpened&&<LoginRegisterModal/>}
                 {appChoice ? <IconsMenu
                     chosenApp = {chosenApp}
                     isLoggedIn = {props.isLoggedIn}
@@ -332,7 +332,8 @@ function MainMenu(props){
                     getEventSaves={props.getEventSaves}
                     closeSettings={props.setSettings}
                     userID = {props.userID}
-                    openLoginRegister = {setLoginRegister}
+                    openLoginRegister = {props.openLoginRegister}
+
                 />:chosenApp}
                 {appChoice?<div>{chosenApp}</div>:""}
             </div>

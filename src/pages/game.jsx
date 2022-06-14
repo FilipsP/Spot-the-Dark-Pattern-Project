@@ -12,6 +12,7 @@ import cool from "../img/avatars/cool.jpg";
 import wtf from "../img/avatars/wtf.png";
 import guy from "../img/avatars/guy.jpg";
 import {CSSTransition} from "react-transition-group";
+import LoginRegisterModal from "../components/modals/LoginRegister";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -24,7 +25,7 @@ const defaultSave = {
 
 function Game() {
 
-
+    const [logInRegisterOpened, setLogInRegister] = useState(false);
     const [userID,setUserID] = useState("")
     const [save, setSave] = useState(defaultSave);
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -314,11 +315,21 @@ function Game() {
                     getEventSaves={getEventSaves}
                     closeSettings={setSettings}
                     userID = {userID}
+                    openLoginRegister = {setLogInRegister}
 
                     />
                     </div>
                     :
                     <LoginRegister
+                        logIn = {setLoggedIn}
+                        showMenu = {setInMenu}
+                        state = {inMenu}
+                        connect = {connectUser}
+                        registerUser = {registerUser}
+                        connectUser = {connectUser}
+                    />}
+                    {logInRegisterOpened && <LoginRegisterModal
+                        openedLogInRegister = {setLogInRegister}
                         logIn = {setLoggedIn}
                         showMenu = {setInMenu}
                         state = {inMenu}

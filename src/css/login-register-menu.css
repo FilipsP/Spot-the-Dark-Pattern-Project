@@ -1,19 +1,19 @@
 
 .login-register-container {
-    max-width: 45%;
+    max-width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 .login-register-container p {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
 }
 
 
 .big-icon {
-    font-size: 13rem;
+    font-size: 7rem;
 }
 
 .item-container {
@@ -35,9 +35,19 @@
 }
 
 
+.register-text{
+    margin-top: 2rem;
+}
+
+@media screen and (max-width:800px) {
+    .login-register-container{
+        max-width: 60%;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .main-heading{
-        font-size: 2.3rem; 
+        font-size: 2rem; 
     }
     .login-register-container {
         width: 90%;
@@ -46,10 +56,14 @@
     }
     
     .big-icon{
-        font-size: 10rem;
+        font-size: 5rem;
     }
     
     .item-container p{
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
+    .bi-person-fill{
+        margin-right: 1.3rem;
+    }
+    
 }

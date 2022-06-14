@@ -66,3 +66,14 @@
 .stats-container{
     width: 90%;
 }
+
+
+@media screen and (max-width: 450px) {
+    .profile-picture{
+        width: 10rem;
+        height: 10rem;
+    }
+    .profile-name{
+        font-size: 1.5rem;
+    }
+}

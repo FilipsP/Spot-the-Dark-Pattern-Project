@@ -123,7 +123,7 @@ function Game() {
 
 
     const toggleMusic = () => {
-      return toggle(!on)
+        return toggle(!on)
     }
 
 
@@ -314,7 +314,7 @@ function Game() {
                     in={openNotifications}
                     unmountOnExit
                     timeout={500}
-                    classNames="animated-modal"
+                    classNames="animated-notification"
                 >
                     <Notifications
                         notifications ={notifications}

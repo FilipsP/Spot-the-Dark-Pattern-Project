@@ -59,13 +59,17 @@
 }
 */
 
-.bell-container{
-    /*
-    text-align: center;
-    margin-right: 4rem;
-    */
+
+.bi-bell{
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 1rem;
+    z-index: -1;
 }
 
 
@@ -105,7 +109,7 @@
 @media screen and (max-width: 650px){
     .icon-frame{
         max-width: 50%;
-        margin-top: 2rem;
+        margin-top: 5rem;
     }
     .icon-grid{
         grid-template-columns: repeat(1, 1fr);
@@ -113,4 +117,24 @@
     .icon{
         width: 7rem;
     }
+}
+
+
+.animated-notification-enter{
+    transform: translateY(-350px);
+}
+
+.animated-notification-enter-active{
+    transform: translateY(0px);
+    transition: all 500ms ease-in;
+}
+
+.animated-notification-exit {
+    opacity: 1;
+}
+
+
+.animated-notification-exit-active {
+    transform: translateY(+350px);
+    transition: all 500ms ease-in;
 }

@@ -76,11 +76,12 @@ function IconsMenu(props) {
 
     return(
         <div>
-            <div className='container' >
+            <div className='container'>
                 <div className='bell-container'>
+                    
                     <i
                         onClick={()=>{props.openNotifications(true)}} className='bi bi-bell icon-btn'>
-                        <div>{props.notificationNumber}</div>
+                        <div className='notification-count'>{props.notificationNumber}</div>
                     </i>
                 </div>
                 <div onClick={() => {setProfileOpened(!profileOpened)}}><i className='bi bi-person-circle icon-btn profile-btn'></i></div>

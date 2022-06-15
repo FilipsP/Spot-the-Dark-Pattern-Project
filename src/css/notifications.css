@@ -1,0 +1,23 @@
+.notification-container{
+    position: absolute;
+    width: 50%;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-radius: 10px;
+    padding: 1rem 2rem 1rem;
+}
+
+.notification-heading{
+    font-size: 1.5rem;
+}
+
+.notification-frame{
+    border: solid 1px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+

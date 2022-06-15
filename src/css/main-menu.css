@@ -135,6 +135,6 @@
 
 
 .animated-notification-exit-active {
-    transform: translateY(+350px);
+    transform: translateY(-350px);
     transition: all 500ms ease-in;
 }

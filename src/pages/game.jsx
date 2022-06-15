@@ -90,7 +90,7 @@ function Game() {
             console.error(error);
             setIsError(true);
         });
-// eslint-disable-next-line
+        // eslint-disable-next-line
     },[])
 
     const handleSaveUpdate = (newSave) => {
@@ -318,6 +318,7 @@ function Game() {
                 >
                     <Notifications
                         notifications ={notifications}
+                        setOpenNotifications = {setOpenNotifications}
                     />
                 </CSSTransition>
             </ErrorBoundary>

@@ -31,7 +31,7 @@ function LoginRegisterModal(props) {
             >
             <div className="form-container event-container modal">
                 <div onClick={() => props.openedLogInRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
-                <h1 className="main-heading">Please register or log in</h1>
+                <h1 className="main-heading centered">Please register or log in</h1>
                 <div className="login-register-container">
                     <div className="item-container">
                         <div onClick={()=>{setRegister(true)}}>

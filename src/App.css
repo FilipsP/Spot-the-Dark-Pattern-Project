@@ -45,6 +45,10 @@ body{
     font-size: 3.5rem;
 }
 
+.centered{
+    text-align: center;
+}
+
 .icon-btn{
     position: absolute;
     top: 0;

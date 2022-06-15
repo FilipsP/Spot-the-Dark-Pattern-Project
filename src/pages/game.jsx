@@ -70,12 +70,12 @@ function Game() {
 
 
     useEffect(()=>{
-        setNotificationsNumber(notifications.length)
+        setNotificationsNumber(notifications.length - 1)
     },[notifications])
 
 
     useEffect(()=>{
-        get(child(dbRef, `/notifications/`)).then((snapshot) => {
+        get(child(dbRef, `/notifications/Main`)).then((snapshot) => {
             console.error("user id: "+ userID)
             if (snapshot.exists()) {
                 setIsError(false);

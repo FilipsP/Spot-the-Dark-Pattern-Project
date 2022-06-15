@@ -79,8 +79,7 @@ function IconsMenu(props) {
             <div className='container'>
                 <div className='bell-container'>
                     
-                    <i
-                        onClick={()=>{props.openNotifications(true)}} className='bi bi-bell icon-btn'>
+                    <i onClick={()=>{props.openNotifications(true)}} className='bi bi-bell icon-btn'>
                         <div className='notification-count'>{props.notificationNumber}</div>
                     </i>
                 </div>

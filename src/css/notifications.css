@@ -6,8 +6,9 @@
     left: 0;
     right: 0;
     z-index: 100;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     padding: 1rem 2rem 1rem;
+    padding-top: 3rem;
 }
 
 .notification-heading{
@@ -15,9 +16,38 @@
 }
 
 .notification-frame{
+    width: 95%;
+    margin: 0 auto;
     border: solid 1px;
     border-radius: 10px;
     margin-bottom: 1rem;
+    padding-left: .5rem;
 }
 
 
+.notification-exit{
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: .5rem;
+}
+
+@media screen and (max-width: 700px){
+    .notification-container{
+        width: 70%;
+    }
+}
+
+
+@media screen and (max-width: 650px){
+    .notification-container{
+        width: 60%;
+    }
+    .notification-frame{
+        width: 90%;
+    }
+    .notification-heading{
+        font-size: 1.2rem;
+    }
+}

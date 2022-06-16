@@ -54,9 +54,9 @@ function UnitedApp(props){
 
 
 
-    const chooseType = () => {
+    const setType = () => {
         setInputEvent(false)
-        if (event.type === "input"){
+        if (event[eventNumber].type === "input"){
             setInputEvent(true)
         }
         setOpenEvent(true)
@@ -71,7 +71,7 @@ function UnitedApp(props){
                             className='background-image'
                             src={props.appPath}
                             alt= {appName+" background"}
-                            onClick={() => {chooseType()}}>
+                            onClick={() => {setType()}}>
                         </img>
                     {openEvent
                         ? <GameEvent
@@ -90,6 +90,7 @@ function UnitedApp(props){
                             setDisabledApps={props.setDisabledApps}
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
                             inputEvent= {inputEvent}
+                            setType = {setType}
                         />
                         :note&&<ProgressNote
                             content = {<SpotTheDPAlert></SpotTheDPAlert>}

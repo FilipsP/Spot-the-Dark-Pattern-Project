@@ -1,12 +1,14 @@
 import "../../css/event.css";
 import AnswerButtons from "../buttons/AnswerButtons";
 import {CSSTransition} from "react-transition-group";
-import {useEffect,useState} from "react";
+import React,{useEffect,useState} from "react";
+
 
 
 
 function GameEvent(props){
     const [startAnimation,setStartAnimation] = useState(false)
+
 
     useEffect(()=>{
         setStartAnimation(true)
@@ -23,7 +25,6 @@ function GameEvent(props){
                 >
                 <div className="form-container event-container modal">
                     <p className='event-text'>{props.event[props.eventNumber].description}</p>
-
                     <AnswerButtons
                         app = {props.app}
                         showApps = {props.showApps}
@@ -40,8 +41,8 @@ function GameEvent(props){
                         setDisabledApps={props.setDisabledApps}
                         handleLastAnswerTiming = {props.handleLastAnswerTiming}
                         inputEvent={props.inputEvent}
-                        />
-                    }
+                        setType={props.setType}
+                    />
                 </div>
                 </CSSTransition>
             </div>

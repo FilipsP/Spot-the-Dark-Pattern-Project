@@ -10,13 +10,7 @@ const AnswerButtons = (props) => {
             props.showApps(true)
     }
 
-    const handleInput = (input) => {
-        if(input===props.event.positive){
-            handlePositiveAnswer()
-        }else {
-            handleNegativeAnswer()
-        }
-    }
+
 
     const handleNegativeAnswer = () => {
         const question = props.event[props.eventNumber]
@@ -33,6 +27,7 @@ const AnswerButtons = (props) => {
             const newDisabledApps = props.disabledApps
             newDisabledApps.push(props.app)
             console.log(newDisabledApps)
+            props.setType()
             props.setDisabledApps(newDisabledApps)
             closeApp()
         }
@@ -47,6 +42,7 @@ const AnswerButtons = (props) => {
         props.handleSaveUpdate(newSave)
         const newDisabledApps = props.disabledApps
         newDisabledApps.push(props.app)
+        props.setType()
         console.log(newDisabledApps)
         props.setDisabledApps(newDisabledApps)
         closeApp()
@@ -57,13 +53,16 @@ const AnswerButtons = (props) => {
 
     return(
         <>
-        {props.inputEvent?
+        {props.inputEvent?<SpotTheDarkPatternInput
+                    currentEvent = {props.event[props.eventNumber]}
+                    handlePositiveAnswer={handlePositiveAnswer}
+                    handleNegativeAnswer={handleNegativeAnswer}
+
+                />:
             <div className='buttons-container'>
                 <button  type= "button" className='event-button' onClick={() => handlePositiveAnswer()}>{props.event[props.eventNumber].positive}</button>
                 <button type= "button" className='event-button' onClick={() => handleNegativeAnswer()}>{props.event[props.eventNumber].negative}</button>
-            </div>
-            :<SpotTheDarkPatternInput handleInput = {handleInput}/>
-        }
+            </div>}
         </>
 
     )

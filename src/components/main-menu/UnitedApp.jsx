@@ -1,4 +1,3 @@
-import "../../css/apps.css";
 import "../../css/browser.css";
 import { useState} from 'react';
 import GameEvent from '../modals/GameEvent';
@@ -53,28 +52,7 @@ function UnitedApp(props){
     return(
         <div>
             {isLoading && <h1>Event is loading...</h1>}
-            <div className='container vertical-image-container'>
-                <div className='browser-container'>
-                    <div className="row">
-                        <div className='column left'>
-                            <span className='dot red-dot'></span>
-                            <span className='dot yellow-dot'></span>
-                            <span className='dot green-dot'></span>
-                        </div>
-                        <div className='column middle'>
-                            <input className='browser-input' type="text" readOnly value={"www."+appName+".com"}></input>
-                        </div>
-                        <div className="column right">
-                            <div style={{float:"right"}}>
-                                <span className='bar'></span>
-                                <span className='bar'></span>
-                                <span className='bar'></span>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div className='browser-content'>
-                        <hr></hr>
+            <div className='container image-container'> 
                         <img
                             style={background}
                             className='background-image'
@@ -82,7 +60,6 @@ function UnitedApp(props){
                             alt= {appName+" background"}
                             onClick={() => {setOpenEvent(true)}}>
                         </img>
-                    </div>
                     {openEvent
                         ? <GameEvent
                             app = {props.app}
@@ -107,7 +84,7 @@ function UnitedApp(props){
                         />
                     }
                 </div>
-            </div>
+            
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import {update} from "firebase/database";
-import {dbRef} from "../../firebase";
+import {dbRef} from "../firebase";
 
 
 

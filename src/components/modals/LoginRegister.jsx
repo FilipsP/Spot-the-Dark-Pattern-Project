@@ -3,7 +3,6 @@ import {useState} from 'react';
 import Register from "../buttons/register";
 import Login from "../buttons/login";
 import ProgressNote from "./progressNote";
-import Skip from "../buttons/Skip";
 import SkipNoteContent from "../noteContent/SkipNoteContent";
 import {useEffect} from "react";
 import {CSSTransition} from "react-transition-group";
@@ -27,10 +26,10 @@ function LoginRegisterModal(props) {
                 in={startAnimation}
                 timeout={300}
                 classNames="animated-modal"
-                unmountOnExit
+                onExited = {()=>{props.setLogInRegister(false)}}
             >
             <div className="form-container event-container modal">
-                <div onClick={() => props.openedLogInRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
+                <div onClick={ () => {setStartAnimation(false)}}><i className="bi bi-x-square exit-btn"></i></div>
                 <h1 className="main-heading centered">Please register or log in</h1>
                 <div className="login-register-container">
                     <div className="item-container">
@@ -40,7 +39,7 @@ function LoginRegisterModal(props) {
                         </div>
                         {openRegister && <Register
                             setProgressNote = {setProgressNote}
-                            closeRegister={setRegister}
+                            setRegister={setRegister}
                             registerUser = {props.registerUser}
                             openedLogIn={setOpenLogin}
                             connect = {props.connect}
@@ -61,11 +60,10 @@ function LoginRegisterModal(props) {
                     </div>
                 </div>
 
-                <Skip setProgressNote = {setProgressNote}/>
                 {openProgressNote && <ProgressNote
-                    continue = {props.showMenu}
+                    continue = {setProgressNote}
                     content = {<SkipNoteContent/>}
-                    state = {props.state}
+                    state = {openProgressNote}
 
                 />}
             </div>

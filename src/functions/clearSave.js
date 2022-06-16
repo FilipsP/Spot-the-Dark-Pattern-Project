@@ -1,5 +1,5 @@
 import {update} from "firebase/database";
-import {dbRef} from "../../firebase";
+import {dbRef} from "../firebase";
 
 
 
@@ -8,7 +8,7 @@ const clearSave = (id,save) => {
     const clearedSave = {
         characterName: save.characterName,
         spamMailNumber: 0,
-        livesOwned: 3,
+        wrongAnswers: 0,
         pointsOwned: 0,
         profilePictureId: save.profilePictureId
     };

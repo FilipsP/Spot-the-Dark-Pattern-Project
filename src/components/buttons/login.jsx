@@ -1,6 +1,7 @@
 import "../../css/login-register.css";
-import Skip from './Skip.jsx';
 import {useState} from "react";
+import {CSSTransition} from "react-transition-group";
+import {useEffect} from "react";
 
 
 
@@ -10,7 +11,11 @@ function Login(props){
 
     const [nameValue, setNameValue] = useState("")
     const [passValue, setPassValue] = useState("")
+    const [startAnimation,setStartAnimation] = useState(false)
 
+    useEffect(()=>{
+        setStartAnimation(true)
+    },[])
 
 
     function handleLogIn() {
@@ -19,10 +24,15 @@ function Login(props){
     }
 
     return(
-        <div>
             <div className="modal-background">
+                <CSSTransition
+                    in={startAnimation}
+                    timeout={300}
+                    classNames="animated-modal"
+                    onExited = {()=>{props.setOpenLogin(false)}}
+                >
                 <div className="form-container modal">
-                    <div onClick={() => props.setOpenLogin(false)}><i className="bi bi-x-square exit-btn"></i></div>
+                    <div onClick={() => setStartAnimation(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Login</h1> 
                     
                     <div className="input-element">
@@ -60,11 +70,10 @@ function Login(props){
                     >Login
                     </button>
 
-                    <Skip setProgressNote = {props.setProgressNote}/>
 
                 </div>
+                </CSSTransition>
             </div>
-        </div>
     )
 }
 

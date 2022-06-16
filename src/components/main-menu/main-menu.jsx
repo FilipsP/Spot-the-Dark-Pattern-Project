@@ -78,7 +78,7 @@ function IconsMenu(props) {
         <div>
             <div className='container'>
                 <div className='bell-container'>
-                    
+
                     <i onClick={()=>{props.openNotifications(true)}} className='bi bi-bell icon-btn'>
                         <div className='notification-count'>{props.notificationNumber}</div>
                     </i>
@@ -341,6 +341,7 @@ function MainMenu(props){
                     openLoginRegister = {props.openLoginRegister}
                     openNotifications = {props.openNotifications}
                     notificationNumber={props.notificationNumber}
+                    gameisLoading = {props.gameIsLoading}
 
                 />:chosenApp}
                 {appChoice?<div>{chosenApp}</div>:""}

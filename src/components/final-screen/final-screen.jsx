@@ -2,7 +2,7 @@ import '../../css/final-screen.css';
 import {useEffect, useState} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
-import saveGame from "../functions/saveGame";
+import saveGame from "../../functions/saveGame";
 
 
 

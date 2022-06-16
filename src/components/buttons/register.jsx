@@ -1,6 +1,6 @@
 import "../../css/login-register.css";
-import Skip from "./Skip";
-import {useState} from "react";
+import {useState,useEffect} from "react";
+import {CSSTransition} from "react-transition-group";
 
 function Register(props) {
 
@@ -9,6 +9,13 @@ function Register(props) {
     const [passValue, setPassValue] = useState("")
     const [confirmPassValue, setConfirmPassValue] = useState("")
     const [registerError, setRegisterError] = useState("")
+
+    const [startAnimation,setStartAnimation] = useState(false)
+
+    useEffect(()=>{
+        setStartAnimation(true)
+    },[])
+
 
     const handleRegister = () => {
         setRegisterError("")
@@ -29,11 +36,15 @@ function Register(props) {
     }
 
     return(
-        <div>
-            <div className="modal-background">
+                <div className="modal-background">
+                    <CSSTransition
+                        in={startAnimation}
+                        timeout={300}
+                        classNames="animated-modal"
+                        onExited = {()=>{props.setRegister(false)}}
+                    >
                 <div className="form-container modal">
-                
-                    <div onClick={() => props.closeRegister(false)}><i className="bi bi-x-square exit-btn"></i></div>
+                    <div onClick={() => setStartAnimation(false)}><i className="bi bi-x-square exit-btn"></i></div>
                     <h1 className="main-heading modal-heading">Register</h1> 
                     
                     <div className="input-element">
@@ -91,11 +102,9 @@ function Register(props) {
                     >Register
                     </button>
 
-                    <Skip setProgressNote = {props.setProgressNote}/>
-
                 </div>
+                </CSSTransition>
             </div>
-        </div>
     )
 
 }

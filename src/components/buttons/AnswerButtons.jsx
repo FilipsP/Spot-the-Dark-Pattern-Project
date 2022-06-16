@@ -14,7 +14,7 @@ const AnswerButtons = (props) => {
         const question = props.event[props.eventNumber]
         const newSave = props.save
         newSave["spamMailNumber"] = props.save.spamMailNumber + 1
-        newSave["livesOwned"] = props.save.livesOwned - question.lives
+        newSave["wrongAnswers"] = props.save.wrongAnswers + 1
         props.handleSaveUpdate(newSave)
         alert("Poor choice...")
         props.handleLastAnswerTiming()

@@ -54,7 +54,7 @@ function Character(props) {
                         {props.save.lastAnswerTime && <h3>Last answer on: {props.save.lastAnswerTime}</h3>}
                         <h2>Money : {props.money}€</h2>
                         <h2>Points : {props.save.pointsOwned}</h2>
-                        <h2>Lives : {props.save.livesOwned}</h2>
+                        <h2>Wrong answers : {props.save.wrongAnswers}</h2>
                     </div>
                 </div>
             {props.isError && <p className="register-text">No connection to server try again:*add connect button*</p>}

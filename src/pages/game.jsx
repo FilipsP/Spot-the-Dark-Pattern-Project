@@ -1,5 +1,4 @@
 import { useState} from "react";
-import LoginRegister from "../components/login-register";
 import MainMenu from "../components/main-menu/main-menu";
 import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
@@ -19,7 +18,7 @@ import ErrorBoundary from "../components/errors/ErrorBoundary";
 const defaultSave = {
     characterName: "Anonymous",
     spamMailNumber: 0,
-    livesOwned: 3,
+    wrongAnswers: 0,
     pointsOwned: 0,
     profilePictureId: 3,
     lastAnswerTime: ''
@@ -36,7 +35,7 @@ function Game() {
     const [save, setSave] = useState(defaultSave);
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [profiles, setProfiles] = useState([])
-    const [inMenu, setInMenu] = useState(false);
+    const [inMenu, setInMenu] = useState(true);
     const [isError, setIsError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [currentProfilePicture, setCurrentPicture] = useState(0);
@@ -70,7 +69,7 @@ function Game() {
 
 
     useEffect(()=>{
-        setNotificationsNumber(notifications.length - 1)
+        setNotificationsNumber(notifications.length -1)
     },[notifications])
 
 
@@ -102,7 +101,7 @@ function Game() {
 
     const checkForFinish = () => {
         console.log("checking for finish...")
-        if (save.livesOwned < 1 || save.pointsOwned > 5 ) {
+        if (save.wrongAnswers > 5 || save.pointsOwned > 5 ) {
             console.log("finish!")
             return setGameOver(true)
         }
@@ -257,7 +256,7 @@ function Game() {
         const newSave = {
             characterName: characterName,
             spamMailNumber: 0,
-            livesOwned: 3,
+            wrongAnswers: 0,
             pointsOwned: 0,
             profilePictureId: 0
         };
@@ -308,7 +307,6 @@ function Game() {
                 />
             </CSSTransition>
             <h1>{isError && "Error :("}</h1>
-            <h1>{isLoading && "Loading, please wait..."}</h1>
             <ErrorBoundary>
                 <CSSTransition
                     in={openNotifications}
@@ -332,7 +330,7 @@ function Game() {
                     setSettings = {setSettings}
 
                 />:<div>
-                {inMenu ?
+                {inMenu &&
                 <div>
                 <MainMenu
                     setInMenu = {setInMenu}
@@ -359,23 +357,13 @@ function Game() {
                     openLoginRegister = {setLogInRegister}
                     openNotifications = {setOpenNotifications}
                     notificationNumber={notificationNumber}
+                    gameIsLoading = {isLoading}
 
                     />
-                    </div>
-                    :
-                    <LoginRegister
-                        logIn = {setLoggedIn}
-                        showMenu = {setInMenu}
-                        state = {inMenu}
-                        connect = {connectUser}
-                        registerUser = {registerUser}
-                        connectUser = {connectUser}
-                    />}
+                    </div>}
                     {logInRegisterOpened && <LoginRegisterModal
-                        openedLogInRegister = {setLogInRegister}
+                        setLogInRegister = {setLogInRegister}
                         logIn = {setLoggedIn}
-                        showMenu = {setInMenu}
-                        state = {inMenu}
                         connect = {connectUser}
                         registerUser = {registerUser}
                         connectUser = {connectUser}

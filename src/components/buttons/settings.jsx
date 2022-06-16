@@ -1,6 +1,6 @@
 import '../../css/settings.css';
-import saveGame from "../functions/saveGame";
-import clearSave from "../functions/clearSave";
+import saveGame from "../../functions/saveGame";
+import clearSave from "../../functions/clearSave";
 import Player from "./MusicPlayer";
 
 

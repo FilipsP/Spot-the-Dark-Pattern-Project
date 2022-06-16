@@ -53,7 +53,6 @@ function UnitedApp(props){
     return(
         <div>
             {isLoading && <h1>Event is loading...</h1>}
-            {isError && <h1>Error :(</h1>}
             <div className='container vertical-image-container'>
                 <div className='browser-container'>
                     <div className="row">

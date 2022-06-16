@@ -2,7 +2,7 @@ import "../css/start-page.css"
 import { Link } from 'react-router-dom';
 import {useState} from "react";
 
-function MoreInfo(props) {
+function MoreInfo() {
 
 
 

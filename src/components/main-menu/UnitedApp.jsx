@@ -1,3 +1,4 @@
+
 import "../../css/browser.css";
 import { useState} from 'react';
 import GameEvent from '../modals/GameEvent';
@@ -22,6 +23,8 @@ function UnitedApp(props){
     const [eventNumber, setEventNumber] = useState(1);
     const [event, setEvent] = useState([]);
     const [note, setNote] = useState(false);
+    const [inputEvent, setInputEvent] = useState(false);
+
 
 
 
@@ -49,16 +52,26 @@ function UnitedApp(props){
         setNote(true)
     },[])
 
+
+
+    const chooseType = () => {
+        setInputEvent(false)
+        if (event.type === "input"){
+            setInputEvent(true)
+        }
+        setOpenEvent(true)
+    }
+
     return(
         <div>
             {isLoading && <h1>Event is loading...</h1>}
-            <div className='container image-container'> 
+            <div className='container image-container'>
                         <img
                             style={background}
                             className='background-image'
                             src={props.appPath}
                             alt= {appName+" background"}
-                            onClick={() => {setOpenEvent(true)}}>
+                            onClick={() => {chooseType()}}>
                         </img>
                     {openEvent
                         ? <GameEvent
@@ -76,6 +89,7 @@ function UnitedApp(props){
                             disabledApps={props.disabledApps}
                             setDisabledApps={props.setDisabledApps}
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
+                            inputEvent= {inputEvent}
                         />
                         :note&&<ProgressNote
                             content = {<SpotTheDPAlert></SpotTheDPAlert>}
@@ -84,7 +98,7 @@ function UnitedApp(props){
                         />
                     }
                 </div>
-            
+
         </div>
     )
 }

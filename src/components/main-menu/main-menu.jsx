@@ -21,6 +21,7 @@ import redditBackground from "../../img/apps-background/reddit_bg.png";
 import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
 import metaBackground from "../../img/apps-background/meta_bg.png";
+import instaBackground from "../../img/apps-background/insta-dark-pattern-mobile-design.png";
 import UnitedApp from "./UnitedApp";
 import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
@@ -291,6 +292,10 @@ function MainMenu(props){
                     break;
                 case "Reddit":
                     appURL = redditBackground
+                    buildAppToShow(app,appURL)
+                    break;
+                case "Instagram":
+                    appURL = instaBackground
                     buildAppToShow(app,appURL)
                     break;
                 default :

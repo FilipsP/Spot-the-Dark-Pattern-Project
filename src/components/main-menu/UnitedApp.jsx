@@ -54,7 +54,7 @@ function UnitedApp(props){
         <div>
             {isLoading && <h1>Event is loading...</h1>}
             {isError && <h1>Error :(</h1>}
-            <div className='container'>
+            <div className='container vertical-image-container'>
                 <div className='browser-container'>
                     <div className="row">
                         <div className='column left'>
@@ -74,7 +74,7 @@ function UnitedApp(props){
 
                         </div>
                     </div>
-                    <div className='content'>
+                    <div className='browser-content'>
                         <hr></hr>
                         <img
                             style={background}

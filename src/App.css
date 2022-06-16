@@ -7,6 +7,8 @@
     --text-color: #fff;
 }
 
+
+
 html{
     scroll-behavior: smooth;
 }
@@ -15,15 +17,6 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-html[data-theme='light']{
-    --main-bg-color: #40BD76;
-    --text-color: black;
-}
-
-html[data-theme='dark']{
-    --main-bg-color: #616562;
-    --text-color: rgb(245, 245, 245);
-}
 
 body{
     margin: 0;
@@ -86,6 +79,10 @@ a{
     top: 0;
     left: 0;
     z-index: 100;
+}
+
+.transparent{
+    background-color: transparent;
 }
 
 

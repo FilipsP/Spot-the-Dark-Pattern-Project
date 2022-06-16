@@ -1,9 +1,17 @@
 
 .browser-container{
+    max-width: 25%;
+    margin: 0 auto;
+
     background-color: rgb(225, 225, 225);
     border: 3px solid #f1f1f1;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    margin-bottom: 5rem;
+}
+
+.vertical-image-container{
+    margin: 0 auto !important;
 }
 
 /* Container for columns and the top "toolbar" */
@@ -84,3 +92,14 @@
 .green-dot{
     background-color: #5AC05A;
 }
+
+.browser-content{
+    padding: 0;
+    margin: 0;
+}
+
+.background-image{
+    width: 100%;
+    object-fit: cover;
+}
+

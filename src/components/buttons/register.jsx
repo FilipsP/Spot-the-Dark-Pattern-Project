@@ -36,7 +36,7 @@ function Register(props) {
     }
 
     return(
-                <div className="modal-background">
+                <div className="modal-background transparent">
                     <CSSTransition
                         in={startAnimation}
                         timeout={300}

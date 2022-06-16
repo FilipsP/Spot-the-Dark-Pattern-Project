@@ -59,7 +59,6 @@
 }
 */
 
-
 .bi-bell{
     display: flex;
     justify-content: center;
@@ -70,6 +69,7 @@
     margin: 0 auto;
     top: 1rem;
     z-index: -1;
+    max-width: 4rem;
 }
 
 

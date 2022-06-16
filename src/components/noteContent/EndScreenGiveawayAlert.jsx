@@ -32,7 +32,7 @@ const EndScreenGiveawayAlert = (props) => {
                       id="mail"
                       name="mail"
                       value={emailAddress}
-                      placeholder="e-mail address"
+                      placeholder="Email address"
                       onChange={(event) => {setEmailAddress(event.target.value)}}
                   ></input>
               </div>
@@ -51,7 +51,7 @@ const EndScreenGiveawayAlert = (props) => {
 
               </div>
               <div className="input-element">
-                  <label className="form-label" htmlFor="address">Character</label>
+                  <label className="form-label" htmlFor="address">Full Address</label>
                   <input
                       className="input-field"
                       type="text"

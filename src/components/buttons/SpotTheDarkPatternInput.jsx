@@ -1,13 +1,22 @@
 import {useState} from "react";
 
 const SpotTheDarkPatternInput = (props) => {
+
     const [answer,setAnswer] = useState("")
+    const [eventTries,setEventTries] = useState(0)
+
     const handleInput = ()=>{
-        if (props.currentEvent.positive === answer){
-            props.handlePositiveAnswer()
-        }else {
-            props.handleNegativeAnswer()
+        console.log(props.currentEvent.positive)
+        console.log(answer)
+        if (props.currentEvent.positive.toString() === answer.toString()){
+            return props.handlePositiveAnswer()
         }
+        if (eventTries>2){
+            return props.handleNegativeAnswer()
+        }
+            alert("Try Again!")
+            setAnswer("")
+            return setEventTries(eventTries+1)
     }
 
     return(

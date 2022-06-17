@@ -1,9 +1,9 @@
 const SpotTheDPAlert = () => {
    return(
       <div>
-         <p className='note-text'>
-               Spot the dark pattern
-         </p>
+
+             <h1>Spot the dark pattern</h1>
+          <p className='note-text'>Click on the picture when you are ready to answer</p>
       </div>
    )
 }

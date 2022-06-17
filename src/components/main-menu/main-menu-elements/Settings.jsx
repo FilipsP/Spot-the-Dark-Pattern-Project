@@ -1,7 +1,7 @@
-import '../../css/settings.css';
-import saveGame from "../../functions/saveGame";
-import clearSave from "../../functions/clearSave";
-import Player from "./MusicPlayer";
+import '../../../css/settings.css';
+import saveGame from "../../../functions/saveGame";
+import clearSave from "../../../functions/clearSave";
+import Player from "../../buttons/MusicPlayer";
 
 
 function Settings(props){

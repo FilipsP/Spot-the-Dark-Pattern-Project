@@ -18,6 +18,9 @@ function GameEvent(props){
         setStartAnimation(true)
     },[])
 
+
+
+
     return(
         <div>
             <div className=''>
@@ -46,6 +49,7 @@ function GameEvent(props){
                         handleLastAnswerTiming = {props.handleLastAnswerTiming}
                         inputEvent={props.inputEvent}
                         setType={props.setType}
+                        setGoodAnswerAnimation={props.setGoodAnswerAnimation}
                     />
                 </div>
                 </CSSTransition>

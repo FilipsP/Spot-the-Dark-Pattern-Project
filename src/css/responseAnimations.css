@@ -1,0 +1,18 @@
+.animated-positive-enter{
+    transform: translateY(-500px);
+}
+
+.animated-positive-enter-active{
+    transform: translateY(0px);
+    transition: all 500ms ease-in;
+}
+
+.animated-positive-exit {
+    opacity: 1;
+}
+
+
+.animated-positive-exit-active {
+    transform: translateY(+500px);
+    transition: all 500ms ease-in;
+}

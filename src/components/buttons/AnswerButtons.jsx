@@ -1,10 +1,11 @@
-import React from "react";
+
 import SpotTheDarkPatternInput from "./SpotTheDarkPatternInput";
+import React,{useEffect, useRef} from "react";
 
 
 const AnswerButtons = (props) => {
 
-
+    const focusedInput = useRef(null)
 
     const closeApp = () => {
             props.closeEvent(false)
@@ -39,7 +40,7 @@ const AnswerButtons = (props) => {
         const question = props.event[props.eventNumber]
         const newSave = props.save
         newSave["pointsOwned"] = props.save.pointsOwned + question.points
-        alert("Good choice ☺")
+        props.setGoodAnswerAnimation(true)
         props.handleLastAnswerTiming()
         props.handleSaveUpdate(newSave)
         if (props.event[props.eventNumber +1]) {
@@ -54,7 +55,13 @@ const AnswerButtons = (props) => {
         }
     }
 
+    const scrollToBottom = () => {
+        focusedInput.current?.scrollIntoView()
+    }
 
+    useEffect(() => {
+        scrollToBottom()
+    }, []);
 
     return(
         <>
@@ -65,7 +72,7 @@ const AnswerButtons = (props) => {
 
 
                 />:
-            <div className='buttons-container'>
+            <div className='buttons-container' ref={focusedInput}>
                 <button  type= "button" className='event-button' onClick={() => handlePositiveAnswer()}>{props.event[props.eventNumber].positive}</button>
                 <button type= "button" className='event-button' onClick={() => handleNegativeAnswer()}>{props.event[props.eventNumber].negative}</button>
             </div>}

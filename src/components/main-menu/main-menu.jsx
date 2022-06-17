@@ -25,7 +25,7 @@ import instaBackground from "../../img/apps-background/confirmshaming_zoom.png";
 import UnitedApp from "./UnitedApp";
 import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
-import Settings from "../buttons/settings";
+import Settings from "./main-menu-elements/Settings";
 import ProgressNote from "../modals/progressNote";
 import MainMenuTutorial from "../noteContent/MainMenuTutorial";
 
@@ -349,7 +349,6 @@ function MainMenu(props){
                     gameisLoading = {props.gameIsLoading}
 
                 />:chosenApp}
-                {appChoice?<div>{chosenApp}</div>:""}
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
 import {dbRef} from "../firebase";
 import FinalScreen from "../components/final-screen/final-screen";
-import Settings from "../components/buttons/settings";
+import Settings from "../components/main-menu/main-menu-elements/Settings";
 import profile_pic from "../img/profile_pic.png";
 import casual from "../img/avatars/casual.png";
 import cool from "../img/avatars/cool.jpg";
@@ -236,7 +236,7 @@ function Game() {
 
 
 
-    const registerUser = async (username, password, characterName, closeRegister, setError) => {
+    const registerUser = async (username, password, characterName, closeRegister) => {
         setIsLoading(true)
         let newID = 0;
         for (const profile in profiles) {

@@ -1,5 +1,6 @@
 
 import "../../css/browser.css";
+import "../../css/responseAnimations.css"
 import {useCallback, useState} from 'react';
 import GameEvent from '../modals/GameEvent';
 import {useEffect} from "react";
@@ -8,6 +9,8 @@ import {dbRef} from "../../firebase";
 //import SpotTheDP from "../modals/SpotTheDarkPattern";
 import ProgressNote from "../modals/progressNote";
 import SpotTheDPAlert from '../noteContent/SpotTheDPAlert';
+import GoodAnswer from "../animations/GoodAnswer";
+import {CSSTransition} from "react-transition-group";
 
 
 const background = {
@@ -24,6 +27,7 @@ function UnitedApp(props){
     const [event, setEvent] = useState([]);
     const [note, setNote] = useState(false);
     const [inputEvent, setInputEvent] = useState(false);
+    const [goodAnswerAnimation, setGoodAnswerAnimation]= useState (false)
 
 
 
@@ -68,11 +72,19 @@ function UnitedApp(props){
 
     return(
         <div>
+            <CSSTransition
+                in={goodAnswerAnimation}
+                unmountOnExit
+                timeout={500}
+                classNames="animated-positive"
+                onExited={()=>{setGoodAnswerAnimation(false)}}
+            >
+                <GoodAnswer />
+            </CSSTransition>
             {isLoading && <h1>Event is loading...</h1>}
             <div className='container image-container'>
                 
                         <img
-                            
                             style={background}
                             className='background-image'
                             src={props.appPath}
@@ -99,6 +111,7 @@ function UnitedApp(props){
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
                             inputEvent= {inputEvent}
                             setType = {setType}
+                            setGoodAnswerAnimation={setGoodAnswerAnimation}
                         />
                         :note&&<ProgressNote
                             content = {<SpotTheDPAlert></SpotTheDPAlert>}

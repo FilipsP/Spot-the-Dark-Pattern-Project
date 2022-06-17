@@ -1,17 +1,15 @@
-import {CSSTransition} from "react-transition-group";
 
 
-const GoodAnswer = (props) => {
+import {useEffect} from "react";
+
+
+const GoodAnswer = () => {
+    useEffect(()=>{
+        console.log("playing")
+    },[])
+
     return(
-        <CSSTransition
-            in={props.opened}
-            unmountOnExit
-            timeout={500}
-            classNames="animated-profile-sidebar"
-            onEntered = {()=>props.setOpened(false)}
-        >
-            <i className="bi bi-hand-thumbs-up"></i>
-        </CSSTransition>
+        <i className="bi bi-hand-thumbs-up icon-btn"></i>
     )
 }
 export default GoodAnswer

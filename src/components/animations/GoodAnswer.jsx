@@ -9,7 +9,7 @@ const GoodAnswer = () => {
     },[])
 
     return(
-        <i className="bi bi-hand-thumbs-up icon-btn"></i>
+        <i className="bi bi-hand-thumbs-up icon-btn thumb-btn"></i>
     )
 }
 export default GoodAnswer

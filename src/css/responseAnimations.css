@@ -4,7 +4,7 @@
 
 .animated-positive-enter-active{
     transform: translateY(0px);
-    transition: all 500ms ease-in;
+    transition: all 400ms ease-in-out;
 }
 
 .animated-positive-exit {
@@ -14,5 +14,11 @@
 
 .animated-positive-exit-active {
     transform: translateY(+500px);
-    transition: all 500ms ease-in;
+    transition: all 400ms ease-in-out;
+}
+
+
+.thumb-btn{
+    font-size: 5rem;
+    top: 70%;
 }

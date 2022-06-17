@@ -85,7 +85,7 @@ function StartPage() {
 
 
 return(<div>
-    <div className="container" >
+    <div className="container margin-top" >
         <h1 className="main-heading">Spot the Dark Pattern</h1>
         <div className="game-description game-description-container">Hello Friend!<br></br>
             <p>You are going to enter a game related to <button style={styleForLink} onClick={linkToInfo}><strong><a href='#info'>Dark Patterns</a></strong></button> - <em>bad</em> things all over the internet that try

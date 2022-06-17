@@ -151,7 +151,7 @@ function IconsMenu(props) {
                 {/*    musicOn = {props.on}*/}
                 {/*    toggleMusic = {props.toggleMusic}*/}
                 {/*/>*/}
-                    <div className='icon-frame'>
+                    <div className='icon-frame menu-frame'>
                         <div className='icon-grid'>
                             <div><img
                                 className='icon'

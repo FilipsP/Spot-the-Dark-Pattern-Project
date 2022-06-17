@@ -40,13 +40,16 @@ const AnswerButtons = (props) => {
         alert("Good choice ☺")
         props.handleLastAnswerTiming()
         props.handleSaveUpdate(newSave)
-        const newDisabledApps = props.disabledApps
-        newDisabledApps.push(props.app)
-        props.setType()
-        console.log(newDisabledApps)
-        props.setDisabledApps(newDisabledApps)
-        closeApp()
-
+        if (props.event[props.eventNumber +1]) {
+            props.setEventNumber(props.eventNumber + 1)
+        }else {
+            const newDisabledApps = props.disabledApps
+            newDisabledApps.push(props.app)
+            props.setType()
+            console.log(newDisabledApps)
+            props.setDisabledApps(newDisabledApps)
+            closeApp()
+        }
     }
 
 

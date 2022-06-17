@@ -9,6 +9,10 @@ import React,{useEffect,useState} from "react";
 function GameEvent(props){
     const [startAnimation,setStartAnimation] = useState(false)
 
+    useEffect(()=>{
+        props.setType()
+    },[props.eventNumber, props.event, props.setType])
+
 
     useEffect(()=>{
         setStartAnimation(true)

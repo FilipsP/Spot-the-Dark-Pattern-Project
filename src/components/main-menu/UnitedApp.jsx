@@ -1,6 +1,6 @@
 
 import "../../css/browser.css";
-import { useState} from 'react';
+import {useCallback, useState} from 'react';
 import GameEvent from '../modals/GameEvent';
 import {useEffect} from "react";
 import {child, get} from "firebase/database";
@@ -54,13 +54,17 @@ function UnitedApp(props){
 
 
 
-    const setType = () => {
+    const setType = useCallback(() => {
         setInputEvent(false)
-        if (event[eventNumber].type === "input"){
-            setInputEvent(true)
+        if (event) {
+            if (event[eventNumber].type === "input") {
+                setInputEvent(true)
+            }
+            setOpenEvent(true)
         }
-        setOpenEvent(true)
-    }
+    },[event,eventNumber])
+    
+
 
     return(
         <div>

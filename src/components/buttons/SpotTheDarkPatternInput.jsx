@@ -3,7 +3,7 @@ import {useState} from "react";
 const SpotTheDarkPatternInput = (props) => {
 
     const [answer,setAnswer] = useState("")
-    const [eventTries,setEventTries] = useState(0)
+    const [eventTries,setEventTries] = useState(1)
 
     const handleInput = ()=>{
         console.log(props.currentEvent.positive)

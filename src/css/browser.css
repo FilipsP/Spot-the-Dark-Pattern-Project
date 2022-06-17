@@ -145,3 +145,21 @@
     width: 100%;
     object-fit: cover;
 }
+
+@media screen and (max-width: 1000px){
+    .image-container{
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .image-container{
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .image-container{
+        padding: 1rem;
+    }
+}

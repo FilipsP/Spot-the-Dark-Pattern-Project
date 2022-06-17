@@ -16,15 +16,15 @@ function GameEvent(props){
 
     return(
         <div>
-            <div className='modal-background'>
+            <div className=''>
                 <CSSTransition
                     in={startAnimation}
                     timeout={300}
                     classNames="animated-modal"
                     unmountOnExit
                 >
-                <div className="form-container event-container modal">
-                    <p className='event-text'>{props.event[props.eventNumber].description}</p>
+                <div className='event-frame'>
+                    <p className='integrated-event-text'>{props.event[props.eventNumber].description}</p>
                     <AnswerButtons
                         app = {props.app}
                         showApps = {props.showApps}

@@ -21,7 +21,7 @@ const SpotTheDarkPatternInput = (props) => {
 
     return(
         <>
-            <div className="input-element">
+            <div className="input-container" id='answer'>
                 <input
                     className="input-field"
                     type="number"
@@ -31,14 +31,15 @@ const SpotTheDarkPatternInput = (props) => {
                     value={answer}
                     onChange={(event) => {setAnswer(event.target.value)}}
                 ></input>
-            </div>
+            
             <button
-                className="submit"
+                className="submit answer-button"
                 type="button"
                 id="submit-number"
                 onClick={()=>{handleInput()}}
             >Answer
             </button>
+            </div>
         </>
     )
 }

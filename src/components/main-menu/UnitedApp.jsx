@@ -66,13 +66,17 @@ function UnitedApp(props){
         <div>
             {isLoading && <h1>Event is loading...</h1>}
             <div className='container image-container'>
+                
                         <img
+                            
                             style={background}
                             className='background-image'
                             src={props.appPath}
                             alt= {appName+" background"}
                             onClick={() => {setType()}}>
+                            
                         </img>
+                        
                     {openEvent
                         ? <GameEvent
                             app = {props.app}

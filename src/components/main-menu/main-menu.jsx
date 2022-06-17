@@ -349,6 +349,7 @@ function MainMenu(props){
                     gameisLoading = {props.gameIsLoading}
 
                 />:chosenApp}
+                {appChoice?<div>{chosenApp}</div>:""}
             </div>
         </div>
     )

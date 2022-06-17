@@ -29,7 +29,6 @@ function Game() {
     const [notifications, setNotifications] = useState([]);
     const [notificationNumber, setNotificationsNumber] = useState(0);
     const [openNotifications, setOpenNotifications] = useState(false);
-
     const [logInRegisterOpened, setLogInRegister] = useState(false);
     const [userID,setUserID] = useState("")
     const [save, setSave] = useState(defaultSave);

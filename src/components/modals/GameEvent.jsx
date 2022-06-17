@@ -11,6 +11,7 @@ function GameEvent(props){
 
     useEffect(()=>{
         props.setType()
+        // eslint-disable-next-line
     },[props.eventNumber, props.event, props.setType])
 
 
@@ -22,38 +23,37 @@ function GameEvent(props){
 
 
     return(
-        <div>
-            <div className=''>
-                <CSSTransition
-                    in={startAnimation}
-                    timeout={300}
-                    classNames="animated-modal"
-                    unmountOnExit
-                >
-                <div className='event-frame'>
-                    <p className='integrated-event-text'>{props.event[props.eventNumber].description}</p>
-                    <AnswerButtons
-                        app = {props.app}
-                        showApps = {props.showApps}
-                        hidePage = {props.hidePage}
-                        closeEvent = {props.closeEvent}
-                        handleSaveUpdate = {props.handleSaveUpdate}
-                        save = {props.save}
-                        event = {props.event}
-                        eventNumber = {props.eventNumber}
-                        setEventNumber={props.setEventNumber}
-                        money = {props.money}
-                        setMoney = {props.setMoney}
-                        disabledApps={props.disabledApps}
-                        setDisabledApps={props.setDisabledApps}
-                        handleLastAnswerTiming = {props.handleLastAnswerTiming}
-                        inputEvent={props.inputEvent}
-                        setType={props.setType}
-                        setGoodAnswerAnimation={props.setGoodAnswerAnimation}
-                    />
-                </div>
-                </CSSTransition>
+        <div >
+            <CSSTransition
+                in={startAnimation}
+                timeout={300}
+                classNames="animated-modal"
+                unmountOnExit
+            >
+            <div className='event-frame'>
+                <p className='integrated-event-text'>{props.event[props.eventNumber].description}</p>
+                <AnswerButtons
+                    app = {props.app}
+                    showApps = {props.showApps}
+                    hidePage = {props.hidePage}
+                    closeEvent = {props.closeEvent}
+                    handleSaveUpdate = {props.handleSaveUpdate}
+                    save = {props.save}
+                    event = {props.event}
+                    eventNumber = {props.eventNumber}
+                    setEventNumber={props.setEventNumber}
+                    money = {props.money}
+                    setMoney = {props.setMoney}
+                    disabledApps={props.disabledApps}
+                    setDisabledApps={props.setDisabledApps}
+                    handleLastAnswerTiming = {props.handleLastAnswerTiming}
+                    inputEvent={props.inputEvent}
+                    setType={props.setType}
+                    setAnswerAnimation={props.setAnswerAnimation}
+                    setThumb = {props.setThumb}
+                />
             </div>
+            </CSSTransition>
         </div>
     )
 }

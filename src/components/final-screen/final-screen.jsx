@@ -5,6 +5,8 @@ import {dbRef} from "../../firebase";
 import saveGame from "../../functions/saveGame";
 import EndScreenGiveawayAlert from "../noteContent/EndScreenGiveawayAlert";
 import {CSSTransition} from "react-transition-group";
+import ProgressNote from "../modals/progressNote";
+import FinalScreenTutorial from "../noteContent/FinalScreenTutorial";
 
 
 
@@ -16,7 +18,7 @@ const Stats = (props) => {
             <h1>{props.element.characterName}</h1>
             <p>Finished on: {props.element.lastAnswerTime}</p>
             <p>Points: {props.element.pointsOwned}</p>
-            <p>Lives: {props.element.livesOwned}</p>
+            <p>Wrong Answers: {props.element.wrongAnswers}</p>
             -------------------------
         </li>
     )
@@ -28,6 +30,7 @@ function FinalScreen(props){
     const [results,setResults] = useState([]);
     const [dataFarm,setDataFarm] = useState(false);
     const [winner,setWinner] = useState(false);
+    const [tutorial,setTutorial] = useState(true);
 
 
     const modal = useRef(null)
@@ -57,7 +60,14 @@ function FinalScreen(props){
 
    return(
        <>
+           {tutorial&&
+               <ProgressNote
+                   content = {<FinalScreenTutorial/>}
+                   continue = {setTutorial}
+                   state = {tutorial}
 
+               />
+           }
            <div className='container'>
                {winner?
                    <div>

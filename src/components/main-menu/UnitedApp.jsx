@@ -9,7 +9,7 @@ import {dbRef} from "../../firebase";
 //import SpotTheDP from "../modals/SpotTheDarkPattern";
 import ProgressNote from "../modals/progressNote";
 import SpotTheDPAlert from '../noteContent/SpotTheDPAlert';
-import GoodAnswer from "../animations/GoodAnswer";
+import AnimatedResponse from "../animations/AnimatedResponse";
 import {CSSTransition} from "react-transition-group";
 
 
@@ -21,13 +21,15 @@ const background = {
 
 function UnitedApp(props){
     const [openEvent, setOpenEvent] = useState(false);
+    // eslint-disable-next-line
     const [isError, setIsError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [eventNumber, setEventNumber] = useState(1);
     const [event, setEvent] = useState([]);
     const [note, setNote] = useState(false);
     const [inputEvent, setInputEvent] = useState(false);
-    const [goodAnswerAnimation, setGoodAnswerAnimation]= useState (false)
+    const [answerAnimation, setAnswerAnimation]= useState (false)
+    const [thumb,setThumb] = useState("")
 
 
 
@@ -67,19 +69,25 @@ function UnitedApp(props){
             setOpenEvent(true)
         }
     },[event,eventNumber])
+
+    const onEntered=()=>{
+        setTimeout(()=>{
+            setAnswerAnimation(false)
+        },1000)
+    }
     
 
 
     return(
         <div>
             <CSSTransition
-                in={goodAnswerAnimation}
+                in={answerAnimation}
                 unmountOnExit
                 timeout={500}
                 classNames="animated-positive"
-                onExited={()=>{setGoodAnswerAnimation(false)}}
+                onEntered={()=>{onEntered()}}
             >
-                <GoodAnswer />
+                <AnimatedResponse thumbClass = {thumb} />
             </CSSTransition>
             {isLoading && <h1>Event is loading...</h1>}
             <div className='container image-container'>
@@ -111,7 +119,8 @@ function UnitedApp(props){
                             handleLastAnswerTiming = {props.handleLastAnswerTiming}
                             inputEvent= {inputEvent}
                             setType = {setType}
-                            setGoodAnswerAnimation={setGoodAnswerAnimation}
+                            setAnswerAnimation={setAnswerAnimation}
+                            setThumb= {setThumb}
                         />
                         :note&&<ProgressNote
                             content = {<SpotTheDPAlert></SpotTheDPAlert>}
@@ -119,6 +128,7 @@ function UnitedApp(props){
                             state = {note}
                         />
                     }
+
                 </div>
 
         </div>

@@ -9,8 +9,7 @@ const SpotTheDarkPatternInput = (props) => {
     const focusedInput = useRef(null)
 
     const handleInput = ()=>{
-        console.log(props.currentEvent.positive)
-        console.log(answer)
+        console.log(eventTries)
         if (props.currentEvent.positive.toString() === answer.toString()){
             return props.handlePositiveAnswer()
         }

@@ -2,9 +2,17 @@ import React from "react";
 import '../../../css/profile.css'
 
 const logInButton = {
-    border: "2px",
-    borderBlockColor:"gray",
-    textAlign:"center"
+    borderTopRightRadius: "9px",
+    borderTopLeftRadius: "9px",
+    borderBottomRightRadius: "3px",
+    borderBottomLeftRadius: "3px",
+    border: "solid gray 2px",
+    backgroundColor: "black",
+    textAlign:"center",
+    fontStyle:"italic",
+    fontSmooth:"large",
+    padding:"2px",
+    borderBottom: "black"
 }
 
 function Character(props) {
@@ -33,10 +41,9 @@ function Character(props) {
                             <p>Log out</p>
                         </button>
                     </div>
-                    : <p style={logInButton} className="register-text">You are not logged in<br/>
-                        Log in to save progress:<br/>
-                        ----------------------------------<br/>
-                        <i  className= "bi bi-activity" onClick={()=>{props.openLoginRegister(true)}}> Log in</i></p>
+                    : <div style={{textAlign:"center",borderBottom:"solid black 3px"}}><p>You are not logged in<br/>
+                        Log in to save progress:</p>
+                        <i style={logInButton} className= "bi bi-activity" onClick={()=>{props.openLoginRegister(true)}}>Log in</i></div>
                 }
                 <div className='profile-picture-container'>
                     <img className='profile-picture'
@@ -44,8 +51,8 @@ function Character(props) {
                         alt={props.profilePictures[props.currentProfilePicture].description}
                     />
                     <div className='picture-btn-container'>
-                        <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-chevron-left"></i></button>
-                        <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-chevron-right"></i></button>
+                        <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-caret-left-fill"></i></button>
+                        <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-caret-right-fill"></i></button>
                     </div>
                     <h1 className='profile-name'>
                         {props.isLoggedIn?props.save.characterName:props.defaultCharacters[props.currentProfilePicture].username}

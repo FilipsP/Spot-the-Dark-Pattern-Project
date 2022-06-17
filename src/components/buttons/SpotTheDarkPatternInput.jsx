@@ -1,9 +1,12 @@
-import {useState} from "react";
+import {useEffect,useState,useRef} from "react";
+
 
 const SpotTheDarkPatternInput = (props) => {
 
     const [answer,setAnswer] = useState("")
     const [eventTries,setEventTries] = useState(1)
+
+    const focusedInput = useRef(null)
 
     const handleInput = ()=>{
         console.log(props.currentEvent.positive)
@@ -18,10 +21,17 @@ const SpotTheDarkPatternInput = (props) => {
             setAnswer("")
             return setEventTries(eventTries+1)
     }
+    const scrollToBottom = () => {
+        focusedInput.current?.scrollIntoView()
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, []);
 
     return(
         <>
-            <div className="input-container" id='answer'>
+            <div className="input-container" id='answer' >
                 <input
                     className="input-field"
                     type="number"
@@ -33,6 +43,7 @@ const SpotTheDarkPatternInput = (props) => {
                 ></input>
             
             <button
+
                 className="submit answer-button"
                 type="button"
                 id="submit-number"
@@ -40,6 +51,7 @@ const SpotTheDarkPatternInput = (props) => {
             >Answer
             </button>
             </div>
+            <div ref={focusedInput}></div>
         </>
     )
 }

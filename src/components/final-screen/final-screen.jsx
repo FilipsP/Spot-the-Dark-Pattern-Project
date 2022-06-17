@@ -1,5 +1,5 @@
 import '../../css/final-screen.css';
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
 import saveGame from "../../functions/saveGame";
@@ -30,7 +30,7 @@ function FinalScreen(props){
     const [winner,setWinner] = useState(false);
 
 
-
+    const modal = useRef(null)
 
     useEffect(() => {
         saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture)
@@ -50,6 +50,10 @@ function FinalScreen(props){
         setWinner(props.save.pointsOwned > 5)
     },[props.save.pointsOwned])
 
+    const handleDataFarm = ()=>{
+        setDataFarm(true)
+            modal.current.focus();
+    }
 
    return(
        <>
@@ -70,7 +74,7 @@ function FinalScreen(props){
                        <p className='final-text'>To start all over just refresh this page by the refresh icon or pressing "F5"</p>
 
                    </div>}
-                 <button className='share-button' id = "end-game-modal" onClick={()=>{setDataFarm(true)}}><a href='#end-game-modal'>Click for the free gifts</a></button><br/>
+                 <button className='share-button' id = "end-game-modal" ref={modal}  onClick={()=>{handleDataFarm()}}>Click for the free gifts</button><br/>
                <CSSTransition
                    in={dataFarm}
                    timeout={300}

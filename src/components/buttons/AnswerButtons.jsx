@@ -1,7 +1,9 @@
 import React from "react";
 import SpotTheDarkPatternInput from "./SpotTheDarkPatternInput";
 
+
 const AnswerButtons = (props) => {
+
 
 
     const closeApp = () => {
@@ -60,6 +62,7 @@ const AnswerButtons = (props) => {
                     currentEvent = {props.event[props.eventNumber]}
                     handlePositiveAnswer={handlePositiveAnswer}
                     handleNegativeAnswer={handleNegativeAnswer}
+
 
                 />:
             <div className='buttons-container'>

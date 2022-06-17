@@ -3,7 +3,7 @@ import { Route,Routes} from 'react-router-dom';
 import StartPage from './pages/startPage';
 import Testing from './components/test/Testing';
 import NotFound from "./components/NotFound";
-import Game from "./pages/game";
+import Game from "./pages/Game";
 
 function App() {
 

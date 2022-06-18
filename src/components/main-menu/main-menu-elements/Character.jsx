@@ -11,8 +11,19 @@ const logInButton = {
     textAlign:"center",
     fontStyle:"italic",
     fontSmooth:"large",
-    padding:"2px",
+    padding:"0.04rem",
     borderBottom: "black"
+}
+
+const characterStatsValue = {
+    fontFamily: "cursive",
+    fontSize: "1.5rem",
+    color:"gray",
+}
+
+const characterStatName = {
+    fontFamily:"cursive",
+    fontSize:"2rem",
 }
 
 function Character(props) {
@@ -42,10 +53,12 @@ function Character(props) {
                         </button>
                     </div>
                     : <div style={{textAlign:"center",borderBottom:"solid black 3px"}}><p>You are not logged in<br/>
-                        Log in to save progress:</p>
+                        ↓Log in to save progress↓</p>
                         <i style={logInButton} className= "bi bi-activity" onClick={()=>{props.openLoginRegister(true)}}>Log in</i></div>
                 }
                 <div className='profile-picture-container'>
+                    {props.save.lastAnswerTime && <span
+                        style={{opacity:"0.5",textAlign:"center",marginBottom:"0.5rem"}}>Last answer on: {props.save.lastAnswerTime}</span>}
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
                         alt={props.profilePictures[props.currentProfilePicture].description}
@@ -58,10 +71,10 @@ function Character(props) {
                         {props.isLoggedIn?props.save.characterName:props.defaultCharacters[props.currentProfilePicture].username}
                     </h1>
                     <div className='stats-container'>
-                        {props.save.lastAnswerTime && <h3>Last answer on: {props.save.lastAnswerTime}</h3>}
-                        <h2>Money : {props.money}€</h2>
-                        <h2>Points : {props.save.pointsOwned}</h2>
-                        <h2>Wrong answers : {props.save.wrongAnswers}</h2>
+                        <div style={{borderBottom: "solid 0.2rem",borderBottomColor:"rgba(211,211,211,0.3)"}}><span style={characterStatName}>Money : </span><span style={characterStatsValue}>{props.money}€</span></div>
+                        <div style={{borderBottom: "solid 0.3rem",borderBottomColor:"rgba(211,211,211,0.2)"}}><span style={characterStatName}>Points : </span><span style={characterStatsValue}>{props.save.pointsOwned}</span></div>
+                        <div style={{borderBottom: "solid 0.4rem",borderBottomColor:"rgba(211,211,211,0.1)"}}><span style={characterStatName}>Wrong answers : </span><span style={characterStatsValue}>{props.save.wrongAnswers}</span></div>
+
                     </div>
                 </div>
             {props.isError && <p className="register-text">No connection to server try again:*add connect button*</p>}

@@ -101,7 +101,7 @@ function Game() {
 
     const checkForFinish = () => {
         console.log("checking for finish...")
-        if (save.wrongAnswers > 5 || save.pointsOwned > 5 ) {
+        if (disabledApps.length >= 5 ) {
             console.log("finish!")
             return setGameOver(true)
         }

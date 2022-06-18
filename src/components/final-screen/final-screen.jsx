@@ -8,18 +8,20 @@ import {CSSTransition} from "react-transition-group";
 import ProgressNote from "../modals/progressNote";
 import FinalScreenTutorial from "../noteContent/FinalScreenTutorial";
 
-
+const borderStyle = {
+    borderBottom: "solid 0.1rem",
+    borderBottomColor:"rgba(0,0,0,0.3)"
+}
 
 const Stats = (props) => {
 
 
     return(
-        <li className='final-text'>
+        <li style={borderStyle} className='final-text'>
             <h1>{props.element.characterName}</h1>
             <p>Finished on: {props.element.lastAnswerTime}</p>
             <p>Points: {props.element.pointsOwned}</p>
             <p>Wrong Answers: {props.element.wrongAnswers}</p>
-            -------------------------
         </li>
     )
 }
@@ -70,7 +72,7 @@ function FinalScreen(props){
            }
            <div className='container'>
                {winner?
-                   <div>
+                   <div style={borderStyle}>
                     <h1>You won</h1>
                      <p className='final-text'>Hurray! Hurray! Hurray!</p>
                     <p className='final-text'>You have successfully completed the game!</p>
@@ -95,7 +97,7 @@ function FinalScreen(props){
                </CSSTransition>
 
                  <a href="https://forms.gle/qwAwGdWHoxsYS36H6"><button className='share-button' >Leave your feedback</button></a>
-                 <ul>{results.map((element) =>  <Stats key={results.indexOf(element).toString()} element={element}/>)}</ul>
+                 <ul style={{listStyleType:"none"}}>{results.map((element) =>  <Stats key={results.indexOf(element).toString()} element={element}/>)}</ul>
            </div>
        </>
    )

@@ -26,7 +26,7 @@ const AnswerButtons = (props) => {
         newSave["spamMailNumber"] = props.save.spamMailNumber + 1
         newSave["wrongAnswers"] = props.save.wrongAnswers + 1
         props.handleSaveUpdate(newSave)
-        props.setThumb("bi bi-hand-thumbs-down icon-btn thumb-btn")
+        props.setThumb("bi bi-hand-thumbs-down-fill icon-btn thumb-btn")
         props.setAnswerAnimation(true)
         props.handleLastAnswerTiming()
         if (props.event[props.eventNumber +1]) {
@@ -49,7 +49,7 @@ const AnswerButtons = (props) => {
         const newSave = props.save
         newSave["pointsOwned"] = props.save.pointsOwned + question.points
         props.handleLastAnswerTiming()
-        props.setThumb("bi bi-hand-thumbs-up icon-btn thumb-btn")
+        props.setThumb("bi bi-hand-thumbs-up-fill icon-btn thumb-btn")
         props.setAnswerAnimation(true)
         props.handleSaveUpdate(newSave)
         if (props.event[props.eventNumber +1]) {

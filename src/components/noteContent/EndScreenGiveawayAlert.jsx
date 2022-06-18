@@ -66,7 +66,7 @@ const EndScreenGiveawayAlert = (props) => {
                   className="submit"
                   type="submit"
                   id="register-submit"
-                  onClick={()=>{alert("You are basically agreeing to all sorts of things... Your data was stolen")}}
+                  onClick={()=>{alert("You are basically agreeing to all sorts of things... Don't do that!")}}
               >Accept all turms & submit
               </button>
 

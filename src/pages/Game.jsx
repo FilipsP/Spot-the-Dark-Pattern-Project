@@ -14,6 +14,7 @@ import {CSSTransition} from "react-transition-group";
 import LoginRegisterModal from "../components/modals/LoginRegister";
 import Notifications from "../components/modals/Notifications";
 import ErrorBoundary from "../components/errors/ErrorBoundary";
+import {getCurrentDateNTimeInEstonia} from "../functions/getCurrentDateNTimeInEstonia";
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -113,7 +114,7 @@ function Game() {
     const handleLastAnswerTiming = () => {
         console.log("handleAnswerTiming")
         const newSave = save;
-        newSave["lastAnswerTime"] = new Date().toLocaleString('EST', { timeZone: 'UTC' }) + "";
+        newSave["lastAnswerTime"] = getCurrentDateNTimeInEstonia()
         console.log(newSave)
         setSave(newSave)
         console.log(save)

@@ -5,6 +5,10 @@
     --main-bg-color: linear-gradient(#141e30, #243b55);
     --secondary-bg-color: linear-gradient(#23374c, #32538c);
     --text-color: #fff;
+    /*--second-theme-gradient: linear-gradient(150deg, rgba(98,43,140,1) 0%, rgba(94,99,182,1) 50%, rgba(178,147,235,1) 100%);*/
+    /*--third-theme-gradient: linear-gradient(0deg, #4b6cb7 0%, #182848 100%);*/
+    /*--fourth-theme-gradient: linear-gradient(to bottom, #09203f 0%, #537895 100%);*/
+
 }
 
 

@@ -19,7 +19,9 @@ function Login(props){
 
 
     function handleLogIn() {
-        props.connect(nameValue,passValue,props.setOpenLogin)
+        props.connect(nameValue,passValue)
+        setStartAnimation(false)
+        props.openedLoginRegister(false)
 
     }
 

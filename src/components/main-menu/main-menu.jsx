@@ -16,7 +16,7 @@ import guy from "../../img/avatars/guy.jpg";
 import wtf from "../../img/avatars/wtf.png";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
-import amazonBackground from "../../img/apps-background/amazon_bg_2.png";
+import shopBackground from "../../img/apps-background/comfirmshaming2.jpg";
 import redditBackground from "../../img/apps-background/reddit_bg.png";
 import gmailBackground from "../../img/apps-background/gmail_bg.png";
 import cnnBackground from "../../img/apps-background/cnn_bg.PNG";
@@ -276,7 +276,7 @@ function MainMenu(props){
         }else {
             switch (app) {
                 case "Amazon":
-                    appURL = amazonBackground
+                    appURL = shopBackground
                     buildAppToShow(app,appURL)
                     break;
                 case "Gmail":

@@ -57,6 +57,7 @@ function LoginRegisterModal(props) {
                             LoggedIn = {props.logIn}
                             openedLogIn={setOpenLogin}
                             connect = {props.connect}
+                            openedLoginRegister = {setStartAnimation}
                         />}
                     </div>
                 </div>

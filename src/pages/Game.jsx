@@ -160,7 +160,7 @@ function Game() {
         }
     }
 
-    const connectUser = (username , password,setOpenLogin ) => {
+    const connectUser = (username , password ) => {
         setIsLoading(true)
         for (const profile in profiles) {
             if ( profiles[profile].username === username){
@@ -172,7 +172,6 @@ function Game() {
                     setUserID(newUser.id)
                     setIsLoading(false)
                     alert("You have successfully logged in")
-                    setOpenLogin(()=>false)
                     setLogInRegister(()=>false)
                     return getSave(newUser.id)
 

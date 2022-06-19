@@ -41,6 +41,11 @@ function Character(props) {
         }
     }
 
+    const handleLogOut = ()=> {
+        props.setCurrentPicture(0)
+        props.setLoggedIn(false)
+    }
+
 
     return(
         
@@ -48,7 +53,7 @@ function Character(props) {
             <div onClick={() => {props.setProfileOpened(false)}}><i className='bi bi-x-lg icon-btn close-sidebar-icon close-profile-btn'></i></div>
                 {props.isLoggedIn
                     ?<div>
-                        <button className='profile-mode-btn' onClick={()=>{props.setLoggedIn(false)}}>
+                        <button className='profile-mode-btn' onClick={()=>{handleLogOut()}}>
                             <p>Log out</p>
                         </button>
                     </div>

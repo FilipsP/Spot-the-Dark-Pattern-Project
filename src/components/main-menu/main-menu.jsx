@@ -217,24 +217,25 @@ function MainMenu(props){
         props.setCurrentPicture(0)
         if (props.isLoggedIn){
             props.checkForFinish()
-            props.setCurrentPicture(props.save.profilePictureId)
             get(child(dbRef, `profilePicture`)).then((snapshot) => {
                 if (snapshot.exists()) {
                     setIsError(false);
                     setIsLoading(true)
                     setIsLoading(false);
-                    return props.setProfilePictures(snapshot.val());
+                    props.setProfilePictures(snapshot.val());
+                    props.setCurrentPicture(props.save.profilePictureId)
                 } else {
                     alert("No data available");
-                    return props.setProfilePictures(defaultCharacters);
+                    props.setProfilePictures(defaultCharacters);
                 }
             }).catch((error) => {
                     setIsLoading(false);
                     setIsError(true);
+                    props.setProfilePictures(defaultCharacters);
                     console.log(error);
                 });
         }else {
-            return props.setProfilePictures(defaultCharacters);
+            props.setProfilePictures(defaultCharacters);
         }
         // eslint-disable-next-line
     }, [props.isLoggedIn]);

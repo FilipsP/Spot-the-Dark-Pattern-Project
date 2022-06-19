@@ -21,7 +21,8 @@ function Register(props) {
         setRegisterError("")
         if (nameValue.length && characterNameValue.length && passValue.length) {
             if (passValue === confirmPassValue) {
-                props.registerUser(nameValue, passValue, characterNameValue, props.closeRegister, setRegisterError)
+                props.registerUser(nameValue, passValue, characterNameValue, props.setRegister, setRegisterError)
+                alert("Successfully registered")
                 props.openedLogIn(true)
 
             } else {

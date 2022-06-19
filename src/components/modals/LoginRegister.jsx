@@ -52,6 +52,7 @@ function LoginRegisterModal(props) {
                         </div>
                         {openLogin && <Login
                             setOpenLogin ={setOpenLogin}
+                            setLoginRegister = {props.setLoginRegister}
                             setProgressNote = {setProgressNote}
                             LoggedIn = {props.logIn}
                             openedLogIn={setOpenLogin}

@@ -5,22 +5,12 @@
     padding: 1rem;
     border-radius: 1rem;
     text-align: center;
-
 }
 
 .menu-frame{
     margin-top:15%;
 }
 
-/*
-.icon-grid{
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 2.5rem;
-}
-*/
 .icon-grid{
     margin: 0 auto;
     display: grid;
@@ -51,16 +41,6 @@
     width: 15%;
 }
 
-/*
-@media screen and (min-width: 600px){
-    .icon-grid{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .icon{
-        width: 10rem;
-    }
-}
-*/
 
 .bi-bell{
     display: flex;

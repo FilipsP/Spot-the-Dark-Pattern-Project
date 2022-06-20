@@ -14,7 +14,7 @@
     margin: 0 auto !important;
 }
 
-/* Container for columns and the top "toolbar" */
+
 .row {
     padding: 10px;
     background: #eaeaea;
@@ -22,7 +22,7 @@
     border-top-right-radius: 4px;
 }
 
-/* Create three unequal columns that floats next to each other */
+
 .column {
     float: left;
 }
@@ -39,14 +39,14 @@
     width: 75%;
 }
 
-/* Clear floats after the columns */
+
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-/* Three dots */
+
 .dot {
     margin: 4px 2px 0;
     margin-top: 4px;
@@ -57,7 +57,7 @@
     display: inline-block;
 }
 
-/* Style the input field */
+
 .browser-input[type=text] {
     width: 100%;
     border-radius: 3px;
@@ -69,7 +69,7 @@
     padding: 5px;
 }
 
-/* Three bars (hamburger menu) */
+
 .bar {
     width: 17px;
     height: 3px;
@@ -77,8 +77,6 @@
     margin: 4px 0;
     display: block;
 }
-
-/* Page content */
 
 
 .red-dot{

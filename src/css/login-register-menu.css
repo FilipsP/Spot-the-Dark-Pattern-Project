@@ -1,44 +1,25 @@
 
 .login-register-container {
-    width: 50%;
+    max-width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 .login-register-container p {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 0;
 }
 
 
 .big-icon {
-    font-size: 13rem;
+    font-size: 7rem;
 }
 
 .item-container {
     text-align: center;
 }
 
-.skip-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.skip-btn i {
-    font-size: 4rem;
-
-}
-
-.skip-btn p {
-    font-size: 2.5rem;
-    margin: 0;
-}
 
 .register-container{
     width: 50%;
@@ -54,3 +35,35 @@
 }
 
 
+.register-text{
+    margin-top: 2rem;
+}
+
+@media screen and (max-width:800px) {
+    .login-register-container{
+        max-width: 60%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .main-heading{
+        font-size: 2rem; 
+    }
+    .login-register-container {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .big-icon{
+        font-size: 5rem;
+    }
+    
+    .item-container p{
+        font-size: 1.5rem;
+    }
+    .bi-person-fill{
+        margin-right: 1.3rem;
+    }
+    
+}

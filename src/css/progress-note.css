@@ -1,0 +1,30 @@
+
+.note-text{
+    font-size: 2rem;
+    width: 80%;
+    margin: 0 auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-submit-container{
+    min-width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 700px){
+    .note-text{
+        font-size: 1.5rem;
+        width: 95%;
+    }
+
+    .note-submit{
+        font-size: 1.5rem;
+    }
+
+}
+

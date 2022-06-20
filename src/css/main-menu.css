@@ -1,19 +1,128 @@
-.icon-grid{
-    padding: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+.icon-frame{
+    max-width: 55%;
+    margin: 0 auto;
+    background: rgba( 255, 255, 255, 0.3 );
+    padding: 1rem;
+    border-radius: 1rem;
     text-align: center;
-    grid-gap: 5rem;
 }
 
+.menu-frame{
+    margin-top:15%;
+}
+
+.icon-grid{
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+
+}
 
 .icon{
-    width: auto;
-    height: 150px;
+    width: 10rem;
+    height: auto;
     transition: transform .1s ease-in-out;
 }
 
 .icon:hover{
     transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+.right-aligned{
+    float: right;
+    width: 70%;
+}
+
+.left-aligned{
+    float: left;
+    width: 15%;
+}
+
+
+.bi-bell{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 1rem;
+    z-index: -1;
+    max-width: 4rem;
+}
+
+
+.notification-count{
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1150px){
+    .icon{
+        width: 8rem;
+    }
+}
+
+
+@media screen and (max-width: 1000px){
+    .sidebar{
+        display: none;
+    }
+    .settings-btn{
+        display: block;
+    }
+    .profile-btn{
+        display: block;
+    }
+}
+
+
+
+@media screen and (max-width: 950px){
+    .icon-frame{
+        max-width: 70%;
+    }
+    .icon-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .icon{
+        width: 8rem;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .icon-frame{
+        max-width: 50%;
+        margin-top: 5rem;
+    }
+    .icon-grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .icon{
+        width: 7rem;
+    }
+}
+
+
+
+.animated-notification-enter{
+    transform: translateY(-350px);
+}
+
+.animated-notification-enter-active{
+    transform: translateY(0px);
+    transition: all 500ms ease-in;
+}
+
+.animated-notification-exit {
+    opacity: 1;
+}
+
+
+.animated-notification-exit-active {
+    transform: translateY(-350px);
+    transition: all 500ms ease-in;
 }

@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Spot the Dark Pattern Mäng
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projekt on tethtud Tallinna Ülikooli [Digitehnoloogiate instituudi](https://www.tlu.ee/dt) suvepraktika raames
+## Autorid: 
+ - Mares Sumarok
+ - Filipp-Artur Pljassunov
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+# Projekti eesmärk ja lühihkirjeldus
+Projekti eesmärk on seletada kasutajale mis on "Dark pattern" ja kuidas seda eristada veebilehtedel.
+Tellijaga kooskõlas otsustasime näidata kasutajale pilti tume mustri näidega, nii mängija saab aru kuidas tumemustrid näevad välja päris elus.
+"Äppide" sees kasutaja leiab tume mustri või vastatab esitatud küsimusele tume mustrite kohta.
+Mängu käigus kasutaja näeb kas ta vastas õigesti või valesti, ning kogutud punkti summa ja vale vastuste numbri.
+Mängu lõpus kasutaja saab ennast teiste mängijatega võrrelda.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Ekraanipilt
+Peamenüü
+![Spot the Dark Pattern peamenüü](src/img/screenshots/DP_Project_Main_menu.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Kasutatud tehnoloogiad
+ - HTML5
+ - CSS
+ - JS
+ - React(18.0.0)
+ - Firebase (9.8.1)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Paigaldusjuhised
+1. Laadi all või kloneeri github repositoriumi
+2. Installige [Node.js](https://nodejs.org/en/download/)
+3. Vajalikke moodulite laadimiseks:  `npm install`
+4. Lisa [dark-patterns-project-db-backup.json](dark-patterns-project-db-backup.json) oma "firebase realtime database" sisse.
+    Osa objektidest automaatselt ilmub äppi töö ajal. Näiteks need mis on seotud kasutaja registreerimisega ja andmete salvestamisega.
+5. Loo faili src/firebase.js sellisel kujul:
+    ```javascript
+   import {initializeApp} from "firebase/app";
+   import {getDatabase,ref} from "firebase/database";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    const firebaseConfig = {
+        apiKey: "sini api võti",
+        authDomain: "sinu firebase domeen",
+        databaseURL: "sinu andmebaasi url",
+        projectId: "sinu projekti nimi",
+    };
+   
+    export const app = initializeApp(firebaseConfig);
+    export const dbRef = ref(getDatabase());
+    export const db = getDatabase();
+   ```
+6. Rakenduse käivitamiseks: `npm start`
+7. Kui midagi on puudu reakt annab sellest teada.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Litsents
+[Litsents (MIT)](LICENSE)

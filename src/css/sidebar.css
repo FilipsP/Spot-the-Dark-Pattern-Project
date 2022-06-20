@@ -1,0 +1,109 @@
+.sidebar{
+   position: fixed;
+   top: .5rem;
+   width: 20%;
+   height: 100%;
+   background:var(--secondary-bg-color);
+   max-width: 30rem;
+   z-index: 50;
+}
+
+.profile-sidebar{
+   left: 0;
+   border-radius: 0 1rem 1rem 0;
+   padding-top: 1rem;
+
+}
+
+.settings-sidebar{
+   right: 0;
+   border-radius: 1rem 0 0 1rem;
+   padding-top: 1rem;
+}
+
+.show-sidebar{
+   display: block;
+}
+
+
+.animated-profile-sidebar-enter{
+   transform: translate(-350px);
+}
+
+.animated-profile-sidebar-enter-active{
+   transform: translate(0px);
+   transition: all 500ms ease-in;
+}
+
+.animated-profile-sidebar-exit {
+   opacity: 1;
+}
+
+.animated-profile-sidebar-exit-active {
+   transform: translate(-350px);
+   transition: all 500ms ease-in;
+}
+
+.close-sidebar-icon{
+   display: none;
+   position: absolute;
+   top: 0;
+   margin: .5rem;
+}
+
+.animated-settings-sidebar-enter{
+   transform: translate(+350px);
+}
+
+.animated-settings-sidebar-enter-active{
+   transform: translate(0px);
+   transition: all 500ms ease-in;
+}
+
+.animated-settings-sidebar-exit {
+   opacity: 1;
+}
+
+.animated-settings-sidebar-exit-active {
+   transform: translate(+350px);
+   transition: all 500ms ease-in;
+}
+
+.close-sidebar-icon{
+   display: none;
+   position: absolute;
+   top: 0;
+   margin: .5rem;
+}
+
+.close-profile-btn{
+   right: 0;
+}
+
+.close-settings-btn{
+   left: 0;
+}
+
+@media screen and (max-width:1000px) {
+   .sidebar{
+      width: 30%;
+      height: 100%;
+      margin: 0;
+      top: 0;
+   }
+   .close-sidebar-icon{
+      display: block;
+   }
+}
+
+@media screen and (max-width:700px) {
+   .sidebar{
+      width: 40%;
+   }
+}
+
+@media screen and (max-width:600px) {
+   .sidebar{
+      width: 50%;
+   }
+}

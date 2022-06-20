@@ -1,18 +1,21 @@
 .form-container{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
-    background-color: var(--main-bg-color);
     padding: 1rem 2rem 1rem;
     border-radius: 10px;
-
 }
+
+
+.main-heading{
+    font-size: 2rem;
+}
+
 .input-element{
     width: 70%;
     margin: 0 auto;
     font-size: 2rem;
     display: flex;
     flex-direction: row;
-
 }
 
 .form-label{
@@ -42,8 +45,67 @@
     font-size: 2rem;
     border: 1px solid;
     background-color: transparent;
+    color: var(--text-color);
 }
 
 .submit:hover{
     border: 2px solid;
+}
+
+.modal-skip-btn{
+    font-size: 2rem;
+    float: right;
+    border: 1px transparent;
+}
+
+
+.modal-skip-btn i{
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-skip-btn p{
+    font-size: 2rem;
+    margin: 0;
+}
+
+.modal-skip-btn:hover{
+    color: rgb(109, 108, 108);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px){
+    .form-container{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .input-element{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .form-label{
+        font-size: 1.5rem;
+    }
+    .input-field{
+        height: 1.8rem;
+        font-size: 1.2rem;
+        border: none;
+    }
+
+    .modal-skip-btn{
+        margin-top: 2rem;
+    }
+
+    .modal-skip-btn i{
+        font-size: 2.5rem;
+    }
+    .modal-skip-btn p{
+        font-size: 1.5rem;
+    }
 }

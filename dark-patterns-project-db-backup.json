@@ -1,0 +1,179 @@
+{
+  "event": {
+    "amazon": [
+      {
+        "description": "Can you see the dark pattern? Where does it hide?",
+        "lives": 0,
+        "name": "Interesting proposition",
+        "negative": "Behind the input field for the email.",
+        "points": 1,
+        "positive": "Behind the button to reject the offer.",
+        "type": "button"
+      },
+      {
+        "description": "How do you think this type of dark pattern can be called? ",
+        "lives": 1,
+        "money": 99,
+        "name": "Try to escape",
+        "negative": "Misdirection",
+        "points": 1,
+        "positive": "Comfirmshaming",
+        "type": "button"
+      }
+    ],
+    "cnn": [
+      {
+        "description": "An online news site you don't subscribe to shows a provocative headline, but you can't read the full article. What do you do?",
+        "lives": 1,
+        "money": 5,
+        "name": "Subscription",
+        "negative": "I buy the one-time-right to read the article.",
+        "points": 2,
+        "positive": "I do not mind that I can't read the full article, I go to the comments section to read what others think and comment my opinion as well."
+      }
+    ],
+    "gmail": [
+      {
+        "description": "You receive a promotional email in your inbox. Do you mark spam emails as junk?",
+        "lives": 0,
+        "money": 0,
+        "name": "G for gmail",
+        "negative": "I will open it :)",
+        "points": 2,
+        "positive": "Yes, of course!"
+      },
+      {
+        "description": "You get a promotional email with a zip. file attachment - it says that there are discount codes for some products - you have to open a file in order to  see how lucky you are today. Would you open the file?",
+        "lives": 2,
+        "money": 0,
+        "name": "GG",
+        "negative": "Yes, sure! I like discounts",
+        "points": 1,
+        "positive": "No! Seems suspicious"
+      }
+    ],
+    "instagram": [
+      {
+        "description": "How many dark patterns can you see?",
+        "lives": 0,
+        "money": 0,
+        "name": "SCROLLLOCK",
+        "negative": "All the others",
+        "points": 2,
+        "positive": 2,
+        "type": "input"
+      },
+      {
+        "description": "How can you describe Dark Patterns?",
+        "lives": 1,
+        "money": 25,
+        "name": "Instakill",
+        "negative": "Manipulation by the company or organisation in order to steal data and money from the users bank account.",
+        "points": 1,
+        "positive": "Manipulation by the company or organisation in order to benefit agains the users initial needs. ",
+        "type": "button"
+      }
+    ],
+    "meta": [
+      {
+        "description": "You see a game invitation in your inbox on social media. How do you react?",
+        "lives": 0,
+        "money": 0,
+        "name": "A game...",
+        "negative": "Find out what game it is.",
+        "points": 2,
+        "positive": "I ignore the invite and do not play the game."
+      },
+      {
+        "description": "The game asks for your credit card details and a subscription to let you play.",
+        "lives": 1,
+        "money": 25,
+        "name": "And the winner is...",
+        "negative": "I enter my credit card details and play the game.",
+        "points": 1,
+        "positive": "I do not enter any data and exit the game."
+      }
+    ],
+    "reddit": [
+      {
+        "description": "You see a picture of a hated politician in an embarrassing situation. The picture looks fake, but it does not look like a meme. What do you do?",
+        "lives": 1,
+        "money": 0,
+        "name": "Fake news",
+        "negative": "I upvote the post and scroll to the next post.",
+        "points": 2,
+        "positive": "I click on the picture and go read the comments to figure out what exactly is going on."
+      }
+    ]
+  },
+  "notifications": {
+    "Logical": {
+      "rightAnswer": {
+        "content": "Right answers give you points! That is cool :)",
+        "id": 3,
+        "name": "Right answer"
+      },
+      "wrongAnswer": {
+        "content": "We will count how many times we were right",
+        "id": 4,
+        "name": "Wrong answer"
+      }
+    },
+    "Main": [
+      {
+        "content": "Click on anything you want! Find something fun, be creative!",
+        "id": 0,
+        "name": "Click on things"
+      },
+      {
+        "content": "Try to think well before answering but don`t forget to have fun ;)",
+        "id": 1,
+        "name": "Learn and play"
+      },
+      {
+        "content": "Don't forget to break things and leave a feedback how did it go...",
+        "id": 2,
+        "name": "\"Break stuff\""
+      }
+    ]
+  },
+
+  "profilePicture": [
+    {
+      "description": "an eye",
+      "path": "https://www.xnview.com/img/app-xnsoft-512.png?w=552&ssl=1"
+    },
+    {
+      "description": "young guy",
+      "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-anime-profile-pictures-44c773de9847d476e4731da0af23318e-manga-eyes-dark-anime.jpg?w=552&ssl=1"
+    },
+    {
+      "description": "cool anonymous",
+      "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-anonymous-profile-pictures-15.jpg?w=512&ssl=1"
+    },
+    {
+      "description": "csgo fat ass",
+      "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-csgo-profile-pictures-2c3d8442-7fef-446e-9315-e9f8a46ece47.jpg?w=552&ssl=1"
+    },
+    {
+      "description": "jason",
+      "path": "https://www.kindpng.com/picc/m/21-218808_cool-avatar-png-picture-cool-pics-for-avatar.png"
+    },
+    {
+      "description": "pizza",
+      "path": "https://static.vecteezy.com/ti/vetor-gratis/p3/4703152-cool-nerdy-pizza-cartoon-avatar-illustration-vetor.jpg"
+    },
+    {
+      "description": "another cool anonymous",
+      "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-anonymous-profile-pictures-1699946_orig.jpg?w=552&ssl=1"
+    },
+    {
+      "description": "a cat",
+      "path": "https://th-thumbnailer.cdn-si-edu.com/bZAar59Bdm95b057iESytYmmAjI=/1400x1050/filters:focal(594x274:595x275)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/95/db/95db799b-fddf-4fde-91f3-77024442b92d/egypt_kitty_social.jpg"
+    },
+    {
+      "description": "a bear",
+      "path": "https://www.kindpng.com/picc/m/353-3534825_cool-profile-avatar-picture-cool-profile-hd-png.png"
+    }
+  ]
+}

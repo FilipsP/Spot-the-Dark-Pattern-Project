@@ -1,0 +1,32 @@
+{
+  "rules": {
+    "event":{
+    	".read": true,
+    	".write": false
+    },
+      "eventSave":{
+        ".read": true,
+        ".write": true
+    },
+      "eventType":{
+        ".read": true,
+        ".write": false
+    },
+      "profile":{
+        ".read": true,
+        ".write": true
+    },
+      "profilePicture":{
+        ".read": true,
+        ".write": false
+    },
+      "save":{
+        ".read": true,
+        ".write": true
+    },
+      "spamMail":{
+        ".read": true,
+        ".write": false
+    },
+  }
+}

@@ -1,0 +1,15 @@
+
+
+.Not-Found-Page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } 
+
+
+.Test-Buttons {
+    margin: 15px;
+    padding: 5px 10px;
+}

@@ -1,27 +1,23 @@
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import StartPage from './pages/startPage';
-import LoginRegister from './pages/login-register';
-import Settings from './components/settings';
-import {useState} from 'react';
-
+import { Route,Routes} from 'react-router-dom';
+import StartPage from './pages/StartPage';
+import NotFound from "./components/NotFound";
+import Game from "./pages/Game";
 
 function App() {
-
-    const [openSettings, setSettings] = useState(false);
 
 
     return (
         <div className="App">
-            <div onClick={()=>{setSettings(true)}}><i className="bi bi-gear settings-btn"></i></div>
-            {openSettings && <Settings closeSettings={setSettings} />}
             <Routes>
-                <Route path="/" element={<StartPage />} />
-                <Route path="login-register" element={<LoginRegister/>} />
+                <Route exact path = "/" element = {<StartPage />} />
+                <Route path="*" element={<NotFound />}/>
+                <Route path="/game" element={<Game />} />
             </Routes>
-            
         </div>
     );
 }
+
+
 
 export default App;

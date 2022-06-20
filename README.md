@@ -25,7 +25,9 @@ Peamenüü
 
 
 # Paigaldusjuhised
-...
+1. Installige [Node.js](https://nodejs.org/en/download/)
+2. Vajalikke moodulite laadimiseks:  `npm install`
+3. Rakenduse käivitamiseks: `npm start`
 
 
 # Litsents

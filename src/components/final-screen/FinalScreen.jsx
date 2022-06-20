@@ -5,8 +5,9 @@ import {dbRef} from "../../firebase";
 import saveGame from "../../functions/saveGame";
 import EndScreenGiveawayAlert from "../noteContent/EndScreenGiveawayAlert";
 import {CSSTransition} from "react-transition-group";
-import ProgressNote from "../modals/progressNote";
+import ProgressNote from "../modals/ProgressNote";
 import FinalScreenTutorial from "../noteContent/FinalScreenTutorial";
+import {getComparedResults} from "../../functions/getComparedResults";
 
 const borderStyle = {
     borderBottom: "solid 0.1rem",
@@ -14,7 +15,6 @@ const borderStyle = {
 }
 
 const Stats = (props) => {
-
 
     return(
         <li style={borderStyle} className='final-text'>
@@ -31,14 +31,14 @@ function FinalScreen(props){
 
     const [results,setResults] = useState([]);
     const [dataFarm,setDataFarm] = useState(false);
-    const [winner,setWinner] = useState(false);
     const [tutorial,setTutorial] = useState(true);
+    const [userResults,setUserResults] = useState({});
+
 
 
     const modal = useRef(null)
 
     useEffect(() => {
-        saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture)
         get(child(dbRef, '/save/')).then((snapshot) => {
             if (snapshot.exists()) {
                 setResults(snapshot.val());
@@ -51,16 +51,21 @@ function FinalScreen(props){
         // eslint-disable-next-line
     },[])
 
-    useEffect(()=>{
-        setWinner(props.save.pointsOwned > 5)
-    },[props.save.pointsOwned])
 
     const handleDataFarm = ()=>{
         setDataFarm(true)
             modal.current.focus();
     }
 
-   return(
+    useEffect(()=>{
+        if (results) {
+            setUserResults(getComparedResults(props.save, results))
+            saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture,results)
+        }
+    },[props.save, results])
+
+
+    return(
        <>
            {tutorial&&
                <ProgressNote
@@ -71,22 +76,14 @@ function FinalScreen(props){
                />
            }
            <div className='container'>
-               {winner?
-                   <div style={borderStyle}>
-                    <h1>You won</h1>
-                     <p className='final-text'>Hurray! Hurray! Hurray!</p>
-                    <p className='final-text'>You have successfully completed the game!</p>
-                    <p className='final-text'>Come back later to refresh those memories ;)</p>
-                 </div>
-                   :
-                   <div >
-                       <h1>You lost</h1>
-                       <p className='final-text'>Oops...</p>
-                       <p className='final-text'>Don`t be afraid to try again!</p>
-                       <p className='final-text'>To start all over just refresh this page by the refresh icon or pressing "F5"</p>
-
-                   </div>}
-                 <button className='share-button' id = "end-game-modal" ref={modal}  onClick={()=>{handleDataFarm()}}>Click for the free gifts</button><br/>
+               <div style={borderStyle}>
+                   <h1>You won</h1><p className='final-text'>Hurray! Hurray! Hurray!</p>
+                   <p className='final-text'>You have successfully completed the game!</p>
+                   <h1>Results:</h1>
+                   <p className='final-text'>You got {props.save.pointsOwned} points. More than {userResults.betterThan} % of players</p>
+                   <p className='final-text'>You made {props.save.wrongAnswers} wrong answers. Less than {userResults.lessMistakes} % of players</p>
+               </div>
+               <button className='share-button' id = "end-game-modal" ref={modal}  onClick={()=>{handleDataFarm()}}>Click for the free gifts</button><br/>
                <CSSTransition
                    in={dataFarm}
                    timeout={300}

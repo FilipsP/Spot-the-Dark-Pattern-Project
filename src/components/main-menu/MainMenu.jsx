@@ -26,7 +26,7 @@ import UnitedApp from "./UnitedApp";
 import {CSSTransition} from 'react-transition-group';
 import AlertModal from "../modals/AlertModal";
 import Settings from "./main-menu-elements/Settings";
-import ProgressNote from "../modals/progressNote";
+import ProgressNote from "../modals/ProgressNote";
 import MainMenuTutorial from "../noteContent/MainMenuTutorial";
 
 

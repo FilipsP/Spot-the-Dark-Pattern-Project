@@ -7,7 +7,7 @@ import {useEffect} from "react";
 import {child, get} from "firebase/database";
 import {dbRef} from "../../firebase";
 //import SpotTheDP from "../modals/SpotTheDarkPattern";
-import ProgressNote from "../modals/progressNote";
+import ProgressNote from "../modals/ProgressNote";
 import SpotTheDPAlert from '../noteContent/SpotTheDPAlert';
 import AnimatedResponse from "../animations/AnimatedResponse";
 import {CSSTransition} from "react-transition-group";

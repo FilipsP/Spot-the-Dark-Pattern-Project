@@ -1,9 +1,9 @@
 import { useState} from "react";
-import MainMenu from "../components/main-menu/main-menu";
+import MainMenu from "../components/main-menu/MainMenu";
 import { child, update,get } from "firebase/database";
 import {useEffect} from "react";
 import {dbRef} from "../firebase";
-import FinalScreen from "../components/final-screen/final-screen";
+import FinalScreen from "../components/final-screen/FinalScreen";
 import Settings from "../components/main-menu/main-menu-elements/Settings";
 import profile_pic from "../img/profile_pic.png";
 import casual from "../img/avatars/casual.png";
@@ -129,7 +129,6 @@ function Game() {
     const getEventSaves = () => {
         if (isLoggedIn){
             get(child(dbRef, `/eventSave/`+ userID)).then((snapshot) => {
-                console.error("user id: "+ userID)
                 if (snapshot.exists()) {
                     setIsError(false);
                     setIsLoading(true);

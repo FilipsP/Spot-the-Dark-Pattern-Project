@@ -5,7 +5,7 @@ import {dbRef} from "../firebase";
 
 
 
-const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
+const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles) => {
     const clearEventSave = {
         Amazon: false,
         CNN: false,
@@ -14,9 +14,10 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
         Meta: false,
         Reddit: false
     }
+    const updates = {};
+    const newSave = save;
+    let newID= 0;
     if (isLoggedIn){
-        const updates = {};
-        const newSave = save;
         newSave["profilePictureId"] = currentProfilePicture;
         updates['/save/' + id] = newSave;
         let eventSaveTemp = clearEventSave;
@@ -30,6 +31,18 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
             .then(()=>alert("Successfully saved"))
             .catch(()=>(console.error("Oops, error while saving")))
     }
-    return console.log("Log in to save progress")
+    if (profiles) {
+        for (const profile in profiles) {
+            if (newID <= profiles[profile].id) {
+                newID = profiles[profile].id + 1
+            }
+        }
+        updates['/save/' + newID] = newSave;
+        return update(dbRef, updates)
+            .then(()=>console.log("Successfully saved"))
+            .catch(()=>(console.error("Oops, error while saving")))
+    }
+    console.error("Error while saving, no profiles available for non logged in player")
+    return alert("Failed to save")
 }
 export default saveGame

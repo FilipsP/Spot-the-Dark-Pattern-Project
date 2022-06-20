@@ -16,14 +16,12 @@ const logInButton = {
 }
 
 const characterStatsValue = {
-    fontFamily: "cursive",
-    fontSize: "1.5rem",
+    fontSize: "1.3rem",
     color:"gray",
 }
 
 const characterStatName = {
-    fontFamily:"cursive",
-    fontSize:"2rem",
+    fontSize:"1.7rem",
 }
 
 function Character(props) {

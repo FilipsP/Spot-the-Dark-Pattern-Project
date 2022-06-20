@@ -1,8 +1,8 @@
 import "../../css/login-register-menu.css"
 import {useState} from 'react';
-import Register from "../buttons/register";
-import Login from "../buttons/login";
-import ProgressNote from "./progressNote";
+import Register from "../buttons/Register";
+import Login from "../buttons/Login";
+import ProgressNote from "./ProgressNote";
 import SkipNoteContent from "../noteContent/SkipNoteContent";
 import {useEffect} from "react";
 import {CSSTransition} from "react-transition-group";

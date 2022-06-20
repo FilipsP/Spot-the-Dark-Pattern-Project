@@ -5,7 +5,7 @@ import {dbRef} from "../firebase";
 
 
 
-const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles) => {
+const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture) => {
     const clearEventSave = {
         Amazon: false,
         CNN: false,
@@ -16,7 +16,6 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles
     }
     const updates = {};
     const newSave = save;
-    let newID= 0;
     if (isLoggedIn){
         newSave["profilePictureId"] = currentProfilePicture;
         updates['/save/' + id] = newSave;
@@ -29,17 +28,8 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles
         return update(dbRef, updates)
             .catch(()=>(console.error("Oops, error while saving")))
     }
-    if (profiles) {
-        for (const profile in profiles) {
-            if (newID <= profiles[profile].id) {
-                newID = profiles[profile].id + 1
-            }
-        }
-        updates['/save/' + newID] = newSave;
-        return update(dbRef, updates)
-            .catch(()=>(console.error("Oops, error while saving")))
-    }
-    console.error("Error while saving, no profiles available for non logged in player")
-    return alert("Failed to save")
+    return console.log("Log in to save progress")
+    // console.error("Error while saving, no allSaves available for non logged in player")
+    // return alert("Failed to save")
 }
 export default saveGame

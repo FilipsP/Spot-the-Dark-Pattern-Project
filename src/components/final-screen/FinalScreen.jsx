@@ -60,8 +60,9 @@ function FinalScreen(props){
     useEffect(()=>{
         if (results) {
             setUserResults(getComparedResults(props.save, results))
-            saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture,results)
+            saveGame(props.userID, props.save,props.isLoggedIn, props.disabledApps,props.currentProfilePicture)
         }
+    // eslint-disable-next-line
     },[props.save, results])
 
 

@@ -21,14 +21,12 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles
         newSave["profilePictureId"] = currentProfilePicture;
         updates['/save/' + id] = newSave;
         let eventSaveTemp = clearEventSave;
-        console.log(eventSaveTemp)
         for (const app in disabledApps) {
             console.log("disabled app: "+disabledApps[app])
             eventSaveTemp[disabledApps[app]] = true
         }
         updates['/eventSave/' + id] = eventSaveTemp
         return update(dbRef, updates)
-            .then(()=>alert("Successfully saved"))
             .catch(()=>(console.error("Oops, error while saving")))
     }
     if (profiles) {
@@ -39,7 +37,6 @@ const saveGame = (id,save,isLoggedIn,disabledApps,currentProfilePicture,profiles
         }
         updates['/save/' + newID] = newSave;
         return update(dbRef, updates)
-            .then(()=>console.log("Successfully saved"))
             .catch(()=>(console.error("Oops, error while saving")))
     }
     console.error("Error while saving, no profiles available for non logged in player")

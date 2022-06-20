@@ -8,7 +8,7 @@ function Settings(props){
 
     const handleSaveGame = () => {
         saveGame(props.userID, props.save, props.isLoggedIn,props.disabledApps,props.currentProfilePicture,props.lastAnswerTime)
-            .then(() => props.getSave(props.userID))
+            .then(() => props.getSave(props.userID)).then(()=> alert("Successfully saved!"))
     }
 
     const handleClearSave = () => {

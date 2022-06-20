@@ -1,81 +1,80 @@
 {
   "event": {
     "amazon": [
-      null,
       {
-        "description": "An online shop offers an extra discount of -10% when you join their email list. What do you do?",
+        "description": "Can you see the dark pattern? Where does it hide?",
         "lives": 0,
         "name": "Interesting proposition",
-        "negative": "Join the list and get a discount.",
-        "points": 2,
-        "positive": "I do not join."
+        "negative": "Behind the input field for the email.",
+        "points": 1,
+        "positive": "Behind the button to reject the offer.",
+        "type": "button"
       },
       {
-        "description": "When you join, you'll see that the -10% discount is only for selected products and the discount does not apply to the item you want. How do I proceed?",
+        "description": "How do you think this type of dark pattern can be called? ",
         "lives": 1,
         "money": 99,
         "name": "Try to escape",
-        "negative": "I buy things from the list to get the discount.",
+        "negative": "Misdirection",
         "points": 1,
-        "positive": "Unsubscribe."
+        "positive": "Comfirmshaming",
+        "type": "button"
       }
     ],
     "cnn": [
-      null,
       {
         "description": "An online news site you don't subscribe to shows a provocative headline, but you can't read the full article. What do you do?",
         "lives": 1,
         "money": 5,
         "name": "Subscription",
-        "negative": "I do not mind that I can't read the full article, I go to the comments section to read what others think and comment my opinion as well.",
+        "negative": "I buy the one-time-right to read the article.",
         "points": 2,
-        "positive": "I buy the one-time-right to read the article."
+        "positive": "I do not mind that I can't read the full article, I go to the comments section to read what others think and comment my opinion as well."
       }
     ],
     "gmail": [
-      null,
       {
-        "description": "You see a game invitation in your inbox on social media. How do you react?",
+        "description": "You receive a promotional email in your inbox. Do you mark spam emails as junk?",
         "lives": 0,
         "money": 0,
         "name": "G for gmail",
-        "negative": "No...",
+        "negative": "I will open it :)",
         "points": 2,
-        "positive": "Yes!!!"
+        "positive": "Yes, of course!"
       },
       {
         "description": "You get a promotional email with a zip. file attachment - it says that there are discount codes for some products - you have to open a file in order to  see how lucky you are today. Would you open the file?",
         "lives": 2,
         "money": 0,
         "name": "GG",
-        "negative": "No! Seems suspicious",
+        "negative": "Yes, sure! I like discounts",
         "points": 1,
-        "positive": "Yes, sure! I like discounts"
+        "positive": "No! Seems suspicious"
       }
     ],
     "instagram": [
-      null,
       {
-        "description": "You've been scrolling on Instagram for an hour. The content you see isn't directly aimed at you, there are lots of ads and random content. What do you do?",
+        "description": "How many dark patterns can you see?",
         "lives": 0,
         "money": 0,
         "name": "SCROLLLOCK",
-        "negative": "I still keep scrolling because I'm bored",
+        "negative": "All the others",
         "points": 2,
-        "positive": "I realize there is no more new content, so I close the app and do something else."
+        "positive": 2,
+        "type": "input"
       },
       {
-        "description": "One of the ads is suggesting to explore a new instagram feature - Reels (15-second multi-clip videos), what would you do?",
+        "description": "How can you describe Dark Patterns?",
         "lives": 1,
         "money": 25,
         "name": "Instakill",
-        "negative": "I explore the Reels for the next 2 hours",
+        "negative": "Manipulation by the company or organisation in order to steal data and money from the users bank account.",
         "points": 1,
-        "positive": "I am not into short videos"
+        "positive": "Manipulation by the company or organisation in order to benefit agains the users initial needs. ",
+        "type": "button"
       }
     ],
     "meta": [
-      null,
       {
         "description": "You see a game invitation in your inbox on social media. How do you react?",
         "lives": 0,
@@ -96,7 +95,6 @@
       }
     ],
     "reddit": [
-      null,
       {
         "description": "You see a picture of a hated politician in an embarrassing situation. The picture looks fake, but it does not look like a meme. What do you do?",
         "lives": 1,
@@ -108,67 +106,38 @@
       }
     ]
   },
-  "eventSave": [
-    null,
-    {
-      "amazon": false,
-      "cnn": false,
-      "gmail": false,
-      "instagram": false,
-      "meta": false,
-      "reddit": false
+  "notifications": {
+    "Logical": {
+      "rightAnswer": {
+        "content": "Right answers give you points! That is cool :)",
+        "id": 3,
+        "name": "Right answer"
+      },
+      "wrongAnswer": {
+        "content": "We will count how many times we were right",
+        "id": 4,
+        "name": "Wrong answer"
+      }
     },
-    {
-      "amazon": false,
-      "cnn": false,
-      "gmail": false,
-      "instagram": false,
-      "meta": false,
-      "reddit": false
-    }
-  ],
-  "eventType": {
-    "amazon": {
-      "description": "Buy or die!"
-    },
-    "cnn": {
-      "description": "Fakers..."
-    },
-    "gmail": {
-      "description": "Mail, but with more spam!"
-    },
-    "instagram": {
-      "description": "Social Web now with photos!"
-    },
-    "meta": {
-      "description": "Social Web!"
-    },
-    "reddit": {
-      "description": "Forum for zoomers!"
-    }
+    "Main": [
+      {
+        "content": "Click on anything you want! Find something fun, be creative!",
+        "id": 0,
+        "name": "Click on things"
+      },
+      {
+        "content": "Try to think well before answering but don`t forget to have fun ;)",
+        "id": 1,
+        "name": "Learn and play"
+      },
+      {
+        "content": "Don't forget to break things and leave a feedback how did it go...",
+        "id": 2,
+        "name": "\"Break stuff\""
+      }
+    ]
   },
-  "profile": {
-    "admin": {
-      "id": 1,
-      "password": "masterKey",
-      "username": "admin"
-    },
-    "guest": {
-      "id": 2,
-      "password": "123",
-      "username": "guest"
-    },
-    "megaMozg": {
-      "id": 3,
-      "password": "123",
-      "username": "megaMozg"
-    },
-    "mishka": {
-      "id": 4,
-      "password": "123",
-      "username": "mishka"
-    }
-  },
+
   "profilePicture": [
     {
       "description": "an eye",
@@ -187,70 +156,24 @@
       "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-csgo-profile-pictures-2c3d8442-7fef-446e-9315-e9f8a46ece47.jpg?w=552&ssl=1"
     },
     {
-      "description": "cool black guy",
-      "name": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-csgo-profile-pictures-110a2953-0130-47a8-8968-913390bee551.jpg?w=552"
+      "description": "jason",
+      "path": "https://www.kindpng.com/picc/m/21-218808_cool-avatar-png-picture-cool-pics-for-avatar.png"
     },
     {
-      "description": "kitty",
-      "name": "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?w=552&ssl=1"
+      "description": "pizza",
+      "path": "https://static.vecteezy.com/ti/vetor-gratis/p3/4703152-cool-nerdy-pizza-cartoon-avatar-illustration-vetor.jpg"
     },
     {
       "description": "another cool anonymous",
-      "name": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-anonymous-profile-pictures-1699946_orig.jpg?w=552&ssl=1"
-    }
-  ],
-  "save": {
-    "1": {
-      "characterName": "Billy",
-      "livesOwned": 1,
-      "pointsOwned": 5,
-      "profilePictureId": 5,
-      "spamMailNumber": 0
-    },
-    "2": {
-      "characterName": "KillerQueen",
-      "livesOwned": 2,
-      "pointsOwned": 1,
-      "profilePictureId": 3,
-      "spamMailNumber": 2
-    },
-    "3": {
-      "characterName": "Erik",
-      "livesOwned": 3,
-      "pointsOwned": 0,
-      "profilePictureId": 0,
-      "spamMailNumber": 0
-    },
-  
-    "4": {
-      "characterName": "Trip",
-      "livesOwned": 3,
-      "pointsOwned": 0,
-      "profilePictureId": 0,
-      "spamMailNumber": 0
-    }
-  },
-  "spamMail": [
-    null,
-    {
-      "author": "mr.black@hisoffice.com",
-      "content": "It is not about me, it is about you! Love me, as I am or be a LOSER. But losers don`t shop <link>*here*</link>. Be a winner, be with US!",
-      "name": "About you!"
+      "path": "https://i0.wp.com/sguru.org/wp-content/uploads/2017/06/cool-anonymous-profile-pictures-1699946_orig.jpg?w=552&ssl=1"
     },
     {
-      "author": "tot.t.a.lyyy@legal.net",
-      "content": "You just signed up for our service, if you want to unsubscribe, please verify your account by adding  your credit card number in this field [   ] and sending this mail back to us by mail.",
-      "name": "Join! Join JOIN!!!!!"
+      "description": "a cat",
+      "path": "https://th-thumbnailer.cdn-si-edu.com/bZAar59Bdm95b057iESytYmmAjI=/1400x1050/filters:focal(594x274:595x275)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/95/db/95db799b-fddf-4fde-91f3-77024442b92d/egypt_kitty_social.jpg"
     },
     {
-      "author": "mr.bean.jr@supportpeace.eu",
-      "content": "If you want to support peace in europe you should donate to us, Mr.Bean & Sons company is providing critical supplies for the needs of the army for over 3 decades now. We need YOU right NOW! Donate if you are a human. Donate today, not to fight tommorow",
-      "name": "Support peace!"
-    },
-    {
-      "author": "gurrru@soulchurch.com",
-      "content": "Not interested at anything at all? Not anymore! Join our free web marathon about social development of soul on the internet and get another life for free",
-      "name": "Get a life!"
+      "description": "a bear",
+      "path": "https://www.kindpng.com/picc/m/353-3534825_cool-profile-avatar-picture-cool-profile-hd-png.png"
     }
   ]
 }

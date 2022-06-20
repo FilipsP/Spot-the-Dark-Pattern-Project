@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import '../../../css/profile.css'
+import {CSSTransition} from "react-transition-group";
 
 const logInButton = {
     borderTopRightRadius: "9px",
@@ -26,17 +27,24 @@ const characterStatName = {
 
 function Character(props) {
 
+    const [startAvatarAnimation,setStartAvatarAnimation] = useState(true)
 
     function solvePictureChange(number) {
-        if (props.currentProfilePicture + number < props.profilePictures.length && props.currentProfilePicture + number > -1 ) {
-            props.setCurrentPicture(props.currentProfilePicture + number)
-        }
-        if (props.currentProfilePicture + number < 0) {
-            props.setCurrentPicture(props.profilePictures.length-1)
-        }
-        if (props.currentProfilePicture + number > props.profilePictures.length-1) {
-            props.setCurrentPicture(0)
-        }
+
+        setStartAvatarAnimation(false)
+
+        setTimeout(()=>{
+            if (props.currentProfilePicture + number < props.profilePictures.length && props.currentProfilePicture + number > -1) {
+                props.setCurrentPicture(props.currentProfilePicture + number)
+            }
+            if (props.currentProfilePicture + number < 0) {
+                props.setCurrentPicture(props.profilePictures.length - 1)
+            }
+            if (props.currentProfilePicture + number > props.profilePictures.length - 1) {
+                props.setCurrentPicture(0)
+            }
+        },500)
+
     }
 
     const handleLogOut = ()=> {
@@ -62,10 +70,18 @@ function Character(props) {
                 <div className='profile-picture-container'>
                     {props.save.lastAnswerTime && <span
                         style={{opacity:"0.5",textAlign:"center",marginBottom:"0.5rem"}}>Last answer on: {props.save.lastAnswerTime}</span>}
+                    <CSSTransition
+                        in={startAvatarAnimation}
+                        unmountOnExit
+                        timeout={500}
+                        classNames="animated-buttons"
+                        onExited = {()=>setStartAvatarAnimation(true)}
+                    >
                     <img className='profile-picture'
                         src={props.profilePictures[props.currentProfilePicture].path}
                         alt={props.profilePictures[props.currentProfilePicture].description}
                     />
+                    </CSSTransition>
                     <div className='picture-btn-container'>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-caret-left-fill"></i></button>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-caret-right-fill"></i></button>

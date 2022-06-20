@@ -60,3 +60,4 @@ build/
 Pattern-backend-test/src/main/resources/application.properties
 
 
+src/firebase.js

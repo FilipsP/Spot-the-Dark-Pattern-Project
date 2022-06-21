@@ -91,7 +91,7 @@ function Character(props) {
                     </h1>
                     <div className='stats-container'>
                         <div style={{borderBottom: "solid 0.2rem",borderBottomColor:"rgba(211,211,211,0.3)"}}><span style={characterStatName}>Money : </span><span style={characterStatsValue}>{props.money}€</span></div>
-                        <div style={{borderBottom: "solid 0.3rem",borderBottomColor:"rgba(211,211,211,0.2)"}}><span style={characterStatName}>Points : </span><span style={characterStatsValue}>{props.save.pointsOwned}</span></div>
+                        <div style={{borderBottom: "solid 0.3rem",borderBottomColor:"rgba(211,211,211,0.2)"}}><span data-testid="counter" style={characterStatName}>Points : </span><span style={characterStatsValue}>{props.save.pointsOwned}</span></div>
                         <div style={{borderBottom: "solid 0.4rem",borderBottomColor:"rgba(211,211,211,0.1)"}}><span style={characterStatName}>Wrong answers : </span><span style={characterStatsValue}>{props.save.wrongAnswers}</span></div>
 
                     </div>

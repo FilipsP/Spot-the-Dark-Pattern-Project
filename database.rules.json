@@ -28,5 +28,9 @@
         ".read": true,
         ".write": false
     },
+      "notifications":{
+        ".read": true,
+        ".write": false
+    }
   }
 }

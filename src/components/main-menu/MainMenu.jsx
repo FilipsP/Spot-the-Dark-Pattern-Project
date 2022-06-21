@@ -129,7 +129,6 @@ function IconsMenu(props) {
                 <Settings
                     settingsStyle = "sidebar settings-sidebar "
                     getSave = {props.getSave}
-                    getEventSaves={props.getEventSaves}
                     closeSettings={props.setSettings}
                     isLoggedIn={props.isLoggedIn}
                     userID = {props.userID}
@@ -139,18 +138,6 @@ function IconsMenu(props) {
                     musicOn = {props.on}
                     toggleMusic = {props.toggleMusic}
                 />
-                {/*<SettingsSideBar*/}
-                {/*    getSave = {props.getSave}*/}
-                {/*    getEventSaves={props.getEventSaves}*/}
-                {/*    closeSettings={props.setSettings}*/}
-                {/*    isLoggedIn={props.isLoggedIn}*/}
-                {/*    userID = {props.userID}*/}
-                {/*    save={props.save}*/}
-                {/*    disabledApps={props.disabledApps}*/}
-                {/*    currentProfilePicture={props.currentProfilePicture}*/}
-                {/*    musicOn = {props.on}*/}
-                {/*    toggleMusic = {props.toggleMusic}*/}
-                {/*/>*/}
                     <div className='icon-frame menu-frame'>
                         <div className='icon-grid'>
                             <div><img

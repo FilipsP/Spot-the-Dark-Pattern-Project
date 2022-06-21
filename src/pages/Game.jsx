@@ -88,7 +88,6 @@ function Game() {
             console.error(error);
             setIsError(true);
         });
-        // eslint-disable-next-line
     },[])
 
     const handleSaveUpdate = (newSave) => {
@@ -100,7 +99,7 @@ function Game() {
 
     const checkForFinish = () => {
         console.log("checking for finish...")
-        if (disabledApps.length >= 5 ) {
+        if (disabledApps.length >= 6 ) {
             console.log("finish!")
             return setGameOver(true)
         }
@@ -125,37 +124,30 @@ function Game() {
     }
 
 
-    const getEventSaves = () => {
-        if (isLoggedIn){
-            get(child(dbRef, `/eventSave/`+ userID)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    setIsError(false);
-                    setIsLoading(true);
-                    setDisabledApps(snapshot.val())
-                    console.log(disabledApps)
-                    if (disabledApps){
-                        let disabledAppsToAdd=[];
-                        for (const app in disabledApps) {
-                            if (disabledApps[app] === true){
-                                disabledAppsToAdd.push(app)
-                            }
-                        }
-                        console.log("list of disabled apps: "+disabledAppsToAdd)
-                        setDisabledApps(disabledAppsToAdd);
-                        setIsLoading(false);
+    const getEventSaves = (id) => {
+        console.log("user id:" + id)
+        get(child(dbRef, `/eventSave/`+ id)).then((snapshot) => {
+            if (snapshot.exists()) {
+                setIsError(false);
+                setIsLoading(true);
+                const tempDisabledApps = snapshot.val()
+                console.log(tempDisabledApps)
+                let disabledAppsToAdd=[];
+                for (const app in tempDisabledApps) {
+                    if (tempDisabledApps[app] === true){
+                        disabledAppsToAdd.push(app)
                     }
-
-                } else {
-                    console.error("Failed to get saves for events");
                 }
-            }).catch((error) => {
-                console.error(error);
-                setIsError(true);
-            });
-        }else {
-            console.error("Log in to get event saves")
-            setDisabledApps([]);
-        }
+                console.log("list of disabled apps: "+disabledAppsToAdd)
+                setDisabledApps(disabledAppsToAdd);
+                setIsLoading(false);
+            } else {
+                console.error("user event saves not found");
+            }
+        }).catch((error) => {
+            console.error(error);
+            setIsError(true);
+        });
     }
 
     const connectUser = (username , password ) => {
@@ -172,6 +164,7 @@ function Game() {
                     alert("You have successfully logged in")
                     setLogInRegister(()=>false)
                     return getSave(newUser.id)
+
 
                 }
                 return alert("Wrong password")
@@ -220,7 +213,7 @@ function Game() {
 
 
             } else {
-                console.log("No data available");
+                return console.log("No data available");
 
             }
         }).catch((error) => {
@@ -230,6 +223,8 @@ function Game() {
             setInMenu(false)
             setSave(defaultSave);
         });
+        console.log("got save")
+        return getEventSaves(id)
     }
 
 
@@ -291,7 +286,6 @@ function Game() {
             >
                 <Settings
                     getSave = {getSave}
-                    getEventSaves={getEventSaves}
                     openSettings={setSettings}
                     isLoggedIn={isLoggedIn}
                     userID = {userID}
@@ -330,45 +324,45 @@ function Game() {
                 />:<div>
                 {inMenu &&
                 <div>
-                <MainMenu
-                    setInMenu = {setInMenu}
-                    setLoggedIn = {setLoggedIn}
-                    isLoggedIn = {isLoggedIn}
-                    save = {save}
-                    handleSaveUpdate = {handleSaveUpdate}
-                    currentProfilePicture = {currentProfilePicture}
-                    setCurrentPicture = {setCurrentPicture}
-                    profilePictures = {profilePictures}
-                    setProfilePictures = {setProfilePictures}
-                    money = {money}
-                    setMoney = {setMoney}
-                    disabledApps={disabledApps}
-                    setDisabledApps={setDisabledApps}
-                    handleLastAnswerTiming = {handleLastAnswerTiming}
-                    checkForFinish = {checkForFinish}
-                    musicOn = {on}
-                    toggleMusic = {toggleMusic}
-                    getSave = {getSave}
-                    getEventSaves={getEventSaves}
-                    closeSettings={setSettings}
-                    userID = {userID}
-                    openLoginRegister = {setLogInRegister}
-                    openNotifications = {setOpenNotifications}
-                    notificationNumber={notificationNumber}
-                    gameIsLoading = {isLoading}
+                    <MainMenu
+                        setInMenu = {setInMenu}
+                        setLoggedIn = {setLoggedIn}
+                        isLoggedIn = {isLoggedIn}
+                        save = {save}
+                        handleSaveUpdate = {handleSaveUpdate}
+                        currentProfilePicture = {currentProfilePicture}
+                        setCurrentPicture = {setCurrentPicture}
+                        profilePictures = {profilePictures}
+                        setProfilePictures = {setProfilePictures}
+                        money = {money}
+                        setMoney = {setMoney}
+                        disabledApps={disabledApps}
+                        setDisabledApps={setDisabledApps}
+                        handleLastAnswerTiming = {handleLastAnswerTiming}
+                        checkForFinish = {checkForFinish}
+                        musicOn = {on}
+                        toggleMusic = {toggleMusic}
+                        getSave = {getSave}
+                        getEventSaves={getEventSaves}
+                        closeSettings={setSettings}
+                        userID = {userID}
+                        openLoginRegister = {setLogInRegister}
+                        openNotifications = {setOpenNotifications}
+                        notificationNumber={notificationNumber}
+                        gameIsLoading = {isLoading}
 
                     />
-                    </div>}
-                    {logInRegisterOpened && <LoginRegisterModal
-                        setLogInRegister = {setLogInRegister}
-                        logIn = {setLoggedIn}
-                        connect = {connectUser}
-                        registerUser = {registerUser}
-                        connectUser = {connectUser}
-                    />}
                 </div>}
-            </div>
+                {logInRegisterOpened && <LoginRegisterModal
+                    setLogInRegister = {setLogInRegister}
+                    logIn = {setLoggedIn}
+                    connect = {connectUser}
+                    registerUser = {registerUser}
+                    connectUser = {connectUser}
+                />}
+            </div>}
         </div>
+    </div>
     )
 }
 

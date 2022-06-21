@@ -14,7 +14,6 @@ function Settings(props){
     const handleClearSave = () => {
         clearSave(props.userID, props.save)
             .then(() => props.getSave(props.userID))
-            .then(() => props.getEventSaves())
             .then(()=>alert("Successfully cleared"))
             .catch(() => console.error("Oops, error while clearing save"))
     }

@@ -1,6 +1,6 @@
 # Spot the Dark Pattern Mäng
 
-Projekt on tethtud Tallinna Ülikooli [Digitehnoloogiate instituudi](https://www.tlu.ee/dt) suvepraktika raames
+Projekt on tehtud Tallinna Ülikooli [Digitehnoloogiate instituudi](https://www.tlu.ee/dt) suvepraktika raames
 ## Autorid: 
  - Mares Sumarok
  - Filipp-Artur Pljassunov

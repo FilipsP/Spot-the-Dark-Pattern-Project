@@ -190,7 +190,6 @@ function IconsMenu(props) {
 
 function MainMenu(props){
 
-    // const [render, setRender] = useState(true);
     const [appChoice, setAppChoice] = useState(true);
     const [chosenApp, setApp] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -198,12 +197,11 @@ function MainMenu(props){
     const [note, setNote] = useState(true);
 
 
-
+    const loggedIn = props.isLoggedIn
 
     useEffect(() => {
         props.setCurrentPicture(0)
-        if (props.isLoggedIn){
-            props.checkForFinish()
+        if (loggedIn){
             get(child(dbRef, `profilePicture`)).then((snapshot) => {
                 if (snapshot.exists()) {
                     setIsError(false);
@@ -225,7 +223,7 @@ function MainMenu(props){
             props.setProfilePictures(defaultCharacters);
         }
         // eslint-disable-next-line
-    }, [props.isLoggedIn]);
+    }, [loggedIn]);
 
 
 
@@ -251,7 +249,6 @@ function MainMenu(props){
         />)
         setAppChoice(false)
     }
-
 
 
     function chooseApp(app) {
@@ -299,6 +296,10 @@ function MainMenu(props){
         setApp(null)
     }
 
+    useEffect(()=>{
+        props.checkForFinish()
+    },[appChoice])
+
     return (
         <div>
             {/*{appChoice && <BackButton setInAppsMenu = {props.setInMenu}/>}*/}
@@ -314,8 +315,6 @@ function MainMenu(props){
                     setLoggedIn = {props.setLoggedIn}
                     chooseApp = {chooseApp}
                     save = {props.save}
-                    // render = {render}
-                    // setRender = {setRender}
                     currentProfilePicture = {props.currentProfilePicture}
                     setCurrentPicture = {props.setCurrentPicture}
                     profilePictures = {props.profilePictures}

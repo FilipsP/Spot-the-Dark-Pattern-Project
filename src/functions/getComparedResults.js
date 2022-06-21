@@ -5,8 +5,6 @@ export const getComparedResults = (save,results) =>{
     let moreMistakes = []
     let userResults = {}
     let playersInTotal = 0;
-    console.log("save: "+ save )
-    console.log("results: "+ results )
 
     for (const result in results) {
         playersInTotal ++
@@ -17,8 +15,6 @@ export const getComparedResults = (save,results) =>{
             moreMistakes.push(result)
         }
     }
-    console.log(lessPoints)
-    console.log(moreMistakes)
 
 
     userResults["betterThan"] = Math.round((lessPoints.length * 100) / playersInTotal)

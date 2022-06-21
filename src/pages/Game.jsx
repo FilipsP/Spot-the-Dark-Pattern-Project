@@ -68,6 +68,7 @@ function Game() {
     const [on, toggle] = useState(false);
 
 
+
     useEffect(()=>{
         setNotificationsNumber(notifications.length)
     },[notifications])
@@ -96,7 +97,6 @@ function Game() {
     }
 
 
-
     const checkForFinish = () => {
         console.log("checking for finish...")
         if (disabledApps.length >= 6 ) {
@@ -108,14 +108,11 @@ function Game() {
 
 
 
-
     const handleLastAnswerTiming = () => {
-        console.log("handleAnswerTiming")
+        console.log("Getting actual time and date in Estonia")
         const newSave = save;
         newSave["lastAnswerTime"] = getCurrentDateNTimeInEstonia()
-        console.log(newSave)
         setSave(newSave)
-        console.log(save)
     }
 
 
@@ -224,6 +221,7 @@ function Game() {
             setSave(defaultSave);
         });
         console.log("got save")
+        checkForFinish()
         return getEventSaves(id)
     }
 
@@ -334,12 +332,12 @@ function Game() {
                         setCurrentPicture = {setCurrentPicture}
                         profilePictures = {profilePictures}
                         setProfilePictures = {setProfilePictures}
+                        checkForFinish = {checkForFinish}
                         money = {money}
                         setMoney = {setMoney}
                         disabledApps={disabledApps}
                         setDisabledApps={setDisabledApps}
                         handleLastAnswerTiming = {handleLastAnswerTiming}
-                        checkForFinish = {checkForFinish}
                         musicOn = {on}
                         toggleMusic = {toggleMusic}
                         getSave = {getSave}

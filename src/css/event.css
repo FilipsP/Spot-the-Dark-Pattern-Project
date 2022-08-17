@@ -7,14 +7,11 @@
 
 .event-text{
     max-width: 85%;
-    margin: 0 auto;
     font-size: 1.5rem;
-    margin-top: 5%;
-    margin-bottom: 10%;
+    margin: 5% auto 10%;
 }
 
 .buttons-container{
-    width: 80%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
@@ -22,12 +19,9 @@
 
 .event-button{
     font-size: 1.2rem;
-    width: 50%;
-    min-width: 8rem;
     padding: .5rem;
     border-radius: 5px;
     border: 1px solid;
-    width: 50%;
     margin: 1rem;
 }
 
@@ -72,7 +66,7 @@
     .buttons-container{
         width: 100%;
         align-items: center;
-        flex-direction: column;
+        display: grid;
     }
     .event-button{
         width: 100%;
@@ -81,7 +75,9 @@
 
 
 .event-frame{
-    border: 2px solid #f5f5f5;
+    border: 39px ridge #3e5ac2;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(65,49,93,0.5) 100%);
     border-radius: 10px;
     padding: 1rem;
     margin-top: 3rem;
@@ -90,4 +86,7 @@
 .integrated-event-text{
     font-size: 2rem;
     margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

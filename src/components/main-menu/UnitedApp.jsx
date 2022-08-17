@@ -24,7 +24,7 @@ function UnitedApp(props){
     // eslint-disable-next-line
     const [isError, setIsError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const [eventNumber, setEventNumber] = useState(1);
+    const [eventNumber, setEventNumber] = useState(0);
     const [event, setEvent] = useState([]);
     const [note, setNote] = useState(false);
     const [inputEvent, setInputEvent] = useState(false);

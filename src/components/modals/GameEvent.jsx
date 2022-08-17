@@ -1,5 +1,5 @@
 import "../../css/event.css";
-import AnswerButtons from "../buttons/AnswerButtons";
+import Answers from "../buttons/Answers";
 import {CSSTransition} from "react-transition-group";
 import React,{useEffect,useState} from "react";
 
@@ -32,7 +32,7 @@ function GameEvent(props){
             >
             <div className='event-frame'>
                 <p className='integrated-event-text'>{props.event[props.eventNumber].description}</p>
-                <AnswerButtons
+                <Answers
                     app = {props.app}
                     showApps = {props.showApps}
                     hidePage = {props.hidePage}

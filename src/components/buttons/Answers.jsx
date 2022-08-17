@@ -1,14 +1,28 @@
-
+import "../../css/event.css"
+import "../../css/responseAnimations.css"
 import SpotTheDarkPatternInput from "./SpotTheDarkPatternInput";
 import React, {useEffect, useRef, useState} from "react";
 import {CSSTransition} from "react-transition-group";
+import AnswerButton from "./AnswerButton";
 
 
-const AnswerButtons = (props) => {
+const Answers = (props) => {
 
     const focusedInput = useRef(null)
     const [showButtons,setShowButtons] = useState(true)
+    const [eventTries,setEventTries] = useState(1)
 
+    const handleInput = (answer)=>{
+        console.log(eventTries)
+        if (props.event[props.eventNumber].positive.toString() === answer.toString()){
+            return handlePositiveAnswer()
+        }
+        if (eventTries>props.event[props.eventNumber].tries){
+            return handleNegativeAnswer()
+        }
+        alert("Try Again!")
+        return setEventTries((eventTries)=>eventTries+1)
+    }
 
     const closeApp = () => {
          setTimeout(()=>{
@@ -18,7 +32,27 @@ const AnswerButtons = (props) => {
         },1200)
     }
 
+    const handleLastQuestion = () => {
+        const newDisabledApps = props.disabledApps
+        newDisabledApps.push(props.app)
+        props.setType("")
+        props.setDisabledApps(newDisabledApps)
+        closeApp()
+    }
 
+    const getIfLastQuestion = ()=> {
+        if (props.event[props.eventNumber + 1]!==undefined) {
+            setTimeout(() => {
+                props.setEventNumber((event)=>event+1)
+                setShowButtons(true)
+                console.log("not last")
+                return false
+            }, 500)
+        }else {
+            console.log("last")
+            return true
+        }
+    }
 
     const handleNegativeAnswer = () => {
         if (showButtons) {
@@ -31,22 +65,11 @@ const AnswerButtons = (props) => {
             props.setThumb("bi bi-hand-thumbs-down-fill icon-btn thumb-btn")
             props.setAnswerAnimation(true)
             props.handleLastAnswerTiming()
-            if (props.event[props.eventNumber + 1]) {
-                props.setEventNumber(props.eventNumber + 1)
-                setTimeout(()=>{
-                    setShowButtons(true)
-                },500)
-            } else {
+            if (getIfLastQuestion()) {
+                console.log("last question finished")
                 props.setMoney(props.money - question.money)
-                const newDisabledApps = props.disabledApps
-                newDisabledApps.push(props.app)
-                console.log(newDisabledApps)
-                props.setType()
-                props.setDisabledApps(newDisabledApps)
-                closeApp()
+                handleLastQuestion()
             }
-        }else {
-            console.log("Nope")
         }
     }
 
@@ -60,18 +83,9 @@ const AnswerButtons = (props) => {
             props.setThumb("bi bi-hand-thumbs-up-fill icon-btn thumb-btn")
             props.setAnswerAnimation(true)
             props.handleSaveUpdate(newSave)
-            if (props.event[props.eventNumber + 1]) {
-                props.setEventNumber(props.eventNumber + 1)
-                setTimeout(()=>{
-                    setShowButtons(true)
-                },500)
-            } else {
-                const newDisabledApps = props.disabledApps
-                newDisabledApps.push(props.app)
-                props.setType()
-                console.log(newDisabledApps)
-                props.setDisabledApps(newDisabledApps)
-                closeApp()
+            if (getIfLastQuestion()) {
+                console.log("last question finished")
+                handleLastQuestion()
             }
         }
     }
@@ -87,9 +101,7 @@ const AnswerButtons = (props) => {
     return(
         <>
             {props.inputEvent?<SpotTheDarkPatternInput
-                        currentEvent = {props.event[props.eventNumber]}
-                        handlePositiveAnswer={handlePositiveAnswer}
-                        handleNegativeAnswer={handleNegativeAnswer}
+                        handleInput = {handleInput}
                     />:
                 <CSSTransition
                     in={showButtons}
@@ -98,8 +110,14 @@ const AnswerButtons = (props) => {
                     classNames="animated-buttons"
                 >
                 <div className='buttons-container' ref={focusedInput}>
-                    <button  type= "button" className='event-button' onClick={() => handlePositiveAnswer()}>{props.event[props.eventNumber].positive}</button>
-                    <button type= "button" className='event-button' onClick={() => handleNegativeAnswer()}>{props.event[props.eventNumber].negative}</button>
+                    <ul style={{listStyleType:"none"}}>
+                        {props.event[props.eventNumber].allVariants.map((variant)=>
+                            <AnswerButton
+                                key = {variant}
+                                content = {variant}
+                                handleInput = {handleInput}
+                            />)}
+                    </ul>
                 </div>
                 </CSSTransition>
             }
@@ -108,4 +126,4 @@ const AnswerButtons = (props) => {
     )
 }
 
-export default AnswerButtons
+export default Answers

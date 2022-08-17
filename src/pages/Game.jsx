@@ -13,8 +13,8 @@ import guy from "../img/avatars/guy.jpg";
 import {CSSTransition} from "react-transition-group";
 import LoginRegisterModal from "../components/modals/LoginRegister";
 import Notifications from "../components/modals/Notifications";
-import ErrorBoundary from "../components/errors/ErrorBoundary";
 import {getCurrentDateNTimeInEstonia} from "../functions/getCurrentDateNTimeInEstonia";
+
 
 const defaultSave = {
     characterName: "Anonymous",
@@ -67,8 +67,6 @@ function Game() {
     const [openSettings, setSettings] = useState(false);
     const [on, toggle] = useState(false);
 
-
-
     useEffect(()=>{
         setNotificationsNumber(notifications.length)
     },[notifications])
@@ -106,8 +104,6 @@ function Game() {
         return setGameOver(false)
     }
 
-
-
     const handleLastAnswerTiming = () => {
         console.log("Getting actual time and date in Estonia")
         const newSave = save;
@@ -115,11 +111,9 @@ function Game() {
         setSave(newSave)
     }
 
-
     const toggleMusic = () => {
         return toggle(!on)
     }
-
 
     const getEventSaves = (id) => {
         console.log("user id:" + id)
@@ -170,8 +164,6 @@ function Game() {
         return alert("Couldn't find this user :(")
     }
 
-
-
     useEffect(() => {
         get(child(dbRef, `profile`)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -188,16 +180,6 @@ function Game() {
         });
     },[isLoading])
 
-    // useEffect(() => {
-    //     console.log("checking for finish...")
-    //     if (save.livesOwned < 1 || save.pointsOwned > 5 ) {
-    //         console.log("finish!")
-    //         return setGameOver(true)
-    //     }
-    //     return setGameOver(false)
-    // },[save.livesOwned, save.pointsOwned])
-
-
     const getSave = (id) => {
         get(child(dbRef, '/save/' + id)).then((snapshot) => {
             if (snapshot.exists()) {
@@ -207,11 +189,8 @@ function Game() {
                 setInMenu(true)
                 setSave(snapshot.val());
                 setIsLoading(false)
-
-
             } else {
                 return console.log("No data available");
-
             }
         }).catch((error) => {
             console.error(error);
@@ -225,8 +204,6 @@ function Game() {
         return getEventSaves(id)
     }
 
-
-
     const registerUser = async (username, password, characterName, closeRegister) => {
         setIsLoading(true)
         let newID = 0;
@@ -238,7 +215,6 @@ function Game() {
                 return alert("Already registered");
             }
         }
-
         const userData = {
             id: newID,
             username: username,
@@ -271,8 +247,6 @@ function Game() {
         return update(dbRef, updates)
     }
 
-
-
     return(
         <div>
             {inMenu&&<div onClick={()=>{setSettings(true)}}><i className="bi bi-gear icon-btn settings-btn"></i></div>}
@@ -297,7 +271,6 @@ function Game() {
                 />
             </CSSTransition>
             <h1>{isError && "Error :("}</h1>
-            <ErrorBoundary>
                 <CSSTransition
                     in={openNotifications}
                     unmountOnExit
@@ -309,7 +282,6 @@ function Game() {
                         setOpenNotifications = {setOpenNotifications}
                     />
                 </CSSTransition>
-            </ErrorBoundary>
             <div>
                 {gameOver?<FinalScreen
                     currentProfilePicture={currentProfilePicture}

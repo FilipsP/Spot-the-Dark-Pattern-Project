@@ -6,8 +6,10 @@
     --secondary-bg-color: linear-gradient(#23374c, #32538c);
     --text-color: #fff;
     /*--second-theme-gradient: linear-gradient(150deg, rgba(98,43,140,1) 0%, rgba(94,99,182,1) 50%, rgba(178,147,235,1) 100%);*/
-    /*--third-theme-gradient: linear-gradient(0deg, #4b6cb7 0%, #182848 100%);*/
-    /*--fourth-theme-gradient: linear-gradient(to bottom, #09203f 0%, #537895 100%);*/
+    --third-theme-gradient: linear-gradient(0deg, #4b6cb7 0%, #182848 100%);
+    --fourth-theme-gradient: linear-gradient(to top, #09203f 0%, #537895 100%);
+    --background-by-mares: linear-gradient(150deg,rgba(47, 109, 155, 1)0%,rgba(62, 50, 136, 1)100%);
+    --sidebar-by-mares: linear-gradient(300deg,rgba(78, 80, 85, 1)0%,rgba(32, 19, 69, 0.8)100%)
 
 }
 
@@ -25,7 +27,7 @@ body{
 body{
     margin: 0;
     padding: 0;
-    background: var(--main-bg-color);
+    background: var(--background-by-mares);
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: var(--text-color);
@@ -187,5 +189,5 @@ i:hover{
 }
 
 .margin-top{
-    margin-top: 10%;
+    margin-top: 5%;
 }

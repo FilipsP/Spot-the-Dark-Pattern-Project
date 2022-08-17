@@ -1,0 +1,161 @@
+.triangle-up {
+    height: 0;
+    width: 0;
+    border-top: 5em solid transparent;
+    border-right: 5em solid transparent;
+    border-bottom: 5em solid rgba(145, 236, 252,0.7);
+    border-left: 5em solid transparent;
+    position: absolute;
+}
+
+.triangle-down {
+    height: 0;
+    width: 0;
+    border-top: 5em solid rgba(145, 236, 252,0.7);
+    border-right: 5em solid transparent;
+    border-bottom: 5em solid transparent;
+    border-left: 5em solid transparent;
+    position: absolute;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4em 0 4em 8em;
+    border-color: transparent transparent transparent rgba(245, 149, 221, 0.7);
+    position: absolute;
+}
+.triangle-bottom-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8em 0 0 8em;
+    border-color: transparent transparent transparent rgba(151, 235, 158,0.7);
+    position: absolute;
+}
+
+.butterfly-size{
+    height: 5rem;
+    width: 5rem;
+}
+
+.butterfly-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(223,15,42,0.1);
+}
+
+
+.animation-top{
+    animation: rotate-right 1.5s infinite;
+}
+.animation-bottom{
+    animation: rotate-left 1.5s infinite;
+}
+
+.animation-around {
+    animation: rotate 1s infinite;
+}
+
+@keyframes rotate-left {
+    from{
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(360deg);
+    }
+}
+
+@keyframes rotate-right {
+    from{
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(360deg);
+    }
+}
+
+@keyframes rotate {
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+
+
+.loading-enter{
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.loading-enter-active{
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.loading-exit {
+    opacity: 1;
+}
+
+
+.loading-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.heading-enter{
+    opacity: 0;
+    transform: translateX(+1000px);
+}
+
+.heading-enter-active{
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.heading-exit {
+    opacity: 1;
+}
+
+
+.heading-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+
+
+
+
+.text-enter{
+    opacity: 0;
+    transform: translateX(-500px);
+}
+
+.text-enter-active{
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+.text-exit {
+    opacity: 1;
+}
+
+
+.text-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+}
+

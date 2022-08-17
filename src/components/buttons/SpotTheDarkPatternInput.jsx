@@ -1,25 +1,17 @@
-import {useEffect,useState,useRef} from "react";
+import {useEffect,useRef,useState} from "react";
 
 
 const SpotTheDarkPatternInput = (props) => {
 
     const [answer,setAnswer] = useState("")
-    const [eventTries,setEventTries] = useState(1)
-
     const focusedInput = useRef(null)
 
-    const handleInput = ()=>{
-        console.log(eventTries)
-        if (props.currentEvent.positive.toString() === answer.toString()){
-            return props.handlePositiveAnswer()
-        }
-        if (eventTries>2){
-            return props.handleNegativeAnswer()
-        }
-            alert("Try Again!")
-            setAnswer("")
-            return setEventTries(eventTries+1)
+    const handleClick = () => {
+        setAnswer("")
+        props.handleInput(answer)
+
     }
+
     const scrollToBottom = () => {
         focusedInput.current?.scrollIntoView()
     }
@@ -46,7 +38,7 @@ const SpotTheDarkPatternInput = (props) => {
                 className="submit answer-button"
                 type="button"
                 id="submit-number"
-                onClick={()=>{handleInput()}}
+                onClick={()=>{handleClick()}}
             >Answer
             </button>
             </div>

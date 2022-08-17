@@ -23,8 +23,7 @@
 
 .profile-picture-container{
     width: 100%;
-    margin: 0 auto;
-    margin-top: 3.5rem;
+    margin: 3.5rem auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +51,8 @@
 .profile-name{
     font-size: 2rem;
     margin-top: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 

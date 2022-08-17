@@ -1,0 +1,44 @@
+.navigation-container{
+    position: sticky;
+    width: 100%;
+    backdrop-filter: blur(2rem);
+    display: grid;
+    background-color: rgba(33, 37, 41,1);
+    border: rgba(255,255,255,0.5) 1px solid;
+    border-top-color: black;
+    font-size: 2rem;
+}
+
+.navigation-name-container{
+    text-align: center;
+    justify-content: center;
+    border-bottom: solid 2px rgba(245,255,237,0.3);
+    background-color: deepskyblue;
+}
+
+
+.navigation-name{
+    font-size: xx-large;
+    text-shadow: 0.2rem 0.1rem #424b57;
+}
+
+.dark-pattern-grid{
+    display: grid;
+    position: relative;
+    grid-gap: 1vw;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.dark-pattern-name{
+    color: rgba(245,255,237,1);
+    filter: contrast(113%);
+    font-family: Georgia, serif;
+    text-decoration: underline rgba(0, 191, 255,1);
+    font-size: x-large;
+    margin-left: 5vw;
+}
+
+.dark-pattern-name:hover{
+    text-decoration: underline rgba(62,182,255,0.3);
+    cursor: pointer;
+}

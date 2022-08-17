@@ -18,7 +18,7 @@ const logInButton = {
 
 const characterStatsValue = {
     fontSize: "1.3rem",
-    color:"gray",
+    color:"rgb(1,1,1)",
 }
 
 const characterStatName = {
@@ -30,9 +30,7 @@ function Character(props) {
     const [startAvatarAnimation,setStartAvatarAnimation] = useState(true)
 
     function solvePictureChange(number) {
-
         setStartAvatarAnimation(false)
-
         setTimeout(()=>{
             if (props.currentProfilePicture + number < props.profilePictures.length && props.currentProfilePicture + number > -1) {
                 props.setCurrentPicture(props.currentProfilePicture + number)
@@ -44,7 +42,6 @@ function Character(props) {
                 props.setCurrentPicture(0)
             }
         },500)
-
     }
 
     const handleLogOut = ()=> {
@@ -63,8 +60,7 @@ function Character(props) {
                             <p>Log out</p>
                         </button>
                     </div>
-                    : <div style={{textAlign:"center",borderBottom:"solid black 3px"}}><p>You are not logged in<br/>
-                        ↓Log in to save progress↓</p>
+                    : <div style={{textAlign:"center",borderBottom:"solid black 3px"}}><p>↓Log in to save progress↓</p>
                         <i style={logInButton} className= "bi bi-activity" onClick={()=>{props.openLoginRegister(true)}}>Log in</i></div>
                 }
                 <div className='profile-picture-container'>
@@ -86,7 +82,7 @@ function Character(props) {
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(-1)}><i className="bi bi-caret-left-fill"></i></button>
                         <button className='change-picture-btn' onClick = {() => solvePictureChange(1)}><i className="bi bi-caret-right-fill"></i></button>
                     </div>
-                    <h1 className='profile-name'>
+                    <h1 className="profile-name">
                         {props.isLoggedIn?props.save.characterName:props.defaultCharacters[props.currentProfilePicture].username}
                     </h1>
                     <div className='stats-container'>

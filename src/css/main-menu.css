@@ -40,24 +40,41 @@
     float: left;
     width: 15%;
 }
-
-
-.bi-bell{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+.bell-container{
     position: absolute;
     left: 0;
     right: 0;
-    margin: 0 auto;
     top: 1rem;
-    z-index: -1;
-    max-width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.bell:active{
+    color: #ff001b;
+}
 
-.notification-count{
-    font-size: 1.5rem;
+.bell{
+    margin: 0 auto;
+    max-width: 4rem;
+
+}
+
+.bell::after{
+    content: attr(data-count);
+    position: absolute;
+    top: -0.2em;
+    right: -0.3em;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(239,39,39,0.8);
+    color: white;
+    font-family: Sylfaen, serif;
+
 }
 
 @media screen and (max-width: 1150px){

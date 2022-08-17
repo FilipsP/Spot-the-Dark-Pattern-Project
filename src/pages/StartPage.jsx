@@ -1,13 +1,28 @@
 import "../css/start-page.css"
 import { Link } from 'react-router-dom';
-import {useState} from "react";
+import {useState, useRef, useEffect} from "react";
+import beaver from "../img/beavers_logo.png";
+import AnimatedTriangles from "../components/animations/AnimatedTriangles";
+import {CSSTransition} from "react-transition-group";
+import Navbar from "../components/first-screen/Navbar";
+import DarkPatternTutorial from "../components/modals/DarkPatternTutorial";
+
+const playAnimation = "play-animation"
+
 
 function MoreInfo() {
 
+    const focusedInput = useRef(null)
+    const scrollToBottom = () => {
+        focusedInput.current?.scrollIntoView()
+    }
 
+    useEffect(() => {
+        scrollToBottom()
+    }, []);
 
     return(
-        <div id = "info">
+        <div ref={focusedInput}>
             <div>
                 <h2 >Privacy Zuckering</h2>
                 <p>'Privacy Zuckering' is a practice that tricks the user into sharing more information than they intended to.
@@ -61,10 +76,30 @@ function MoreInfo() {
 function StartPage() {
 
     const [showMoreInfo, setShowMoreInfo] = useState(false);
+    const [startAnimationIMG, setStartAnimationIMG] = useState(false);
+    const [startAnimationHeading, setStartAnimationHeading] = useState(false);
+    const [startAnimationParagraph, setStartAnimationParagraph] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [animationState, setAnimationState] = useState("spot-the-dp-heading");
+    const [showVideo, setShowVideo] = useState(false);
+    const [tutorial,setTutorial] = useState("")
 
+
+
+    const playTitleAnimation = () => {
+        setAnimationState(()=>"spot-the-dp-heading " + playAnimation);
+
+        setTimeout(()=>{
+            setAnimationState(()=>"spot-the-dp-heading")
+        },2000)
+
+        setTimeout(()=>{
+            return playTitleAnimation()
+        },10000)
+    }
 
     const styleForLink = {
-        fontSize : "25px",
+        fontSize : "2rem",
         border: "none",
         background: "none",
         textDecoration : "underline",
@@ -76,34 +111,89 @@ function StartPage() {
         setShowMoreInfo(false)
         }else{
             setShowMoreInfo(true)
-
         }
     }
 
 
+    useEffect(() => {
+        setTimeout(()=>{
+            setIsLoading(false)
+            playTitleAnimation()
+        },2000)
+        // eslint-disable-next-line
+    }, []);
 
 
+    const playVideo = (chosenCategory)=>{
+        setTutorial(()=>"../../videos/"+chosenCategory);
+        setShowVideo(true);
 
-return(<div>
-    <div className="container margin-top" >
-        <h1 className="main-heading">Spot the Dark Pattern</h1>
-        <div className="game-description game-description-container">Hello Friend!<br></br>
-            <p>You are going to enter a game related to <button style={styleForLink} onClick={linkToInfo}><strong><a href='#info'>Dark Patterns</a></strong></button> - <em>bad</em> things all over the internet that try
-                to <em><strong>manipulate</strong></em> you with different <em>mechanics</em>.</p>
-            <p>You will be given options on different situations - the choice is yours!
-            Please remember - you will only have <strong>3</strong> lives, lose them - game over.</p>
-            <p className="game-description">Good luck!</p>
-            <p className="game-description">Kr,Development team.</p>
+    };
 
+return(
+    <div>
+        {showVideo&&<DarkPatternTutorial setShowVideo = {setShowVideo} path={tutorial}/>}
+        <CSSTransition
+            in={isLoading}
+            unmountOnExit
+            timeout={500}
+            classNames="loading"
+            onExiting = {()=>setStartAnimationIMG(true)}
+        >
+            <AnimatedTriangles/>
+        </CSSTransition>
+        <div className="start-page-container">
+            {startAnimationIMG&&<Navbar playVideo={playVideo}/>}
+            <CSSTransition
+                in={startAnimationIMG}
+                unmountOnExit
+                timeout={500}
+                classNames="loading"
+                onEntered = {()=>setStartAnimationHeading(true)}
+            >
+                <img src= {beaver} className="beavers" alt="a pair of beavers"/>
+            </CSSTransition>
+            <CSSTransition
+                in={startAnimationHeading}
+                unmountOnExit
+                timeout={500}
+                classNames="heading"
+                onEntering = {()=>setStartAnimationParagraph(true)}
+            >
+                <div className="spot-the-dp-heading-container">
+                    <h1 className={animationState}>Spot the Dark Pattern</h1>
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={startAnimationParagraph}
+                unmountOnExit
+                timeout={500}
+                classNames="text"
+            >
+                <div className="game-description-container">
+                    <h2 >Hello Friend!</h2>
+                        <p className="game-description">You are going to enter a game related to <button  style={styleForLink} onClick={linkToInfo}><strong>Dark Patterns</strong></button> - bad things all over the internet that are
+                            used by various companies in order to influence or <em><strong>manipulate</strong></em> you against your best interests.</p>
+                        <p className="game-description">We will show you the patterns and we will teach you how to spot the dark patterns by yourself!<br/>
+                            After the game you will be able to compare your results with the others.</p>
+                        <h2 >Best of luck!</h2>
+                        <p className="game-description">Kr,Development team.</p>
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={startAnimationHeading}
+                unmountOnExit
+                timeout={500}
+                classNames="loading"
+            >
+                <Link to="/game">
+                    <button  className="start-game-btn">Start game</button>
+                </Link>
+            </CSSTransition>
+            {showMoreInfo && <MoreInfo />}
         </div>
-        <Link to="/game">
-            <button  className="start-game-btn">Start game</button>
-        </Link>
-        {showMoreInfo && <MoreInfo />}
-
     </div>
-    
-</div>)
+    )
 }
 
 export default StartPage;

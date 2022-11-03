@@ -95,7 +95,7 @@ function StartPage() {
 
         setTimeout(()=>{
             return playTitleAnimation()
-        },10000)
+        },6000)
     }
 
     const styleForLink = {

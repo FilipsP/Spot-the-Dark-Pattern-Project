@@ -8,10 +8,22 @@
     /*--second-theme-gradient: linear-gradient(150deg, rgba(98,43,140,1) 0%, rgba(94,99,182,1) 50%, rgba(178,147,235,1) 100%);*/
     --third-theme-gradient: linear-gradient(0deg, #4b6cb7 0%, #182848 100%);
     --fourth-theme-gradient: linear-gradient(to top, #09203f 0%, #537895 100%);
-    --background-by-mares: linear-gradient(150deg,rgba(47, 109, 155, 1)0%,rgba(62, 50, 136, 1)100%);
-    --sidebar-by-mares: linear-gradient(300deg,rgba(78, 80, 85, 1)0%,rgba(32, 19, 69, 0.8)100%)
+    --background-by-mares: linear-gradient(150deg,rgba(47, 109, 155, 1),rgba(62, 50, 136, 1),rgba(47, 109, 155, 1));
+    --sidebar-by-mares: linear-gradient(300deg,rgba(78, 80, 85, 1)0%,rgba(32, 19, 69, 0.8)100%);
+    --special: linear-gradient(150deg,#336d9b,#3e3288,#394b78,#336d9b,#3e3288);
 
 }
+
+.animated-gradient {
+    animation: animateBg 16s linear infinite;
+    background-image: var(--special);
+    background-size: 600% 100%;
+}
+@keyframes animateBg {
+    0% { background-position: 100% 0%; }
+    100% { background-position: 0% 0%; }
+}
+
 
 
 

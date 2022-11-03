@@ -1,8 +1,10 @@
 .navigation-container{
     position: sticky;
     width: auto;
+    height: auto;
     backdrop-filter: blur(2rem);
-    display: grid;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(33, 37, 41,1);
     border: rgba(255,255,255,0.5) 1px solid;
     border-top-color: black;
@@ -23,8 +25,7 @@
 }
 
 .dark-pattern-grid{
-    display: grid;
-    position: relative;
+    display: flex;
     grid-gap: 1vw;
     grid-template-columns: repeat(5, 1fr);
 }
@@ -36,6 +37,7 @@
     text-decoration: underline rgba(0, 191, 255,1);
     font-size: x-large;
     margin-left: 5vw;
+    position: relative;
 }
 
 .dark-pattern-name:hover{

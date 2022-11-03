@@ -5,11 +5,12 @@
 }
 .spot-the-dp-heading-container{
     height: 10vh;
-    display: block;
+    display: flex;
 }
 .spot-the-dp-heading{
     position: relative;
     left: 20%;
+    min-height: 25%;
     max-width: 70%;
     font-size: 1.5rem;
     text-shadow: 2rem 1.1rem 0.2rem #141e30b0;

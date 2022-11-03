@@ -26,8 +26,14 @@
 
 .dark-pattern-grid{
     display: flex;
-    grid-gap: 1vw;
-    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-around;
+}
+@media (max-width: 780px) {
+    .dark-pattern-grid{
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+    }
 }
 
 .dark-pattern-name{

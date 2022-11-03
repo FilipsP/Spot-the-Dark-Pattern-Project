@@ -21,8 +21,9 @@
 .video-container{
     z-index: 1;
     position: absolute;
-    top: 30%;
-    left: 33.5%;
+    margin: auto;
+    top: 10vmin;
+    left: 5vmin;
     display: flex;
     flex-direction: column;
 
@@ -90,6 +91,12 @@
     .spot-the-dp-heading{
         max-width: 75%;
         font-size: 1.7rem;
+    }
+    .video-container{
+        max-width: 90vmin;
+    }
+    .video {
+        max-width: 70vmin;
     }
 }
 @media screen and (max-width:600px) {

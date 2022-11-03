@@ -1,6 +1,6 @@
 .navigation-container{
     position: sticky;
-    width: 100%;
+    width: auto;
     backdrop-filter: blur(2rem);
     display: grid;
     background-color: rgba(33, 37, 41,1);

@@ -124,7 +124,8 @@
     right: 10%;
     bottom: 1rem;
     background-color: #eeeeee;
-    border-bottom: 5px solid #cccccc;
+    border-bottom: 10px solid #cccccc;
+    transition: all 400ms;
 
 }
 
@@ -133,7 +134,8 @@
     filter: contrast(50%);
 }
 .start-game-btn:active {
-    transform: scale(0.9) translate(0,5px);
+    transform: translate(0,0.5rem);
+    border-bottom: 5px solid #cccccc;
 }
 
 .beavers {
